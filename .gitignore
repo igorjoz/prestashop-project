@@ -33,7 +33,7 @@
 /log/
 
 # Ignore vendor directory
-/vendor/
+# /vendor/
 
 # Ignore Node.js dependencies
 /node_modules/
