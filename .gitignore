@@ -1,22 +1,22 @@
 # Ignore PrestaShop core files
-/admin/
-/app/
-/classes/
-/config/
-/controllers/
-/download/
-/img/
-/install/
-/_install/
-/js/
-/localization/
-/mails/
-/pdf/
-/src/
-/tools/
-/translations/
-/upload/
-/var/
+# /admin/
+# /app/
+# /classes/
+# /config/
+# /controllers/
+# /download/
+# /img/
+# /install/
+# /_install/
+# /js/
+# /localization/
+# /mails/
+# /pdf/
+# /src/
+# /tools/
+# /translations/
+# /upload/
+# /var/
 
 # Ignore all modules except custom ones
 /modules/*
