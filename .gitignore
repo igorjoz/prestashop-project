@@ -23,8 +23,8 @@
 # !/modules/your-custom-module/
 
 # Ignore all themes except custom ones
-/themes/*
-!/themes/your-custom-theme/
+# /themes/*
+# !/themes/your-custom-theme/
 
 # Ignore cache and logs
 /var/cache/
