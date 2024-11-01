@@ -19,8 +19,8 @@
 # /var/
 
 # Ignore all modules except custom ones
-/modules/*
-!/modules/your-custom-module/
+# /modules/*
+# !/modules/your-custom-module/
 
 # Ignore all themes except custom ones
 /themes/*
