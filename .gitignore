@@ -1,30 +1,30 @@
 # Ignore PrestaShop core files
-/admin/
-/app/
-/classes/
-/config/
-/controllers/
-/download/
-/img/
-/install/
-/_install/
-/js/
-/localization/
-/mails/
-/pdf/
-/src/
-/tools/
-/translations/
-/upload/
-/var/
+# /admin/
+# /app/
+# /classes/
+# /config/
+# /controllers/
+# /download/
+# /img/
+# /install/
+# /_install/
+# /js/
+# /localization/
+# /mails/
+# /pdf/
+# /src/
+# /tools/
+# /translations/
+# /upload/
+# /var/
 
 # Ignore all modules except custom ones
-/modules/*
-!/modules/your-custom-module/
+# /modules/*
+# !/modules/your-custom-module/
 
 # Ignore all themes except custom ones
-/themes/*
-!/themes/your-custom-theme/
+# /themes/*
+# !/themes/your-custom-theme/
 
 # Ignore cache and logs
 /var/cache/
@@ -33,7 +33,7 @@
 /log/
 
 # Ignore vendor directory
-/vendor/
+# /vendor/
 
 # Ignore Node.js dependencies
 /node_modules/
