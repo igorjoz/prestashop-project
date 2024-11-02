@@ -1,5 +1,14 @@
 /*
- * Custom code goes here.
- * A template should always ship with an empty custom.css
- */
- #header{ background: red !important; }
+* Custom code goes here.
+* A template should always ship with an empty custom.css
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap');
+
+body {
+    font-family: "Sen", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+#header{ background: red !important; }
