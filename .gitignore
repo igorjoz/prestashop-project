@@ -1,0 +1,54 @@
+# Ignore PrestaShop core files
+/admin/
+/app/
+/classes/
+/config/
+/controllers/
+/download/
+/img/
+/install/
+/_install/
+/js/
+/localization/
+/mails/
+/pdf/
+/src/
+/tools/
+/translations/
+/upload/
+/var/
+
+# Ignore all modules except custom ones
+/modules/*
+!/modules/your-custom-module/
+
+# Ignore all themes except custom ones
+/themes/*
+!/themes/your-custom-theme/
+
+# Ignore cache and logs
+/var/cache/
+/var/logs/
+/cache/
+/log/
+
+# Ignore vendor directory
+/vendor/
+
+# Ignore Node.js dependencies
+/node_modules/
+
+# Ignore Composer lock file
+composer.lock
+
+# Ignore parameters (sensitive information)
+/app/config/parameters.php
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE-specific files
+*.iml
+.idea/
+.vscode/
