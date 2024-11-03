@@ -11,7 +11,7 @@ RewriteEngine on
 
 
 #Domain: localhost
-RewriteRule . - [E=REWRITEBASE:/monsteriada/]
+RewriteRule . - [E=REWRITEBASE:/monsteriada-prestashop-clone/]
 RewriteRule ^api(?:/(.*))?$ %{ENV:REWRITEBASE}webservice/dispatcher.php?url=$1 [QSA,L]
 RewriteRule ^upload/.+$ %{ENV:REWRITEBASE}index.php [QSA,L]
 
@@ -74,6 +74,6 @@ AddType font/woff2 .woff2
     </IfModule>
 </Files>
 #If rewrite mod isn't enabled
-ErrorDocument 404 /monsteriada/index.php?controller=404
+ErrorDocument 404 /monsteriada-prestashop-clone/index.php?controller=404
 
 # ~~end~~ Do not remove this comment, Prestashop will keep automatically the code outside this comment when .htaccess will be generated again
