@@ -52,3 +52,17 @@ This project aims to recreate the core features and design of [monsteriada.pl](h
   - Software version information
   - Startup/installation instructions
   - Team composition
+ 
+---
+
+## Project installation guidelines
+
+- project directory: ```/monsteriada-prestashop-clone```
+- database name: ```monsteriada```
+- database dev user: ```root```
+- database dev password: ```(no password)```
+- admin panel directory: ```admin-dev```
+
+
+### Important note about continuing work & editing content on site
+Many things are saved into the database which is not uploaded to the repository. If you want to edit site content, first ask first for database export. Then import it in ```http://localhost/phpmyadmin/```. Import section & choose file.
