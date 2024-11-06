@@ -81,5 +81,14 @@
       </div>
     </div>
   </div>
+  <div class="main-navigation-janek">
+    <a class="button-item">Start</a>
+    <a class="button-item">Gadżety wg kategorii</a>
+    <a class="button-item">Gadżety wg tematyki</a>
+    <a class="button-item">Bestsellery</a>
+    <a class="button-item">Promocje</a>
+    <a class="button-item">Nowości</a>
+    <a class="button-item">Blog</a>
+  </div>
   {hook h='displayNavFullWidth'}
 {/block}

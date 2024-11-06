@@ -28,7 +28,7 @@ body {
 }
 
 .header-top .container{
-    width: 1450px !important;
+    width: 1410px !important;
     display:flex;
 }
 
@@ -129,5 +129,67 @@ form:has(.ui-autocomplete-input){
     border-radius: 8px;
     border-style:solid;
     border-width: 1px;
+    border-color: lightgray;
     height:65px;
+    width: 65px;
+    align-content:center;
+}
+.user-info .material-icons{
+    font-size: 65px !important;
+    text-align: center;
+    padding: 0 !important;
+    margin: 0 !important;
+    transform: scale(0.6);
+    color: lightgray;
+}
+
+
+
+.user-info{
+    background-color: white !important;
+    transition: background-color 1s ease !important;
+}
+
+.user-info:hover{
+    background-color: #cce963 !important;
+}
+
+div.btns121{
+    display:none;
+}
+
+.user-info:hover div.btns121{
+    display: block !important;
+    color:grey;
+}
+
+div.btns121:hover {
+    display: block !important;
+    color:grey;
+    background-color: #F5F5F5;
+}
+
+div.btns121{
+    background-color: white;
+    text-align: center;
+    padding:10px;
+    width: 200px;
+    transform:translateX(-65px);
+}
+
+
+.main-navigation-janek{
+    background-color: #301934;    ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.button-item{
+    flex-direction: horizontal;
+    padding: 40px;
+    color:white !important;
+    font-weight: bold;
+    text-align: center;
 }

@@ -22,4 +22,4 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<p class="promotion">Zobacz jaką promocję przygotowali nasi bohaterowie! <a id="promotion-anchor" href="promocje">Sprawdź przecenione produkty!</a></p>
+<p class="promotion">Zobacz jaką promocję przygotowali nasi bohaterowie! <a id="promotion-anchor" href="promocje"><b>Sprawdź przecenione produkty!</b></a></p>

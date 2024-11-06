@@ -31,7 +31,7 @@
         rel="nofollow"
       >
         <i class="material-icons">&#xE7FF;</i>
-        {l s='Sign out' d='Shop.Theme.Actions'}
+        <div class="hidden-sm-down btns121">{l s='Sign out' d='Shop.Theme.Actions'}</div>
       </a>
       <a
         class="account"
@@ -40,7 +40,7 @@
         rel="nofollow"
       >
         <i class="material-icons hidden-md-up logged">&#xE7FF;</i>
-        <span class="hidden-sm-down">{$customerName}</span>
+        <div class="hidden-sm-down btns121">Twoje konto</div>
       </a>
     {else}
       <a
@@ -49,7 +49,7 @@
         rel="nofollow"
       >
         <i class="material-icons">&#xE7FF;</i>
-        <span class="hidden-sm-down">{l s='Sign in' d='Shop.Theme.Actions'}</span>
+        <span class="hidden-sm-down">{l s='' d='Shop.Theme.Actions'}</span>
       </a>
     {/if}
   </div>
