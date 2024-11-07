@@ -82,8 +82,9 @@ form:has(.ui-autocomplete-input){
 }
 
 #search_widget{
-    overflow: visible !important;
-    width: 618px !important;
+    width: 700px !important;
+    min-width: 700px !important;
+    max-width: 700px !important;
 }
 
 .promotion{
@@ -141,9 +142,12 @@ form:has(.ui-autocomplete-input){
     margin: 0 !important;
     transform: scale(0.6);
     color: lightgray;
+    transition: color 1s ease !important;
 }
 
-
+.user-info:hover .material-icons{
+    color: black;
+}
 
 .user-info{
     background-color: white !important;
@@ -179,7 +183,7 @@ div.btns121{
 
 
 .main-navigation-janek{
-    background-color: #301934;    ;
+    background-color: #301934;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -192,4 +196,9 @@ div.btns121{
     color:white !important;
     font-weight: bold;
     text-align: center;
+    transition: color 1s ease !important;
+}
+
+.button-item:hover{
+    color:#cce963 !important;
 }

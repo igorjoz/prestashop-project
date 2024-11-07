@@ -33,6 +33,7 @@
     <div class="container">
       <div class="hidden-sm-down">
         {hook h='displayNav1'}
+        
         <div class="col-md-7 right-nav">
         </div>
       </div>
@@ -65,7 +66,7 @@
           {/if}
         </div>
         <div class="header-top-right col-md-10 col-sm-12 position-static">
-          {hook h='displayTop'}
+          {hook h="displayTop"}
           <div class="button_holder">
             {hook h='displayNav2'}
           </div>
@@ -82,13 +83,13 @@
     </div>
   </div>
   <div class="main-navigation-janek">
-    <a class="button-item">Start</a>
+    <a class="button-item" href="/">Start</a>
     <a class="button-item">Gadżety wg kategorii</a>
     <a class="button-item">Gadżety wg tematyki</a>
-    <a class="button-item">Bestsellery</a>
-    <a class="button-item">Promocje</a>
-    <a class="button-item">Nowości</a>
-    <a class="button-item">Blog</a>
+    <a class="button-item" href="/bestsellery">Bestsellery</a>
+    <a class="button-item" href="/promocje">Promocje</a>
+    <a class="button-item" href="/nowosci">Nowości</a>
+    <a class="button-item" href="blog">Blog</a>
   </div>
   {hook h='displayNavFullWidth'}
 {/block}
