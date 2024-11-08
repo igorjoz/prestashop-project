@@ -65,7 +65,8 @@ img.logo.img-fluid{
 }
 
 .header-top .container .row{
-    padding: 0px;
+    padding: 0px !important;
+    margin-top: 0px !important;
 }
 
 #search_widget form .ui-autocomplete-input{
@@ -100,7 +101,7 @@ form:has(.ui-autocomplete-input){
 }
 
 .header-top-right{
-    width: 100%
+    width: 100%;
 }
 
 #_desktop_user_info{
@@ -142,7 +143,7 @@ form:has(.ui-autocomplete-input){
     margin: 0 !important;
     transform: scale(0.6);
     color: lightgray;
-    transition: color 1s ease !important;
+    transition: color 0.5s ease !important;
 }
 
 .user-info:hover .material-icons{
@@ -151,7 +152,7 @@ form:has(.ui-autocomplete-input){
 
 .user-info{
     background-color: white !important;
-    transition: background-color 1s ease !important;
+    transition: background-color 0.5s ease !important;
 }
 
 .user-info:hover{
@@ -196,9 +197,100 @@ div.btns121{
     color:white !important;
     font-weight: bold;
     text-align: center;
-    transition: color 1s ease !important;
+    transition: color 0.5s ease !important;
 }
 
 .button-item:hover{
     color:#cce963 !important;
 }
+
+#_desktop_top_menu{
+    position:absolute !important;
+    opacity: 0;
+    transform: translate(-20%, 180%);
+    background-color: white;
+}
+
+#header:has(.category-items-button:hover) #_desktop_top_menu {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#_desktop_top_menu:hover {
+    opacity: 1;
+    pointer-events: auto; 
+}
+#_desktop_top_menu:not(:hover) {
+    opacity: 0;
+    pointer-events: none; /* Make it non-interactive */
+}
+
+.deeplevel_janek{
+    list-style-type: disc !important;
+    text-indent: 10px;
+}
+
+.dropdown-item{
+    color:black !important;
+    transition: color 0.5s ease;
+}
+
+.dropdown-item:hover{
+    color: #cce963 !important;
+}
+
+.fa-phone-square-alt{
+    color:#cce963;
+    transform: scale(-1, 1);
+}
+
+.head-data-janek{
+    display:flex;
+    flex-direction: horizontal;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.infolinia-janek{
+    border-right: solid lightgray 1px;
+}
+
+.head-element-janek{
+    color: #7a7a7a;
+    padding : 10px;
+    font-size: 10pt;
+}
+
+.links{
+    float: right;
+    margin-left: 200px;
+    display:flex;
+}
+
+.head-element-janek a{
+    color: #7a7a7a !important;
+    transition: color 0.5s ease;
+}
+
+.head-element-janek a:hover{
+    color: #cce963 !important;
+}
+
+.fa-facebook-square{
+    color:#5674b9;
+    transition: color 0.5s ease;
+}
+
+.fa-facebook-square:hover{
+    color:#90aae5;
+}
+
+.fa-instagram-square{
+    color:#f0496c;
+    transition: color 0.5s ease;
+}
+
+.fa-instagram-square:hover{
+    color:#ffa1b5;
+}
+

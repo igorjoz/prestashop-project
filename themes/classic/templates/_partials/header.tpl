@@ -51,6 +51,7 @@
 {/block}
 
 {block name='header_top'}
+  <script src="https://kit.fontawesome.com/12c63f6a95.js" crossorigin="anonymous"></script>
   <div class="header-top">
     <div class="container">
        <div class="row">
@@ -66,6 +67,36 @@
           {/if}
         </div>
         <div class="header-top-right col-md-10 col-sm-12 position-static">
+          <div class="head-data-janek">
+            <div class="infolinia-janek head-element-janek">
+              Infolinia  <i class="fas fa-phone-square-alt"></i>  503 028 506
+            </div>
+            <div class="head-element-janek">
+              Dostawa gratis od 250 zł
+            </div>
+            <div class="links">
+              <div class="head-element-janek">
+                <a href="content/4-monsteriadapl-kim-jestesmy">O nas</a>
+              </div>
+              <div class="head-element-janek">
+                <a href="content/3-regulamin">Regulamin</a>
+              </div>
+              <div class="head-element-janek">
+                <a href="content/1-dostawa">Dostawa</a>
+              </div>
+              <div class="head-element-janek">
+                <a href="kontakt">Kontakt</a>
+              </div>
+              <div class="head-element-janek">
+                <a href="https://www.facebook.com/monsteriadapl">
+                  <i class="fab fa-facebook-square"></i>
+                </a>
+                <a href="https://www.instagram.com/monsteriada/">
+                  <i class="fab fa-instagram-square"></i>
+                </a>
+              </div>
+            </div>
+          </div>
           {hook h="displayTop"}
           <div class="button_holder">
             {hook h='displayNav2'}
@@ -84,7 +115,7 @@
   </div>
   <div class="main-navigation-janek">
     <a class="button-item" href="https://localhost/monsteriada-prestashop-clone">Start</a>
-    <a class="button-item">Gadżety wg kategorii</a>
+    <a class="button-item category-items-button">Gadżety wg kategorii</a>
     <a class="button-item">Gadżety wg tematyki</a>
     <a class="button-item" href="bestsellery">Bestsellery</a>
     <a class="button-item" href="promocje">Promocje</a>
