@@ -28,9 +28,13 @@
       {if $cart.products_count > 0}
         <a rel="nofollow" aria-label="{l s='Shopping cart link containing %nbProducts% product(s)' sprintf=['%nbProducts%' => $cart.products_count] d='Shop.Theme.Checkout'}" href="{$cart_url}">
       {/if}
-        <i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i>
-        <span class="hidden-sm-down">{l s='Cart' d='Shop.Theme.Checkout'}</span>
-        <span class="cart-products-count">({$cart.products_count})</span>
+        <div class="cart-holder-janek">
+          <img src='http://localhost/monsteriada-prestashop-clone/img/basket.png'>
+          <div id="cart-descriptor-janek">
+            <span class="hidden-sm-down">{l s='Cart' d='Shop.Theme.Checkout'}</span>
+            <span class="cart-products-value"><b>{$cart.totals.total.value}</b></span>
+          </div>
+        </div>
       {if $cart.products_count > 0}
         </a>
       {/if}

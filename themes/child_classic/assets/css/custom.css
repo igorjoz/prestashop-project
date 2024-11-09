@@ -110,12 +110,18 @@ form:has(.ui-autocomplete-input){
     margin-left: 3vw;
 }
 #_desktop_cart{
-    padding: 10px;
+    padding: 2px;
+    width: 200px !important;
+}
+
+.cart-holder-janek{
+    display:flex;
+    flex-direction: horizontal;
 }
 
 #_desktop_cart{
     position: relative;
-    background-color:#cce963;
+    background-color:#c6d947;
     border-radius: 8px;
     width:100px;
     height:65px;
@@ -299,3 +305,14 @@ div.btns121{
 .two-data-janek{
     display:flex;
 }
+
+#cart-descriptor-janek{
+    display:grid !important;
+    align-content: center !important;
+}
+
+#cart-descriptor-janek > span{
+    color: black;
+}
+
+
