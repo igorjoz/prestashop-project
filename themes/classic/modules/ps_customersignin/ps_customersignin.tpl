@@ -30,7 +30,7 @@
         href="{$urls.actions.logout}"
         rel="nofollow"
       >
-        <i class="material-icons">&#xE7FF;</i>
+        <i class="icon-user"></i>
         <div class="hidden-sm-down btns121">{l s='Sign out' d='Shop.Theme.Actions'}</div>
       </a>
       <a
@@ -48,7 +48,7 @@
         title="{l s='Log in to your customer account' d='Shop.Theme.Customeraccount'}"
         rel="nofollow"
       >
-        <i class="material-icons">&#xE7FF;</i>
+        <i class="icon-user"></i>
         <span class="hidden-sm-down">{l s='' d='Shop.Theme.Actions'}</span>
       </a>
     {/if}

@@ -74,7 +74,7 @@
             <div class="head-element-janek">
               Dostawa gratis od 250 zł
             </div>
-            <div class="links">
+            <div class="links-janek">
               <div class="head-element-janek">
                 <a href="content/4-monsteriadapl-kim-jestesmy">O nas</a>
               </div>
@@ -115,14 +115,35 @@
       </div>
     </div>
   </div>
+  
   <div class="main-navigation-janek">
-    <a class="button-item" href="https://localhost/monsteriada-prestashop-clone">Start</a>
-    <a class="button-item category-items-button">Gadżety wg kategorii</a>
-    <a class="button-item">Gadżety wg tematyki</a>
+    <a class="button-item" id="start-page-btn" href="https://localhost/monsteriada-prestashop-clone">Start</a>
+    <a class="button-item category-items-button">
+      Gadżety wg kategorii
+      <i class="icon-arrow-down"></i>
+    </a>
+    <a class="button-item">
+      Gadżety wg tematyki
+      <i class="icon-arrow-down"></i>
+    </a>
     <a class="button-item" href="bestsellery">Bestsellery</a>
     <a class="button-item" href="promocje">Promocje</a>
     <a class="button-item" href="nowosci">Nowości</a>
     <a class="button-item" href="blog">Blog</a>
   </div>
+  <script>
+    window.onload = function() {
+      console.log("Window loaded");
+      if (window.location.href === 'http://localhost/monsteriada-prestashop-clone/') {
+        const button = document.getElementById('start-page-btn');
+        if (button) {
+          button.style.setProperty('color', '#cce963', 'important');
+          console.log("DONE");
+        } else {
+          console.log('Element not found');
+        }
+      }
+    };
+  </script>
   {hook h='displayNavFullWidth'}
 {/block}

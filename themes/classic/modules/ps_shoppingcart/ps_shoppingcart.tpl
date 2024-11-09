@@ -34,7 +34,12 @@
             <span class="hidden-sm-down">{l s='Cart' d='Shop.Theme.Checkout'}</span>
             <span class="cart-products-value"><b>{$cart.totals.total.value}</b></span>
           </div>
+          <div class="cart-spacing"></div>
+          <div id="cart-expander-div-janek">
+            <i class="icon-arrow-down" id="cart-expander-janek"></i>
+          </div>
         </div>
+        
       {if $cart.products_count > 0}
         </a>
       {/if}

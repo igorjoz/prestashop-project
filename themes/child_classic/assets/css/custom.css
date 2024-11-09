@@ -27,7 +27,7 @@ body {
     margin: 0;
 }
 
-.header-top .container{
+.header-top > .container{
     width: 1410px !important;
     display:flex;
 }
@@ -43,7 +43,8 @@ img.logo.img-fluid{
 }
 
 
-.hidden-sm-down{
+
+#_desktop_logo{
     width:100%;
 }
 
@@ -66,7 +67,7 @@ img.logo.img-fluid{
     width: 1200px;
 }
 
-.header-top .container .row{
+.header-top > .container > .row{
     padding: 0px !important;
     margin-top: 0px !important;
 }
@@ -134,7 +135,6 @@ form:has(.ui-autocomplete-input){
 }
 
 .user-info{
-    position:relative;
     border-radius: 8px;
     border-style:solid;
     border-width: 1px;
@@ -142,31 +142,33 @@ form:has(.ui-autocomplete-input){
     height:65px;
     width: 65px;
     align-content:center;
+    text-align: center;
 }
-.user-info .material-icons{
-    font-size: 65px !important;
+.user-info .icon-user{
+    font-size: 17pt !important;
     text-align: center;
     padding: 0 !important;
     margin: 0 !important;
-    transform: scale(0.6);
+    transform: scale(1);
     color: lightgray;
     transition: color 0.5s ease !important;
 }
 
-.user-info:hover .material-icons{
+.user-info:hover .icon-user{
     color: black;
 }
 
 .user-info{
     background-color: white !important;
     transition: background-color 0.5s ease !important;
+    padding: 20px !important
 }
 
 .user-info:hover{
     background-color: #cce963 !important;
 }
 
-div.btns121{
+.btns121{
     display:none;
 }
 
@@ -186,7 +188,7 @@ div.btns121{
     text-align: center;
     padding:10px;
     width: 200px;
-    transform:translateX(-65px);
+    transform:translate(-80px);
 }
 
 
@@ -269,7 +271,7 @@ div.btns121{
     font-size: 10pt;
 }
 
-.links{
+.links-janek{
     float: right;
     margin-left: 5vw;
     display:flex;
@@ -315,4 +317,22 @@ div.btns121{
     color: black;
 }
 
+.icon-arrow-down{
+    color:#cce963;
+    font-size: 8pt;
+}
 
+.cart-spacing{
+    padding:10%;
+}
+
+#cart-expander-div-janek{
+    flex: 1;
+    align-content: center;
+    text-align: center;
+}
+
+#cart-expander-janek{
+    font-size: 10pt;
+    color: black !important;
+}
