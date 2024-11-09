@@ -97,9 +97,11 @@
               </div>
             </div>
           </div>
-          {hook h="displayTop"}
-          <div class="button_holder">
-            {hook h='displayNav2'}
+          <div class="two-data-janek">
+            {hook h="displayTop"}
+            <div class="button_holder">
+              {hook h='displayNav2'}
+            </div>
           </div>
         </div>
       </div>
