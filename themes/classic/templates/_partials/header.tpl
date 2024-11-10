@@ -122,7 +122,7 @@
       Gadżety wg kategorii
       <i class="icon-arrow-down"></i>
     </a>
-    <a class="button-item">
+    <a class="button-item topic-items-button">
       Gadżety wg tematyki
       <i class="icon-arrow-down"></i>
     </a>

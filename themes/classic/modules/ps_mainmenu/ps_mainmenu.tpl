@@ -2,15 +2,15 @@
 {function name="menu" nodes=[] depth=0 parent=null}
   
       {if $nodes|count}
-        <ul class="top-menu" {if $depth == 1}id="top-menu"{/if} data-depth="{$depth}">
+        <ul class="top-menu" {if $depth == 2}id="top-menu"{/if} data-depth="{$depth}">
           {foreach from=$nodes item=node}
-            {if $node.label == 'Kategorie' || $depth != 0}
-              <div class="mm-block-display-janek {if $depth == 1} mm-indent-block-janek {/if}">
-                <li class="{$node.type}{if $node.current} current {/if}{if $depth === 2} deeplevel_janek {/if}" id="{$node.page_identifier}">
+            {if $node.label == 'Kategorie' || $node.label == $root_label || $depth > 1}
+              <div class="mm-block-display-janek {if $depth == 2} mm-indent-block-janek {/if}">
+                <li class="{$node.type}{if $node.current} current {/if}{if $depth === 3} deeplevel_janek {/if}" id="{$node.page_identifier}">
                 {assign var=_counter value=$_counter+1}
-                  {if $depth != 0}
+                  {if $depth > 1}
                     <a
-                      class="{if $depth >= 1}dropdown-item{/if}{if $depth === 1} dropdown-submenu{/if}"
+                      class="{if $depth >= 2}dropdown-item{/if}{if $depth === 2} dropdown-submenu{/if}"
                       href="{$node.url}" data-depth="{$depth}"
                       {if $node.open_in_new_window} target="_blank" {/if}
                     >
@@ -27,7 +27,6 @@
                       {$node.label}
                     </a>
                   {/if}
-                  
                   {if $node.children|count}
                       {menu nodes=$node.children depth=$node.depth parent=$node}
                   {/if}
@@ -40,6 +39,10 @@
 {/function}
 
 <div class="menu js-top-menu position-static hidden-sm-down" id="_desktop_top_menu">
-    {menu nodes=$menu.children}
+    {menu nodes=$menu.children root_label="KategorieGadżetów"}
+    <div class="clearfix"></div>
+</div>
+<div class="menu js-top-menu position-static hidden-sm-down" id="_desktop_top_menu2">
+    {menu nodes=$menu.children root_label="TematykiGadżetów"}
     <div class="clearfix"></div>
 </div>

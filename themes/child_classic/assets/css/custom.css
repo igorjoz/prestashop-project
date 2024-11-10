@@ -223,11 +223,35 @@ div.btns121{
     background-color: white;
 }
 
+#_desktop_top_menu2{
+    position:absolute !important;
+    width:fit-content;
+    max-height: 0;
+    opacity: 0;
+    overflow:hidden;
+    transform: translate(-40em, 170px);
+    background-color: white;
+}
+
+#header:has(.topic-items-button:hover) #_desktop_top_menu2 {
+    opacity: 1;
+    pointer-events: auto;
+    max-height:1200px;
+    transition: max-height 0.3s ease-in;
+}
+
 #header:has(.category-items-button:hover) #_desktop_top_menu {
     opacity: 1;
     pointer-events: auto;
     max-height:1200px;
     transition: max-height 0.3s ease-in;
+}
+
+#_desktop_top_menu2:hover {
+    opacity: 1;
+    pointer-events: auto;
+    max-height:1200px;
+    transition: max-height 0.3s ease-in;    
 }
 
 #_desktop_top_menu:hover {
@@ -247,8 +271,12 @@ div.btns121{
 }
 
 .dropdown-item{
+    display: block !important;
     color:black !important;
     transition: color 0.5s ease;
+    word-wrap: break-word !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
 }
 
 
@@ -345,16 +373,25 @@ div.btns121{
     color: black !important;
 }
 
-ul#top-menu {
+#_desktop_top_menu ul#top-menu {
     display: grid !important;
     grid-template-rows: repeat(2, auto);
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust minmax values as needed */
+    grid-template-columns: repeat(auto, minmax(150px, 1fr)); /* Adjust minmax values as needed */
     gap: 10px; /* Optional: adds space between grid items */
     grid-auto-flow: column;
 }
 
+#_desktop_top_menu2 ul#top-menu {
+    column-count: 4;
+    
+}
+
+
 .mm-indent-block-janek{
-    padding: 50px;
+    page-break-inside: avoid;
+    padding: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 .dropdown-submenu{
