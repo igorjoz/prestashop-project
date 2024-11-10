@@ -133,12 +133,10 @@
   </div>
   <script>
     window.onload = function() {
-      console.log("Window loaded");
       if (window.location.href === 'http://localhost/monsteriada-prestashop-clone/') {
         const button = document.getElementById('start-page-btn');
         if (button) {
           button.style.setProperty('color', '#cce963', 'important');
-          console.log("DONE");
         } else {
           console.log('Element not found');
         }
