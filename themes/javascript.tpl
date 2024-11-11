@@ -41,3 +41,4 @@ var {$k} = {$def|json_encode nofilter};
 {/foreach}
 </script>
 {/if}
+

@@ -33,17 +33,20 @@
     <ul class="carousel-inner" role="listbox" aria-label="{l s='Carousel container' d='Shop.Theme.Global'}">
       {foreach from=$homeslider.slides item=slide name='homeslider'}
         <li class="carousel-item {if $smarty.foreach.homeslider.first}active{/if}" role="option" aria-hidden="{if $smarty.foreach.homeslider.first}false{else}true{/if}">
-          <a href="{$slide.url}">
-            <figure>
-              <img src="{$slide.image_url}" alt="{$slide.legend|escape}" loading="lazy" width="1110" height="340">
-              {if $slide.title || $slide.description}
-                <figcaption class="caption">
-                  <h2 class="display-1 text-uppercase">{$slide.title}</h2>
-                  <div class="caption-description">{$slide.description nofilter}</div>
-                </figcaption>
-              {/if}
-            </figure>
-          </a>
+          <figure>
+            <img src="{$slide.image_url}" alt="{$slide.legend|escape}" loading="lazy" width="1110" height="340">
+            {if $slide.title || $slide.description}
+              <figcaption class="caption">
+                <img class="harry-potter-logo" src="https://localhost/monsteriada-prestashop-clone/img/harry-potter-logo.png">
+                <h2 class="display-1 text-uppercase">{$slide.title}</h2>
+                <div class="caption-description">{$slide.description nofilter}</div>
+                <a class="btn-janek-check" href="{$slide.url}">
+                  sprawdź
+                </a>
+              </figcaption>
+            {/if}
+          </figure>
+          
         </li>
       {/foreach}
     </ul>

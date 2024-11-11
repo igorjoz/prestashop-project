@@ -31,30 +31,27 @@
 {block name='header_nav'}
   <nav class="header-nav">
     <div class="container">
-      <div class="row">
-        <div class="hidden-sm-down">
-          <div class="col-md-5 col-xs-12">
-            {hook h='displayNav1'}
-          </div>
-          <div class="col-md-7 right-nav">
-              {hook h='displayNav2'}
-          </div>
+      <div class="hidden-sm-down">
+        {hook h='displayNav1'}
+        
+        <div class="col-md-7 right-nav">
         </div>
-        <div class="hidden-md-up text-sm-center mobile">
-          <div class="float-xs-left" id="menu-icon">
-            <i class="material-icons d-inline">&#xE5D2;</i>
-          </div>
-          <div class="float-xs-right" id="_mobile_cart"></div>
-          <div class="float-xs-right" id="_mobile_user_info"></div>
-          <div class="top-logo" id="_mobile_logo"></div>
-          <div class="clearfix"></div>
+      </div>
+      <div class="hidden-md-up text-sm-center mobile">
+        <div class="float-xs-left" id="menu-icon">
+          <i class="material-icons d-inline">&#xE5D2;</i>
         </div>
+        <div class="float-xs-right" id="_mobile_cart"></div>
+        <div class="float-xs-right" id="_mobile_user_info"></div>
+        <div class="top-logo" id="_mobile_logo"></div>
+        <div class="clearfix"></div>
       </div>
     </div>
   </nav>
 {/block}
 
 {block name='header_top'}
+  <script src="https://kit.fontawesome.com/12c63f6a95.js" crossorigin="anonymous"></script>
   <div class="header-top">
     <div class="container">
        <div class="row">
@@ -70,7 +67,42 @@
           {/if}
         </div>
         <div class="header-top-right col-md-10 col-sm-12 position-static">
-          {hook h='displayTop'}
+          <div class="head-data-janek">
+            <div class="infolinia-janek head-element-janek">
+              Infolinia  <i class="fas fa-phone-square-alt"></i>  503 028 506
+            </div>
+            <div class="head-element-janek">
+              Dostawa gratis od 250 zł
+            </div>
+            <div class="links-janek">
+              <div class="head-element-janek">
+                <a href="content/4-monsteriadapl-kim-jestesmy">O nas</a>
+              </div>
+              <div class="head-element-janek">
+                <a href="content/3-regulamin">Regulamin</a>
+              </div>
+              <div class="head-element-janek">
+                <a href="content/1-dostawa">Dostawa</a>
+              </div>
+              <div class="head-element-janek">
+                <a href="kontakt">Kontakt</a>
+              </div>
+              <div class="head-element-janek">
+                <a href="https://www.facebook.com/monsteriadapl">
+                  <i class="fab fa-facebook-square"></i>
+                </a>
+                <a href="https://www.instagram.com/monsteriada/">
+                  <i class="fab fa-instagram-square"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="two-data-janek">
+            {hook h="displayTop"}
+            <div class="button_holder">
+              {hook h='displayNav2'}
+            </div>
+          </div>
         </div>
       </div>
       <div id="mobile_top_menu_wrapper" class="row hidden-md-up" style="display:none;">
@@ -83,5 +115,33 @@
       </div>
     </div>
   </div>
+  
+  <div class="main-navigation-janek">
+    <a class="button-item" id="start-page-btn" href="https://localhost/monsteriada-prestashop-clone">Start</a>
+    <a class="button-item category-items-button">
+      Gadżety wg kategorii
+      <i class="icon-arrow-down"></i>
+    </a>
+    <a class="button-item topic-items-button">
+      Gadżety wg tematyki
+      <i class="icon-arrow-down"></i>
+    </a>
+    <a class="button-item" href="bestsellery">Bestsellery</a>
+    <a class="button-item" href="promocje">Promocje</a>
+    <a class="button-item" href="nowosci">Nowości</a>
+    <a class="button-item" href="blog">Blog</a>
+  </div>
+  <script>
+    window.onload = function() {
+      if (window.location.href === 'http://localhost/monsteriada-prestashop-clone/') {
+        const button = document.getElementById('start-page-btn');
+        if (button) {
+          button.style.setProperty('color', '#cce963', 'important');
+        } else {
+          console.log('Element not found');
+        }
+      }
+    };
+  </script>
   {hook h='displayNavFullWidth'}
 {/block}

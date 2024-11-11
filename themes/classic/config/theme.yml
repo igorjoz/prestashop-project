@@ -75,6 +75,8 @@ global_settings:
       displayTop:
         - ps_mainmenu
         - ps_searchbar
+      displayMainMenuJanek:
+        - ps_mainmenu
       displayHome:
         - ps_imageslider
         - ps_featuredproducts
