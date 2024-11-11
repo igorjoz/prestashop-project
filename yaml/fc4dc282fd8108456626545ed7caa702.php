@@ -93,6 +93,10 @@
           0 => 'ps_mainmenu',
           1 => 'ps_searchbar',
         ),
+        'displayMainMenuJanek' => 
+        array (
+          0 => 'ps_mainmenu',
+        ),
         'displayHome' => 
         array (
           0 => 'ps_imageslider',
