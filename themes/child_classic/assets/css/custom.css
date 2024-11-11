@@ -50,7 +50,7 @@ img.logo.img-fluid{
 
 #search_widget{
     float: left;
-    width: 70%;
+    width: 100%;
     height: 65px;
     padding-right: 0 !important;
     padding-left: 0 !important;
@@ -107,8 +107,8 @@ form:has(.ui-autocomplete-input){
 }
 
 #_desktop_user_info{
-    margin-right: 3vw;
-    margin-left: 3vw;
+    margin-right: 1vw;
+    margin-left: 1vw;
 }
 #_desktop_cart{
     padding: 2px;
