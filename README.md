@@ -1,2 +1,2 @@
-# prestashop-project
-PrestaShop website clone for Electronic Business class at Gdańsk University of Technology
+Web scraper v1.0
+by ReadySetGet
