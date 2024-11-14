@@ -32,7 +32,7 @@ def fetchImgGeneral(drvImg, txt):
             img_paths_general = [
                 txt_col_prod.xpath(txt + "//div[contains(@class, 'product-manufacturer')]/a").css(
                     "img::attr(src)").get()]
-            save_img_path = "Img/ImgGeneral/"
+            save_img_path = "img/img-general/"
             if img_paths_general[0] is not None:
                 for url in img_paths_general:
                     if not Path(save_img_path + url[(url.rfind("/") + 1):]).exists():
@@ -66,7 +66,7 @@ def fetchImgMedium(drvImg, txt):
             img_col_prod = Selector(text=drvImg.page_source)
             img_paths_medium = img_col_prod.xpath(txt + "//ul[contains(@class, 'product-images')]").css(
                 "img::attr(data-image-medium-src)").getall()[:numberOfFetchedPhotos]
-            save_img_path = "Img/ImgMedium/"
+            save_img_path = "img/img-medium/"
 
             if len(img_paths_medium) != 0:
                 for url in img_paths_medium:
@@ -103,7 +103,7 @@ def fetchImgLarge(drvImg, txt):
             img_col_prod = Selector(text=drvImg.page_source)
             img_paths_large = img_col_prod.xpath(txt + "//ul[contains(@class, 'product-images')]").css(
                 "img::attr(data-image-large-src)").getall()[:numberOfFetchedPhotos]
-            save_img_path = "Img/ImgLarge/"
+            save_img_path = "img/img-large/"
 
             if len(img_paths_large) != 0:
                 for url in img_paths_large:
