@@ -492,3 +492,7 @@ section#wrapper{
     height: 51px !important;
     width: 200px !important;
 }
+
+#footer{
+    background-image: url(https://localhost/monsteriada-prestashop-clone/img/footer.jpg)
+}
