@@ -1,0 +1,40 @@
+services:
+  prestashop:
+    container_name: prestashop
+    image: prestashop/prestashop:1.7.8
+    restart: unless-stopped
+    depends_on:
+      - mariadb
+    ports:
+      - "8080:80"
+    environment:
+      DB_SERVER: mariadb
+      DB_NAME: monsteriada
+      DB_USER: root
+      DB_PASSWD: root
+      PS_INSTALL_AUTO: 0
+      PS_DEV_MODE: 1
+    volumes:
+      - ./src:/var/www/html
+
+  mariadb:
+    container_name: mariadb
+    image: mariadb:10.3
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: monsteriada
+    volumes:
+      - ./mariadb:/var/lib/mysql
+      - ./data/:/docker-entrypoint-initdb.d/
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - mariadb
+    ports: 
+      - 81:80 
+    environment:
+      - PMA_HOST=mariadb
+      - PMA_USER=root
+      - PMA_PASSWORD=root

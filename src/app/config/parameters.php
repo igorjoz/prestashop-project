@@ -1,0 +1,25 @@
+<?php return array (
+  'parameters' => 
+  array (
+    'database_host' => 'mariadb',
+    'database_port' => '',
+    'database_name' => 'monsteriada',
+    'database_user' => 'root',
+    'database_password' => 'root',
+    'database_prefix' => 'ps_',
+    'database_engine' => 'InnoDB',
+    'mailer_transport' => 'smtp',
+    'mailer_host' => '127.0.0.1',
+    'mailer_user' => NULL,
+    'mailer_password' => NULL,
+    'secret' => 'vsC2JGXomquB7CrISgVx1jWkZKv7zca5MDDkVwLqFsTVk7GZWcNF4E56DwPXrwHu',
+    'ps_caching' => 'CacheMemcache',
+    'ps_cache_enable' => false,
+    'ps_creation_date' => '2024-11-03',
+    'locale' => 'en-US',
+    'use_debug_toolbar' => true,
+    'cookie_key' => 'aETKKfDp75AkfvNgNpHiuDd9Vwd3QcmnzeqxpX0ETkaseUrEIvN9hL7UESKKzHq0',
+    'cookie_iv' => 'LAxJCiyiG1QIntIZ8KFiyZOmt9tgYByj',
+    'new_cookie_key' => 'def0000051c55d4a46fb5f82d291f269d81023eb85cfd257cf57d76da4631ab38009c09f5159605c559c8f629f1da24360a7f1bf0ee8d818b947a229d36dd902b054d8a7',
+  ),
+);
