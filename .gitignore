@@ -35,6 +35,9 @@
 # Ignore vendor directory
 # /vendor/
 
+# Ignore database files
+/mariadb
+
 # Ignore Node.js dependencies
 /node_modules/
 
@@ -42,7 +45,7 @@
 composer.lock
 
 # Ignore parameters (sensitive information)
-/app/config/parameters.php
+#/app/config/parameters.php
 
 # Ignore OS-specific files
 .DS_Store
