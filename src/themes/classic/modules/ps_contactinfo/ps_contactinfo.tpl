@@ -34,7 +34,7 @@
     </span>
   </div>
 
-  <p class="h4 text-uppercase block-contact-title hidden-sm-down">{l s='Store information' d='Shop.Theme.Global'}</p>
+  <p class="h4 text-uppercase block-contact-title hidden-sm-down">Dane kontaktowe</p>
   <div id="contact-infos" class="collapse">
     {$contact_infos.address.formatted nofilter}
     {if $contact_infos.phone}

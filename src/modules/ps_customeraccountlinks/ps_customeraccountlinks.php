@@ -107,7 +107,7 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
                 'url' => $link->getPageLink('history', true),
             ],
             3 => [
-                'title' => $this->trans('Credit slips', [], 'Modules.Customeraccountlinks.Admin'),
+                'title' => $this->trans('Moje pokwitowania', [], 'Modules.Customeraccountlinks.Admin'),
                 'url' => $link->getPageLink('order-slip', true),
             ],
             4 => [
@@ -128,11 +128,22 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
         }
 
         if (CartRule::isFeatureActive()) {
-            $my_account_urls[5] = [
-                'title' => $this->trans('Vouchers', [], 'Shop.Theme.Customeraccount'),
-                'url' => $link->getPageLink('discount', true),
+            $my_account_urls[6] = [
+                'title' => $this->trans('Kupony', [], 'Shop.Theme.Customeraccount'),
+                'url' => $link->getPageLink('rabaty', true),
             ];
         }
+
+        // Dodajemy nowe elementy
+        $my_account_urls[7] = [
+            'title' => $this->trans('Moje przesyłki', [], 'Modules.Customeraccountlinks.Admin'),
+            'url' => 'http://localhost/monsteriada-prestashop-clone/module/inpostship/myPackage', 
+        ];
+
+        $my_account_urls[8] = [
+            'title' => $this->trans('Moje powiadomienia', [], 'Modules.Customeraccountlinks.Admin'),
+            'url' => 'http://localhost/monsteriada-prestashop-clone/module/ps_emailalerts/account', 
+        ];
 
         // Sort Account links base in his index
         ksort($my_account_urls);
