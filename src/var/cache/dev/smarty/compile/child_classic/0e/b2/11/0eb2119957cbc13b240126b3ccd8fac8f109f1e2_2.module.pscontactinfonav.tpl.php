@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.48, created on 2024-11-14 18:19:47
+/* Smarty version 3.1.48, created on 2024-11-15 17:23:11
   from 'module:pscontactinfonav.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.48',
-  'unifunc' => 'content_67363133d2a050_67346590',
+  'unifunc' => 'content_6737756f016ca6_23658972',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0eb2119957cbc13b240126b3ccd8fac8f109f1e2' => 
     array (
       0 => 'module:pscontactinfonav.tpl',
-      1 => 1731603444,
+      1 => 1731687639,
       2 => 'module',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67363133d2a050_67346590 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6737756f016ca6_23658972 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- begin /var/www/html/themes/classic/modules/ps_contactinfo/nav.tpl --><p class="promotion">Zobacz jaką promocję przygotowali nasi bohaterowie! <a id="promotion-anchor" href="promocje"><b>Sprawdź przecenione produkty!</b></a></p>
 <!-- end /var/www/html/themes/classic/modules/ps_contactinfo/nav.tpl --><?php }
 }
