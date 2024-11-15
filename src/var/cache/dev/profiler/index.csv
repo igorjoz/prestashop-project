@@ -69,3 +69,14 @@ fd9427,172.18.0.1,POST,http://localhost:8080/admin-dev/index.php/common/notifica
 cf482a,172.18.0.1,POST,http://localhost:8080/admin-dev/index.php/common/notifications?_token=SzzxPumeLkqpnWpCtjOWb6Qjt1Q67YlV3-iEzIor0bE&rand=1731605235157,1731605234,,200
 2158a3,172.18.0.1,POST,http://localhost:8080/admin-dev/index.php/common/notifications?_token=SzzxPumeLkqpnWpCtjOWb6Qjt1Q67YlV3-iEzIor0bE,1731605353,,200
 7094c4,172.18.0.1,POST,http://localhost:8080/admin-dev/index.php/common/notifications?_token=SzzxPumeLkqpnWpCtjOWb6Qjt1Q67YlV3-iEzIor0bE&rand=1731605356280,1731605356,,200
+cad7a6,172.18.0.1,GET,http://localhost:8080/admin-dev/index.php/modules/metrics/api/getShopData?_token=5ck6WebTi0n-3GMMkWnzbqGlJYsAiPZWVL_pf-sfuYE,1731689010,,200
+459fd8,172.18.0.1,POST,http://localhost:8080/admin-dev/index.php/common/notifications?_token=5ck6WebTi0n-3GMMkWnzbqGlJYsAiPZWVL_pf-sfuYE&rand=1731689009888,1731689010,,200
+3ffc27,172.18.0.1,POST,http://localhost:8080/admin-dev/index.php/common/notifications?_token=5ck6WebTi0n-3GMMkWnzbqGlJYsAiPZWVL_pf-sfuYE&rand=1731689009988,1731689011,,200
+4fe523,172.18.0.1,GET,http://localhost:8080/admin-dev/index.php/improve/design/modules/positions/?_token=5ck6WebTi0n-3GMMkWnzbqGlJYsAiPZWVL_pf-sfuYE,1731689018,,200
+8b2cc3,172.18.0.1,POST,http://localhost:8080/admin-dev/index.php/common/notifications?_token=5ck6WebTi0n-3GMMkWnzbqGlJYsAiPZWVL_pf-sfuYE,1731689019,,200
+619e0e,172.18.0.1,POST,http://localhost:8080/admin-dev/index.php/common/notifications?_token=5ck6WebTi0n-3GMMkWnzbqGlJYsAiPZWVL_pf-sfuYE&rand=1731689018965,1731689019,,200
+cf75b6,172.18.0.1,POST,http://localhost:8080/admin-dev/index.php/common/notifications?_token=5ck6WebTi0n-3GMMkWnzbqGlJYsAiPZWVL_pf-sfuYE&rand=1731689113668,1731689113,,200
+217a31,172.18.0.1,POST,http://localhost:8080/admin-dev/index.php/common/notifications?_token=5ck6WebTi0n-3GMMkWnzbqGlJYsAiPZWVL_pf-sfuYE&rand=1731689113678,1731689113,,200
+dc2d91,172.18.0.1,GET,http://localhost:8080/admin-dev/index.php/improve/design/modules/positions/?_token=5ck6WebTi0n-3GMMkWnzbqGlJYsAiPZWVL_pf-sfuYE&conf=16&token=94b676fc5c2e5c911982da8ad929b71f,1731689131,,200
+b0c0e1,172.18.0.1,POST,http://localhost:8080/admin-dev/index.php/common/notifications?_token=5ck6WebTi0n-3GMMkWnzbqGlJYsAiPZWVL_pf-sfuYE,1731689131,,200
+08a0f4,172.18.0.1,POST,http://localhost:8080/admin-dev/index.php/common/notifications?_token=5ck6WebTi0n-3GMMkWnzbqGlJYsAiPZWVL_pf-sfuYE&rand=1731689131480,1731689131,,200

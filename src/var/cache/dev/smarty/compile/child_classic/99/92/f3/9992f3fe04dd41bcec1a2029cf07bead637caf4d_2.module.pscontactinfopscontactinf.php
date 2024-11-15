@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.48, created on 2024-11-15 17:23:11
+/* Smarty version 3.1.48, created on 2024-11-15 17:38:21
   from 'module:pscontactinfopscontactinf' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.48',
-  'unifunc' => 'content_6737756f116b84_22964582',
+  'unifunc' => 'content_673778fde94cc0_11505699',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9992f3fe04dd41bcec1a2029cf07bead637caf4d' => 
     array (
       0 => 'module:pscontactinfopscontactinf',
-      1 => 1731687639,
+      1 => 1731688564,
       2 => 'module',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6737756f116b84_22964582 (Smarty_Internal_Template $_smarty_tpl) {
+function content_673778fde94cc0_11505699 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/html/vendor/smarty/smarty/libs/plugins/function.mailto.php','function'=>'smarty_function_mailto',),));
 ?>
 <!-- begin /var/www/html/themes/classic/modules/ps_contactinfo/ps_contactinfo.tpl -->
@@ -36,8 +36,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/html/vendor/smarty/
     </span>
   </div>
 
-  <p class="h4 text-uppercase block-contact-title hidden-sm-down"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['l'][0], array( array('s'=>'Store information','d'=>'Shop.Theme.Global'),$_smarty_tpl ) );?>
-</p>
+  <p class="h4 text-uppercase block-contact-title hidden-sm-down">Dane kontaktowe</p>
   <div id="contact-infos" class="collapse">
     <?php echo $_smarty_tpl->tpl_vars['contact_infos']->value['address']['formatted'];?>
 
