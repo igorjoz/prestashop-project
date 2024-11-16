@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Czas generowania: 15 Lis 2024, 17:02
--- Wersja serwera: 10.4.27-MariaDB
--- Wersja PHP: 7.4.33
+-- Host: mariadb
+-- Generation Time: Lis 16, 2024 at 05:44 PM
+-- Wersja serwera: 10.3.39-MariaDB-1:10.3.39+maria~ubu2004
+-- Wersja PHP: 8.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Baza danych: `monsteriada`
+-- Database: `monsteriada`
 --
 
 -- --------------------------------------------------------
@@ -33,7 +33,7 @@ CREATE TABLE `ps_access` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_access`
+-- Dumping data for table `ps_access`
 --
 
 INSERT INTO `ps_access` (`id_profile`, `id_authorization_role`) VALUES
@@ -951,7 +951,7 @@ CREATE TABLE `ps_address` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_address`
+-- Dumping data for table `ps_address`
 --
 
 INSERT INTO `ps_address` (`id_address`, `id_country`, `id_state`, `id_customer`, `id_manufacturer`, `id_supplier`, `id_warehouse`, `alias`, `company`, `lastname`, `firstname`, `address1`, `address2`, `postcode`, `city`, `other`, `phone`, `phone_mobile`, `vat_number`, `dni`, `date_add`, `date_upd`, `active`, `deleted`) VALUES
@@ -975,7 +975,7 @@ CREATE TABLE `ps_address_format` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_address_format`
+-- Dumping data for table `ps_address_format`
 --
 
 INSERT INTO `ps_address_format` (`id_country`, `format`) VALUES
@@ -1238,7 +1238,7 @@ CREATE TABLE `ps_admin_filter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `ps_admin_filter`
+-- Dumping data for table `ps_admin_filter`
 --
 
 INSERT INTO `ps_admin_filter` (`id`, `employee`, `shop`, `controller`, `action`, `filter`, `filter_id`) VALUES
@@ -1265,11 +1265,13 @@ INSERT INTO `ps_admin_filter` (`id`, `employee`, `shop`, `controller`, `action`,
 (21, 1, 1, '', '', '{\"limit\":50,\"orderBy\":\"id_order_message\",\"sortOrder\":\"asc\",\"filters\":[]}', 'order_message'),
 (22, 1, 1, 'contacts', 'index', '{\"limit\":10,\"orderBy\":\"id_contact\",\"sortOrder\":\"asc\",\"filters\":[]}', ''),
 (23, 1, 1, '', '', '{\"limit\":10,\"orderBy\":\"id_request_sql\",\"sortOrder\":\"desc\",\"filters\":[]}', 'sql_request'),
-(24, 2, 1, '', '', '{\"orderBy\":\"position\",\"sortOrder\":\"asc\",\"limit\":50,\"filters\":{\"id_category_parent\":34}}', 'category'),
+(24, 2, 1, '', '', '{\"orderBy\":\"position\",\"sortOrder\":\"asc\",\"limit\":50,\"filters\":{\"id_category_parent\":\"2\"}}', 'category'),
 (25, 2, 1, '', '', '{\"orderBy\":\"position\",\"sortOrder\":\"asc\",\"limit\":50,\"filters\":{\"id_cms_category_parent\":1}}', 'cms_page_category'),
 (26, 2, 1, '', '', '{\"orderBy\":\"position\",\"sortOrder\":\"asc\",\"limit\":50,\"filters\":{\"id_cms_category_parent\":1}}', 'cms_page'),
 (27, 1, 1, '', '', '{\"limit\":50,\"orderBy\":\"name\",\"sortOrder\":\"asc\",\"filters\":[]}', 'supplier'),
-(28, 2, 1, 'contacts', 'index', '{\"limit\":10,\"orderBy\":\"id_contact\",\"sortOrder\":\"asc\",\"filters\":[]}', '');
+(28, 2, 1, 'ProductController', 'catalogAction', '{\"filter_category\":\"\",\"filter_column_id_product\":\"\",\"filter_column_name\":\"\",\"filter_column_reference\":\"\",\"filter_column_name_category\":\"\",\"filter_column_price\":\"\",\"filter_column_sav_quantity\":\"\",\"filter_column_active\":\"\",\"last_offset\":\"0\",\"last_limit\":\"20\",\"last_orderBy\":\"id_product\",\"last_sortOrder\":\"desc\"}', ''),
+(29, 2, 1, '', '', '{\"limit\":50,\"orderBy\":\"id_attachment\",\"sortOrder\":\"asc\",\"filters\":[]}', 'attachment'),
+(30, 2, 1, 'contacts', 'index', '{\"limit\":10,\"orderBy\":\"id_contact\",\"sortOrder\":\"asc\",\"filters\":[]}', '');
 
 -- --------------------------------------------------------
 
@@ -1285,7 +1287,7 @@ CREATE TABLE `ps_alias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_alias`
+-- Dumping data for table `ps_alias`
 --
 
 INSERT INTO `ps_alias` (`id_alias`, `alias`, `search`, `active`) VALUES
@@ -1333,7 +1335,7 @@ CREATE TABLE `ps_attribute` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `ps_attribute`
+-- Dumping data for table `ps_attribute`
 --
 
 INSERT INTO `ps_attribute` (`id_attribute`, `id_attribute_group`, `color`, `position`) VALUES
@@ -1377,7 +1379,7 @@ CREATE TABLE `ps_attribute_group` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `ps_attribute_group`
+-- Dumping data for table `ps_attribute_group`
 --
 
 INSERT INTO `ps_attribute_group` (`id_attribute_group`, `is_color_group`, `group_type`, `position`) VALUES
@@ -1400,7 +1402,7 @@ CREATE TABLE `ps_attribute_group_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `ps_attribute_group_lang`
+-- Dumping data for table `ps_attribute_group_lang`
 --
 
 INSERT INTO `ps_attribute_group_lang` (`id_attribute_group`, `id_lang`, `name`, `public_name`) VALUES
@@ -1421,7 +1423,7 @@ CREATE TABLE `ps_attribute_group_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `ps_attribute_group_shop`
+-- Dumping data for table `ps_attribute_group_shop`
 --
 
 INSERT INTO `ps_attribute_group_shop` (`id_attribute_group`, `id_shop`) VALUES
@@ -1457,7 +1459,7 @@ CREATE TABLE `ps_attribute_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `ps_attribute_lang`
+-- Dumping data for table `ps_attribute_lang`
 --
 
 INSERT INTO `ps_attribute_lang` (`id_attribute`, `id_lang`, `name`) VALUES
@@ -1499,7 +1501,7 @@ CREATE TABLE `ps_attribute_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `ps_attribute_shop`
+-- Dumping data for table `ps_attribute_shop`
 --
 
 INSERT INTO `ps_attribute_shop` (`id_attribute`, `id_shop`) VALUES
@@ -1541,7 +1543,7 @@ CREATE TABLE `ps_authorization_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_authorization_role`
+-- Dumping data for table `ps_authorization_role`
 --
 
 INSERT INTO `ps_authorization_role` (`id_authorization_role`, `slug`) VALUES
@@ -2464,14 +2466,14 @@ CREATE TABLE `ps_carrier` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_carrier`
+-- Dumping data for table `ps_carrier`
 --
 
 INSERT INTO `ps_carrier` (`id_carrier`, `id_reference`, `id_tax_rules_group`, `name`, `url`, `active`, `deleted`, `shipping_handling`, `range_behavior`, `is_module`, `is_free`, `shipping_external`, `need_range`, `external_module_name`, `shipping_method`, `position`, `max_width`, `max_height`, `max_depth`, `max_weight`, `grade`) VALUES
-(1, 1, 0, '0', '', 1, 0, 0, 0, 0, 1, 0, 0, '', 0, 0, 0, 0, 0, '0.000000', 0),
-(2, 2, 0, 'My carrier', '', 1, 0, 1, 0, 0, 0, 0, 0, '', 0, 1, 0, 0, 0, '0.000000', 0),
-(3, 3, 0, 'My cheap carrier', '', 0, 0, 1, 0, 0, 0, 0, 0, '', 2, 2, 0, 0, 0, '0.000000', 0),
-(4, 4, 0, 'My light carrier', '', 0, 0, 1, 0, 0, 0, 0, 0, '', 1, 3, 0, 0, 0, '0.000000', 0);
+(1, 1, 0, '0', '', 1, 0, 0, 0, 0, 1, 0, 0, '', 0, 0, 0, 0, 0, 0.000000, 0),
+(2, 2, 0, 'My carrier', '', 1, 0, 1, 0, 0, 0, 0, 0, '', 0, 1, 0, 0, 0, 0.000000, 0),
+(3, 3, 0, 'My cheap carrier', '', 0, 0, 1, 0, 0, 0, 0, 0, '', 2, 2, 0, 0, 0, 0.000000, 0),
+(4, 4, 0, 'My light carrier', '', 0, 0, 1, 0, 0, 0, 0, 0, '', 1, 3, 0, 0, 0, 0.000000, 0);
 
 -- --------------------------------------------------------
 
@@ -2485,7 +2487,7 @@ CREATE TABLE `ps_carrier_group` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_carrier_group`
+-- Dumping data for table `ps_carrier_group`
 --
 
 INSERT INTO `ps_carrier_group` (`id_carrier`, `id_group`) VALUES
@@ -2516,7 +2518,7 @@ CREATE TABLE `ps_carrier_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_carrier_lang`
+-- Dumping data for table `ps_carrier_lang`
 --
 
 INSERT INTO `ps_carrier_lang` (`id_carrier`, `id_shop`, `id_lang`, `delay`) VALUES
@@ -2537,7 +2539,7 @@ CREATE TABLE `ps_carrier_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_carrier_shop`
+-- Dumping data for table `ps_carrier_shop`
 --
 
 INSERT INTO `ps_carrier_shop` (`id_carrier`, `id_shop`) VALUES
@@ -2559,7 +2561,7 @@ CREATE TABLE `ps_carrier_tax_rules_group_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_carrier_tax_rules_group_shop`
+-- Dumping data for table `ps_carrier_tax_rules_group_shop`
 --
 
 INSERT INTO `ps_carrier_tax_rules_group_shop` (`id_carrier`, `id_tax_rules_group`, `id_shop`) VALUES
@@ -2580,7 +2582,7 @@ CREATE TABLE `ps_carrier_zone` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_carrier_zone`
+-- Dumping data for table `ps_carrier_zone`
 --
 
 INSERT INTO `ps_carrier_zone` (`id_carrier`, `id_zone`) VALUES
@@ -2622,7 +2624,7 @@ CREATE TABLE `ps_cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_cart`
+-- Dumping data for table `ps_cart`
 --
 
 INSERT INTO `ps_cart` (`id_cart`, `id_shop_group`, `id_shop`, `id_carrier`, `delivery_option`, `id_lang`, `id_address_delivery`, `id_address_invoice`, `id_currency`, `id_customer`, `id_guest`, `secure_key`, `recyclable`, `gift`, `gift_message`, `mobile_theme`, `allow_seperated_package`, `date_add`, `date_upd`, `checkout_session_data`) VALUES
@@ -2665,7 +2667,7 @@ CREATE TABLE `ps_cart_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_cart_product`
+-- Dumping data for table `ps_cart_product`
 --
 
 INSERT INTO `ps_cart_product` (`id_cart`, `id_product`, `id_address_delivery`, `id_shop`, `id_product_attribute`, `id_customization`, `quantity`, `date_add`) VALUES
@@ -2843,7 +2845,7 @@ CREATE TABLE `ps_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_category`
+-- Dumping data for table `ps_category`
 --
 
 INSERT INTO `ps_category` (`id_category`, `id_parent`, `id_shop_default`, `level_depth`, `nleft`, `nright`, `active`, `date_add`, `date_upd`, `position`, `is_root_category`) VALUES
@@ -2933,7 +2935,7 @@ CREATE TABLE `ps_category_group` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_category_group`
+-- Dumping data for table `ps_category_group`
 --
 
 INSERT INTO `ps_category_group` (`id_category`, `id_group`) VALUES
@@ -3173,7 +3175,7 @@ CREATE TABLE `ps_category_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_category_lang`
+-- Dumping data for table `ps_category_lang`
 --
 
 INSERT INTO `ps_category_lang` (`id_category`, `id_shop`, `id_lang`, `name`, `description`, `link_rewrite`, `meta_title`, `meta_keywords`, `meta_description`) VALUES
@@ -3264,7 +3266,7 @@ CREATE TABLE `ps_category_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_category_product`
+-- Dumping data for table `ps_category_product`
 --
 
 INSERT INTO `ps_category_product` (`id_category`, `id_product`, `position`) VALUES
@@ -3334,7 +3336,7 @@ CREATE TABLE `ps_category_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_category_shop`
+-- Dumping data for table `ps_category_shop`
 --
 
 INSERT INTO `ps_category_shop` (`id_category`, `id_shop`, `position`) VALUES
@@ -3427,7 +3429,7 @@ CREATE TABLE `ps_cms` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_cms`
+-- Dumping data for table `ps_cms`
 --
 
 INSERT INTO `ps_cms` (`id_cms`, `id_cms_category`, `position`, `active`, `indexation`) VALUES
@@ -3439,7 +3441,8 @@ INSERT INTO `ps_cms` (`id_cms`, `id_cms_category`, `position`, `active`, `indexa
 (6, 1, 0, 1, 0),
 (7, 1, 5, 1, 0),
 (8, 1, 8, 1, 0),
-(9, 1, 7, 1, 0);
+(9, 1, 7, 1, 0),
+(10, 1, 9, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -3458,7 +3461,7 @@ CREATE TABLE `ps_cms_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_cms_category`
+-- Dumping data for table `ps_cms_category`
 --
 
 INSERT INTO `ps_cms_category` (`id_cms_category`, `id_parent`, `level_depth`, `active`, `date_add`, `date_upd`, `position`) VALUES
@@ -3483,7 +3486,7 @@ CREATE TABLE `ps_cms_category_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_cms_category_lang`
+-- Dumping data for table `ps_cms_category_lang`
 --
 
 INSERT INTO `ps_cms_category_lang` (`id_cms_category`, `id_lang`, `id_shop`, `name`, `description`, `link_rewrite`, `meta_title`, `meta_keywords`, `meta_description`) VALUES
@@ -3501,7 +3504,7 @@ CREATE TABLE `ps_cms_category_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_cms_category_shop`
+-- Dumping data for table `ps_cms_category_shop`
 --
 
 INSERT INTO `ps_cms_category_shop` (`id_cms_category`, `id_shop`) VALUES
@@ -3526,7 +3529,7 @@ CREATE TABLE `ps_cms_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_cms_lang`
+-- Dumping data for table `ps_cms_lang`
 --
 
 INSERT INTO `ps_cms_lang` (`id_cms`, `id_lang`, `id_shop`, `meta_title`, `head_seo_title`, `meta_description`, `meta_keywords`, `content`, `link_rewrite`) VALUES
@@ -3538,10 +3541,11 @@ INSERT INTO `ps_cms_lang` (`id_cms`, `id_lang`, `id_shop`, `meta_title`, `head_s
 INSERT INTO `ps_cms_lang` (`id_cms`, `id_lang`, `id_shop`, `meta_title`, `head_seo_title`, `meta_description`, `meta_keywords`, `content`, `link_rewrite`) VALUES
 (4, 1, 1, 'Dostawa i koszty wysyłki', '', '', '', '<h1 style=\"font-size:36px;margin:0px;font-family:inherit;font-weight:bold;line-height:1.1;padding:0px 0px 30px;text-transform:none;\">Dostawa i koszty wysyłki</h1>\r\n\r\n<h1 style=\"font-size:1.375rem;margin:0px 0px 0.5rem;font-family:inherit;line-height:1.1;color:inherit;\">Dostawa i koszty wysyłki</h1>\r\n\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\">Poniżej prezentujemy Państwu koszty wysyłki w naszym sklepie internetowym.</p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\">Koszty przesyłki zależne są od wybranego przy finalizacji transakcji sposobu dostarczenia do Państwa zakupionych towarów i wynoszą:</p>\r\n<ul style=\"margin-bottom:1rem;margin-top:0px;list-style-position:inside;list-style-image:none;padding-left:0px;font-size:0.9375rem;color:#7a7a7a;\">\r\n<li>przy wybraniu opcji <span style=\"font-weight:bolder;\">PRZESYŁKA KURIERSKA / PRZEDPŁATA</span> - <span style=\"font-weight:bolder;\">14,5 zł</span> /paczki są wysyłane następnego dnia roboczego po zaksięgowaniu przelewu lub otrzymania potwierdzenia z serwisu payu.pl o dokonaniu płatności/ (chyba że w trakcie składania zamówienia został wskazany dłuższy termin realizacji).</li>\r\n<li>przy wybraniu opcji <span style=\"font-weight:bolder;\">PRZESYŁKA KURIERSKA / POBRANIE</span> - <span style=\"font-weight:bolder;\">18 zł</span> /paczki są wysyłane następnego dnia roboczego po otrzymaniu informacji na temat wyboru przesyłki pobraniowej (chyba że w trakcie składania zamówienia został wskazany dłuższy termin realizacji). Płatność regulowana jest dostawcy przy odbiorze przesyłki</li>\r\n<li>przy wybraniu opcji <span style=\"font-weight:bolder;\">PACZKOMATY / PRZEDPŁATA</span> - <span style=\"font-weight:bolder;\">12</span><span style=\"font-weight:bolder;\"> zł</span> /paczki są wysyłane następnego dnia roboczego po zaksięgowaniu przelewu lub otrzymania potwierdzenia z serwisu payu.pl o dokonaniu płatności/ (chyba że w trakcie składania zamówienia został wskazany dłuższy termin realizacji).</li>\r\n<li>przy wybraniu opcji <span style=\"font-weight:bolder;\">PACZKOMATY / POBRANIE</span> - <span style=\"font-weight:bolder;\">15 zł</span> /paczki są wysyłane następnego dnia roboczego po otrzymaniu informacji na temat wyboru przesyłki pobraniowej (chyba że w trakcie składania zamówienia został wskazany dłuższy termin realizacji). Płatność regulowana jest dostawcy przy odbiorze przesyłki.</li>\r\n<li>przy wybraniu opcji <span style=\"font-weight:bolder;\">ODBIÓR OSOBISTY</span> - <span style=\"font-weight:bolder;\">0 zł</span> / zakupione towary można odebrać osobiście z magazynu firmy po wcześniejszym ustaleniu terminu odbioru. Możliwość płatności gotówką przy odbiorze towaru/.</li>\r\n</ul>\r\n', 'dostawa'),
 (5, 1, 1, 'Akceptowane płatności', '', '', '', '<h1 style=\"font-size:36px;margin:0px;font-family:inherit;font-weight:bold;line-height:1.1;padding:0px 0px 30px;text-transform:none;\">Akceptowane płatności</h1>\r\n\r\n<h2 style=\"margin-top:0px;margin-bottom:0.5rem;font-family:inherit;line-height:1.1;color:inherit;font-size:1.25rem;\">Tekst płatności</h2>\r\n\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\">W sklepie internetowym monsteriada.pl akceptowane są następujące rodzaje płatności:<br /><br /><br /></p>\r\n<ul style=\"margin-bottom:1rem;margin-top:0px;list-style-position:inside;list-style-image:none;padding-left:0px;font-size:0.9375rem;color:#7a7a7a;\">\r\n<li><span style=\"font-size:small;\"><span style=\"font-weight:bolder;\">gotówką przy odbiorze osobistym</span><br /><br /></span></li>\r\n</ul>\r\n<ul style=\"margin-bottom:1rem;margin-top:0px;list-style-position:inside;list-style-image:none;padding-left:0px;font-size:0.9375rem;color:#7a7a7a;\">\r\n<li><span style=\"font-size:small;\"><span style=\"font-weight:bolder;\"><span>przelew na konto bankowe</span></span><br /></span></li>\r\n</ul>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;padding-left:60px;text-align:center;\"><span style=\"font-size:small;\">Przelewy prosimy kierować na:</span></p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;padding-left:60px;text-align:center;\"><span style=\"font-size:small;\">NETWORK LAB Jakub Kuszyński<br />Garwolińska 9/95<br />04-348 Warszawa</span></p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;padding-left:60px;text-align:center;\"><span style=\"font-size:small;\"><br /><img src=\"https://photos05.redcart.pl/templates/images/description/767/Image/infostrony/alior_bank_logo.png\" alt=\"Logo Alior Bank\" title=\"Logo Alior Bank\" width=\"107\" height=\"55\" style=\"border-style:none;vertical-align:middle;\" /></span></p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;padding-left:60px;text-align:center;\"><span style=\"font-weight:bolder;\"><span style=\"font-size:small;\"><span style=\"font-size:medium;\">27 2490 0005 0000 4530 4511 8564</span><br /><br /></span></span></p>\r\n<ul style=\"margin-bottom:1rem;margin-top:0px;list-style-position:inside;list-style-image:none;padding-left:0px;font-size:0.9375rem;color:#7a7a7a;\">\r\n<li><span style=\"font-size:small;\"><span style=\"font-weight:bolder;\">szybkie i bezpieczne przelewy oraz płatności kartami kredytowymi za pośrednictwem serwisu PayU.pl</span><br /><br /></span></li>\r\n</ul>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;text-align:center;\"><span style=\"font-size:small;\"><span style=\"white-space:pre;\"> <img src=\"https://photos05.redcart.pl/templates/images/description/767/Image/infostrony/PAYU_LOGO_SOLID_LIME_RGB.jpg\" alt=\"Logo PayU\" title=\"Logo PayU\" width=\"250\" height=\"132\" style=\"border-style:none;vertical-align:middle;\" /></span></span></p>\r\n', 'platnosci'),
-(6, 1, 1, 'Jak złożyć zamówienie', '', '', '', '<h1 style=\"font-size:36px;margin:0px;font-family:inherit;line-height:1.1;padding:0px 0px 30px;\">Jak złożyć zamówienie</h1>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\">Tekst jak złożyć zamówienie</p>', 'jak-zlozyc-zamowienie'),
-(7, 1, 1, 'Zwroty i reklamacje', '', '', '', '<h1 style=\"font-size:36px;margin:0px;font-family:inherit;font-weight:bold;line-height:1.1;padding:0px 0px 30px;text-transform:none;\">Zwroty i reklamacje</h1>\r\n\r\n<h1 style=\"font-size:1.375rem;margin:0px 0px 0.5rem;font-family:inherit;line-height:1.1;color:inherit;\">Zwroty i reklamacje</h1>\r\n\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\">Dziękujemy za zakupy w naszym sklepie! Jesteśmy przekonani, że zakupione przez Ciebie produkty spełnią Twoje oczekiwania. Jesteśmy tutaj po to, aby Ci pomóc i zapewnić Ci satysfakcję z zakupów. Jeśli mimo wszystko masz jakiekolwiek problemy z otrzymanym produktem, zachęcamy Cię do pierwotnego skontaktowania się z nami. Dzięki temu będziemy w stanie udzielić Ci wsparcia, poradzić i razem rozwiążemy ewentualny problem.</p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"></p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"></p>\r\n\r\n<h2 style=\"margin-top:0px;margin-bottom:0.5rem;font-family:inherit;line-height:1.1;color:inherit;font-size:1.25rem;\">Reklamacje</h2>\r\n\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\">Jeśli z jakiegoś powodu produkt nie spełnia Twoich oczekiwań lub jest uszkodzony, masz prawo złożyć reklamację. Aby to zrobić, postępuj zgodnie z poniższymi krokami:</p>\r\n<ol style=\"margin-bottom:1rem;margin-top:0px;\">\r\n<li>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"><span>Skontaktuj się z nami:</span> Jeśli zauważysz problem z produktem, skontaktuj się z naszym zespołem obsługi klienta jak najszybciej po otrzymaniu przesyłki. Możesz skorzystać z naszych danych kontaktowych podanych na stronie \"<a href=\"https://monsteriada.pl/kontakt\" style=\"background-color:transparent;\">Kontakt</a>\" lub skorzystać z dostępnych formularzy kontaktowych na naszej stronie internetowej.</p>\r\n</li>\r\n<li>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"><span>Opisz problem:</span> W e-mailu lub wiadomości do naszego zespołu reklamacji, dokładnie opisz problem z produktem. Im więcej informacji podasz, tym szybciej będziemy w stanie Ci pomóc. Zdjęcia również mile widziane :)</p>\r\n</li>\r\n<li>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"><span>Odesłanie produktu:</span> Jeśli nasz zespół reklamacji uzna, że odesłanie produktu jest konieczne, poinformujemy Cię o dalszych krokach. Upewnij się, że produkt jest odpowiednio zabezpieczony przed uszkodzeniami podczas transportu.</p>\r\n</li>\r\n<li>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"><span>Przetwarzanie reklamacji:</span> Po otrzymaniu reklamowanego produktu, nasz zespół dokładnie przeanalizuje zgłoszony problem. Postaramy się rozpatrzyć Twoją reklamację w możliwie najkrótszym czasie i zaproponować odpowiednie rozwiązanie.</p>\r\n</li>\r\n</ol>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"></p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"></p>\r\n\r\n<h2 style=\"margin-top:0px;margin-bottom:0.5rem;font-family:inherit;line-height:1.1;color:inherit;font-size:1.25rem;\">Zwroty konsumenckie (odstąpienie od umowy)<span style=\"font-weight:bolder;\"><br /></span></h2>\r\n\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\">Jesteśmy przekonani, że będziesz zadowolony z zakupów w naszym sklepie. Niemniej jednak, zgodnie z przepisami prawa konsumenckiego, przysługuje Ci prawo do odstąpienia od umowy w ciągu 14 dni od otrzymania przesyłki bez podania przyczyny. Jeśli zdecydujesz się na zwrot, postępuj zgodnie z poniższymi krokami:</p>\r\n<ol style=\"margin-bottom:1rem;margin-top:0px;\">\r\n<li>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"><span>Powiadom nas:</span> Jeśli chcesz zwrócić zakupiony produkt, skontaktuj się z naszym zespołem obsługi klienta, informując nas o swojej decyzji. Możesz również skorzystać z formularza zwrotu dostępnego na naszej stronie internetowej.</p>\r\n</li>\r\n<li>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"><span>Odeślij produkt:</span> Odeślij produkt w oryginalnym opakowaniu, w stanie nienaruszonym i bez śladów użytkowania. Koszt zwrotu ponosi Klient. Dane do odesłania produktu znajdują się poniżej. Dodatkowo, udostępniamy naszym Klientom możliwość skorzystania z WygodneZwroty.pl - instrukcja również poniżej.</p>\r\n</li>\r\n<li>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"><span>Przetwarzanie zwrotu:</span> Po otrzymaniu zwróconego produktu i weryfikacji produktu przechodzimy do przetworzenia i dokonujemy zwrot płatności za produkt.</p>\r\n</li>\r\n</ol>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"></p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"></p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\">Jesteśmy tutaj, aby uczynić proces reklamacji lub zwrotu jak najbardziej prostym i elastycznym. Jeśli masz jakiekolwiek pytania lub wątpliwości, nie wahaj się skontaktować z naszym zespołem obsługi klienta. Dziękujemy za zaufanie i wybór naszego sklepu!</p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"></p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"><span>Zwrotu produktu należy dokonać na adres:</span></p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\">Network Lab Jakub Kuszyński<br />ul. Dolna 26/28 lok 23<br />00-774 Warszawa<br />tel.: 503 028 506</p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"><br /><span>Można również odesłać paczkomatem:</span><br />Nr paczkomatu: WAW468M<br />Nr tel.: 503028506<br />Adres email.: biuro@networklab.pl</p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"></p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"><span>Naszym Klientom udostępniamy również możliwość skorzystania z \"Wygodne Zwroty\"</span></p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"></p>\r\n<div id=\"ak_returns_banner_ff5dfae5-0102-4eba-8f66-142d2e28eb2d\"></div>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\">Wygodne Zwroty nie jest formą darmowego odesłania produktu - takiej w naszym sklepie nie oferujemy. Jest to możliwość szybszego i łatwiejszego odesłania produktu w momencie skorzystania z prawa do odstąpienia od umowy. Jednakże koszt odesłania produktu, zgodnie z przepisami, pokrywa Kupujący.</p>\r\n', 'zwroty-i-reklamacje'),
+(6, 1, 1, 'Zwroty i reklamacje', '', '', '', '<h1 style=\"font-size:36px;margin:0px;font-family:inherit;font-weight:bold;line-height:1.1;padding:0px 0px 30px;text-transform:none;\">Zwroty i reklamacje</h1>\r\n\r\n<h1 style=\"font-size:1.375rem;margin:0px 0px 0.5rem;font-family:inherit;line-height:1.1;color:inherit;\">Zwroty i reklamacje</h1>\r\n\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\">Dziękujemy za zakupy w naszym sklepie! Jesteśmy przekonani, że zakupione przez Ciebie produkty spełnią Twoje oczekiwania. Jesteśmy tutaj po to, aby Ci pomóc i zapewnić Ci satysfakcję z zakupów. Jeśli mimo wszystko masz jakiekolwiek problemy z otrzymanym produktem, zachęcamy Cię do pierwotnego skontaktowania się z nami. Dzięki temu będziemy w stanie udzielić Ci wsparcia, poradzić i razem rozwiążemy ewentualny problem.</p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"></p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"></p>\r\n\r\n<h2 style=\"margin-top:0px;margin-bottom:0.5rem;font-family:inherit;line-height:1.1;color:inherit;font-size:1.25rem;\">Reklamacje</h2>\r\n\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\">Jeśli z jakiegoś powodu produkt nie spełnia Twoich oczekiwań lub jest uszkodzony, masz prawo złożyć reklamację. Aby to zrobić, postępuj zgodnie z poniższymi krokami:</p>\r\n<ol style=\"margin-bottom:1rem;margin-top:0px;\">\r\n<li>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"><span>Skontaktuj się z nami:</span> Jeśli zauważysz problem z produktem, skontaktuj się z naszym zespołem obsługi klienta jak najszybciej po otrzymaniu przesyłki. Możesz skorzystać z naszych danych kontaktowych podanych na stronie \"<a href=\"https://monsteriada.pl/kontakt\" style=\"background-color:transparent;\">Kontakt</a>\" lub skorzystać z dostępnych formularzy kontaktowych na naszej stronie internetowej.</p>\r\n</li>\r\n<li>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"><span>Opisz problem:</span> W e-mailu lub wiadomości do naszego zespołu reklamacji, dokładnie opisz problem z produktem. Im więcej informacji podasz, tym szybciej będziemy w stanie Ci pomóc. Zdjęcia również mile widziane :)</p>\r\n</li>\r\n<li>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"><span>Odesłanie produktu:</span> Jeśli nasz zespół reklamacji uzna, że odesłanie produktu jest konieczne, poinformujemy Cię o dalszych krokach. Upewnij się, że produkt jest odpowiednio zabezpieczony przed uszkodzeniami podczas transportu.</p>\r\n</li>\r\n<li>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"><span>Przetwarzanie reklamacji:</span> Po otrzymaniu reklamowanego produktu, nasz zespół dokładnie przeanalizuje zgłoszony problem. Postaramy się rozpatrzyć Twoją reklamację w możliwie najkrótszym czasie i zaproponować odpowiednie rozwiązanie.</p>\r\n</li>\r\n</ol>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"></p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"></p>\r\n\r\n<h2 style=\"margin-top:0px;margin-bottom:0.5rem;font-family:inherit;line-height:1.1;color:inherit;font-size:1.25rem;\">Zwroty konsumenckie (odstąpienie od umowy)<span style=\"font-weight:bolder;\"><br /></span></h2>\r\n\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\">Jesteśmy przekonani, że będziesz zadowolony z zakupów w naszym sklepie. Niemniej jednak, zgodnie z przepisami prawa konsumenckiego, przysługuje Ci prawo do odstąpienia od umowy w ciągu 14 dni od otrzymania przesyłki bez podania przyczyny. Jeśli zdecydujesz się na zwrot, postępuj zgodnie z poniższymi krokami:</p>\r\n<ol style=\"margin-bottom:1rem;margin-top:0px;\">\r\n<li>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"><span>Powiadom nas:</span> Jeśli chcesz zwrócić zakupiony produkt, skontaktuj się z naszym zespołem obsługi klienta, informując nas o swojej decyzji. Możesz również skorzystać z formularza zwrotu dostępnego na naszej stronie internetowej.</p>\r\n</li>\r\n<li>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"><span>Odeślij produkt:</span> Odeślij produkt w oryginalnym opakowaniu, w stanie nienaruszonym i bez śladów użytkowania. Koszt zwrotu ponosi Klient. Dane do odesłania produktu znajdują się poniżej. Dodatkowo, udostępniamy naszym Klientom możliwość skorzystania z WygodneZwroty.pl - instrukcja również poniżej.</p>\r\n</li>\r\n<li>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"><span>Przetwarzanie zwrotu:</span> Po otrzymaniu zwróconego produktu i weryfikacji produktu przechodzimy do przetworzenia i dokonujemy zwrot płatności za produkt.</p>\r\n</li>\r\n</ol>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"></p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"></p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\">Jesteśmy tutaj, aby uczynić proces reklamacji lub zwrotu jak najbardziej prostym i elastycznym. Jeśli masz jakiekolwiek pytania lub wątpliwości, nie wahaj się skontaktować z naszym zespołem obsługi klienta. Dziękujemy za zaufanie i wybór naszego sklepu!</p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"></p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"><span>Zwrotu produktu należy dokonać na adres:</span></p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\">Network Lab Jakub Kuszyński<br />ul. Dolna 26/28 lok 23<br />00-774 Warszawa<br />tel.: 503 028 506</p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"><br /><span>Można również odesłać paczkomatem:</span><br />Nr paczkomatu: WAW468M<br />Nr tel.: 503028506<br />Adres email.: biuro@networklab.pl</p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"></p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"><span>Naszym Klientom udostępniamy również możliwość skorzystania z \"Wygodne Zwroty\"</span></p>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\"></p>\r\n<div id=\"ak_returns_banner_ff5dfae5-0102-4eba-8f66-142d2e28eb2d\"></div>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\">Wygodne Zwroty nie jest formą darmowego odesłania produktu - takiej w naszym sklepie nie oferujemy. Jest to możliwość szybszego i łatwiejszego odesłania produktu w momencie skorzystania z prawa do odstąpienia od umowy. Jednakże koszt odesłania produktu, zgodnie z przepisami, pokrywa Kupujący.</p>\r\n', 'zwroty-i-reklamacje'),
+(7, 1, 1, 'Jak złożyć zamówienie', '', '', '', '<h1 style=\"font-size:36px;margin:0px;font-family:inherit;line-height:1.1;padding:0px 0px 30px;\">Jak złożyć zamówienie</h1>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\">Tekst jak złożyć zamówienie</p>', 'jak-zlozyc-zamowienie'),
 (8, 1, 1, 'Zapraszamy do współpracy', '', '', '', '<h1 style=\"font-size:36px;margin:0px;font-family:inherit;line-height:1.1;padding:0px 0px 30px;\">Zapraszamy do współpracy</h1>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\">Tekst w przygotowaniu</p>', 'zapraszamy-do-wspolpracy'),
-(9, 1, 1, 'Prezent na każdą okazję', '', '', '', '<h1 style=\"font-size:36px;margin:0px;font-family:inherit;font-weight:bold;line-height:1.1;padding:0px 0px 30px;text-transform:none;\">Prezent na każdą okazję</h1>\r\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\">Coś tutaj będzie</p>', 'prezent-na-kazda-okazje');
+(9, 1, 1, 'Jak złożyć zamówienie', '', '', '', '<h1 style=\"font-size:36px;margin:0px;font-family:inherit;font-weight:bold;line-height:1.1;padding:0px 0px 30px;text-transform:none;\">Jak złożyć zamówienie</h1>', 'jak-zlozyc-zamowienie'),
+(10, 1, 1, 'Prezent na każdą okazję', '', '', '', '<h1 style=\"font-size:36px;margin:0px;font-family:inherit;font-weight:bold;line-height:1.1;padding:0px 0px 30px;text-transform:none;\">Prezent na każdą okazję</h1>\n<p style=\"margin-top:0px;margin-bottom:16px;line-height:30px;\">Coś tutaj będzie</p>', 'prezent-na-kazda-okazje');
 
 -- --------------------------------------------------------
 
@@ -3556,7 +3560,7 @@ CREATE TABLE `ps_cms_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_cms_role`
+-- Dumping data for table `ps_cms_role`
 --
 
 INSERT INTO `ps_cms_role` (`id_cms_role`, `name`, `id_cms`) VALUES
@@ -3588,7 +3592,7 @@ CREATE TABLE `ps_cms_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_cms_shop`
+-- Dumping data for table `ps_cms_shop`
 --
 
 INSERT INTO `ps_cms_shop` (`id_cms`, `id_shop`) VALUES
@@ -3600,7 +3604,8 @@ INSERT INTO `ps_cms_shop` (`id_cms`, `id_shop`) VALUES
 (6, 1),
 (7, 1),
 (8, 1),
-(9, 1);
+(9, 1),
+(10, 1);
 
 -- --------------------------------------------------------
 
@@ -3619,7 +3624,7 @@ CREATE TABLE `ps_configuration` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_configuration`
+-- Dumping data for table `ps_configuration`
 --
 
 INSERT INTO `ps_configuration` (`id_configuration`, `id_shop_group`, `id_shop`, `name`, `value`, `date_add`, `date_upd`) VALUES
@@ -4041,8 +4046,8 @@ INSERT INTO `ps_configuration` (`id_configuration`, `id_shop_group`, `id_shop`, 
 (426, NULL, NULL, 'ONBOARDINGV2_CURRENT_STEP', '1', '2024-11-01 16:09:11', '2024-11-01 16:32:21'),
 (427, NULL, NULL, 'ONBOARDINGV2_SHUT_DOWN', '1', '2024-11-01 16:11:25', '2024-11-01 16:32:34'),
 (428, NULL, NULL, 'PS_SHOWCASECARD_CMS_PAGES_CLOSED', '1', '2024-11-02 14:08:35', '2024-11-02 14:08:35'),
-(429, NULL, NULL, 'PS_CCCJS_VERSION', '22', '2024-11-02 15:17:23', '2024-11-14 19:30:10'),
-(430, NULL, NULL, 'PS_CCCCSS_VERSION', '22', '2024-11-02 15:17:23', '2024-11-14 19:30:10'),
+(429, NULL, NULL, 'PS_CCCJS_VERSION', '20', '2024-11-02 15:17:23', '2024-11-14 18:19:41'),
+(430, NULL, NULL, 'PS_CCCCSS_VERSION', '20', '2024-11-02 15:17:23', '2024-11-14 18:19:41'),
 (431, NULL, NULL, 'PS_SHOWCASECARD_SEO_URLS_CLOSED', '1', '2024-11-02 21:15:21', '2024-11-02 21:15:21'),
 (432, NULL, NULL, 'PS_ACCOUNTS_ACCOUNTS_CLIENT_FAILURE_COUNT', '0', '2024-11-02 21:20:37', '2024-11-02 21:20:37'),
 (433, NULL, NULL, 'PS_ACCOUNTS_ACCOUNTS_CLIENT_LAST_FAILURE_TIME', NULL, '2024-11-02 21:20:37', '2024-11-02 21:20:37'),
@@ -4054,7 +4059,7 @@ INSERT INTO `ps_configuration` (`id_configuration`, `id_shop_group`, `id_shop`, 
 (439, NULL, NULL, 'PS_ACCOUNTS_FIREBASE_ID_TOKEN', NULL, '2024-11-02 21:20:43', '2024-11-02 21:20:43'),
 (440, NULL, NULL, 'PS_ACCOUNTS_ACCESS_TOKEN', NULL, '2024-11-02 21:20:47', '2024-11-02 21:20:47'),
 (441, NULL, NULL, 'PS_SHOWCASECARD_CATEGORIES_CLOSED', '1', '2024-11-02 22:39:52', '2024-11-02 22:39:52'),
-(442, NULL, NULL, 'PS_ACCOUNTS_FIREBASE_REFRESH_TOKEN', NULL, '2024-11-02 23:01:52', '2024-11-14 19:29:33'),
+(442, NULL, NULL, 'PS_ACCOUNTS_FIREBASE_REFRESH_TOKEN', NULL, '2024-11-02 23:01:52', '2024-11-16 17:58:38'),
 (443, NULL, NULL, 'PS_MBO_SHOP_ADMIN_UUID', '8e9e1904-55bd-4ae3-b0af-c95b56c3b1ce', '2024-11-12 21:18:49', '2024-11-12 21:18:49'),
 (444, NULL, NULL, 'PS_SHOP_DETAILS', NULL, '2024-11-12 21:29:44', '2024-11-12 21:29:44'),
 (445, NULL, NULL, 'PS_SHOP_ADDR1', 'ul. Dolna 26/28', '2024-11-12 21:29:44', '2024-11-12 21:30:02'),
@@ -4083,7 +4088,7 @@ CREATE TABLE `ps_configuration_kpi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_configuration_kpi`
+-- Dumping data for table `ps_configuration_kpi`
 --
 
 INSERT INTO `ps_configuration_kpi` (`id_configuration_kpi`, `id_shop_group`, `id_shop`, `name`, `value`, `date_add`, `date_upd`) VALUES
@@ -4146,7 +4151,7 @@ CREATE TABLE `ps_configuration_kpi_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_configuration_kpi_lang`
+-- Dumping data for table `ps_configuration_kpi_lang`
 --
 
 INSERT INTO `ps_configuration_kpi_lang` (`id_configuration_kpi`, `id_lang`, `value`, `date_upd`) VALUES
@@ -4167,7 +4172,7 @@ CREATE TABLE `ps_configuration_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_configuration_lang`
+-- Dumping data for table `ps_configuration_lang`
 --
 
 INSERT INTO `ps_configuration_lang` (`id_configuration`, `id_lang`, `value`, `date_upd`) VALUES
@@ -4209,7 +4214,7 @@ CREATE TABLE `ps_connections` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_connections`
+-- Dumping data for table `ps_connections`
 --
 
 INSERT INTO `ps_connections` (`id_connections`, `id_shop_group`, `id_shop`, `id_guest`, `id_page`, `ip_address`, `date_add`, `http_referer`) VALUES
@@ -4266,12 +4271,25 @@ INSERT INTO `ps_connections` (`id_connections`, `id_shop_group`, `id_shop`, `id_
 (51, 1, 1, 11, 1, 0, '2024-11-14 00:26:14', ''),
 (52, 1, 1, 11, 1, 0, '2024-11-14 00:58:00', ''),
 (53, 1, 1, 11, 1, 0, '2024-11-14 01:28:56', ''),
-(54, 1, 1, 12, 3, 0, '2024-11-14 12:03:56', ''),
-(55, 1, 1, 12, 3, 0, '2024-11-14 17:03:53', ''),
-(56, 1, 1, 12, 3, 0, '2024-11-14 19:02:06', ''),
-(57, 1, 1, 12, 3, 0, '2024-11-14 19:35:45', ''),
-(58, 1, 1, 12, 3, 0, '2024-11-14 20:06:09', ''),
-(59, 1, 1, 12, 3, 0, '2024-11-14 20:40:04', '');
+(54, 1, 1, 14, 1, 2886860801, '2024-11-14 18:07:29', ''),
+(55, 1, 1, 18, 1, 2886860801, '2024-11-14 18:07:38', ''),
+(56, 1, 1, 19, 1, 2886860801, '2024-11-14 18:15:05', ''),
+(57, 1, 1, 20, 1, 2886860801, '2024-11-14 18:15:47', ''),
+(58, 1, 1, 21, 7, 2886860801, '2024-11-14 18:19:03', ''),
+(59, 1, 1, 22, 1, 2886860801, '2024-11-15 17:23:11', ''),
+(60, 1, 1, 23, 1, 2886860801, '2024-11-15 17:46:22', ''),
+(61, 1, 1, 22, 1, 2886860801, '2024-11-16 11:55:21', ''),
+(62, 1, 1, 22, 1, 2886860801, '2024-11-16 12:29:11', ''),
+(63, 1, 1, 22, 1, 2886860801, '2024-11-16 13:00:18', ''),
+(64, 1, 1, 22, 1, 2886860801, '2024-11-16 13:31:03', ''),
+(65, 1, 1, 22, 1, 2886860801, '2024-11-16 14:52:23', ''),
+(66, 1, 1, 22, 1, 2886860801, '2024-11-16 15:24:53', ''),
+(67, 1, 1, 22, 3, 2886860801, '2024-11-16 16:04:20', ''),
+(68, 1, 1, 22, 1, 2886860801, '2024-11-16 16:35:51', ''),
+(69, 1, 1, 22, 1, 2886860801, '2024-11-16 17:06:03', ''),
+(70, 1, 1, 22, 3, 2886860801, '2024-11-16 17:39:07', ''),
+(71, 1, 1, 22, 1, 2886860801, '2024-11-16 18:10:00', ''),
+(72, 1, 1, 22, 3, 2886860801, '2024-11-16 18:40:04', '');
 
 -- --------------------------------------------------------
 
@@ -4302,7 +4320,7 @@ CREATE TABLE `ps_connections_source` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_connections_source`
+-- Dumping data for table `ps_connections_source`
 --
 
 INSERT INTO `ps_connections_source` (`id_connections_source`, `id_connections`, `http_referer`, `request_uri`, `keywords`, `date_add`) VALUES
@@ -4618,184 +4636,246 @@ INSERT INTO `ps_connections_source` (`id_connections_source`, `id_connections`, 
 (310, 37, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-11 14:31:42'),
 (311, 37, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-11 14:34:09'),
 (312, 37, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-11 14:34:11'),
-(313, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 12:00:06'),
-(314, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 12:00:11'),
-(315, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 12:01:58'),
-(316, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 12:01:58'),
-(317, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 12:03:24'),
-(318, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 12:03:44'),
-(319, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 12:24:48'),
-(320, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 12:24:51'),
-(321, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 12:28:36'),
-(322, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 12:29:22'),
-(323, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 17:02:46'),
-(324, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 17:05:11'),
-(325, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 17:05:25'),
-(326, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 17:06:00'),
-(327, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 17:06:18'),
-(328, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 17:06:19'),
-(329, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 17:06:31'),
-(330, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 17:06:52'),
-(331, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 17:12:08'),
-(332, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 17:19:36'),
-(333, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:01:31'),
-(334, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:01:31'),
-(335, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:02:53'),
-(336, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:03:25'),
-(337, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:12:14'),
-(338, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:13:57'),
-(339, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:15:08'),
-(340, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:16:29'),
-(341, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:16:54'),
-(342, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:24:24'),
-(343, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:26:24'),
-(344, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:26:44'),
-(345, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:27:30'),
-(346, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:27:55'),
-(347, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:28:02'),
-(348, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:28:16'),
-(349, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:29:07'),
-(350, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:29:44'),
-(351, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:35:44'),
-(352, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:36:39'),
-(353, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:38:15'),
-(354, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:38:59'),
-(355, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:39:24'),
-(356, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/module/ps_emailalerts/account', '', '2024-11-14 19:39:26'),
-(357, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/module/ps_emailalerts/account', '', '2024-11-14 19:39:32'),
-(358, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/module/ps_emailalerts/account', '', '2024-11-14 19:39:41'),
-(359, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:39:44'),
-(360, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:44:15'),
-(361, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:47:50'),
-(362, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:47:56'),
-(363, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:48:15'),
-(364, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:48:15'),
-(365, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:48:49'),
-(366, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:49:08'),
-(367, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:49:17'),
-(368, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:49:45'),
-(369, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:51:44'),
-(370, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:52:11'),
-(371, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:52:18'),
-(372, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:52:31'),
-(373, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:52:56'),
-(374, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:53:28'),
-(375, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:53:33'),
-(376, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:54:05'),
-(377, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:54:47'),
-(378, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:54:52'),
-(379, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:54:59'),
-(380, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:55:56'),
-(381, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:56:59'),
-(382, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:57:29'),
-(383, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:57:45'),
-(384, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:58:16'),
-(385, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:58:24'),
-(386, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:58:58'),
-(387, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:59:14'),
-(388, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:59:19'),
-(389, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 19:59:57'),
-(390, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:00:02'),
-(391, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:00:17'),
-(392, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:00:38'),
-(393, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:01:03'),
-(394, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:01:07'),
-(395, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:01:11'),
-(396, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:02:23'),
-(397, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:02:38'),
-(398, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:02:48'),
-(399, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:03:08'),
-(400, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:03:46'),
-(401, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:04:05'),
-(402, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:04:11'),
-(403, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:04:16'),
-(404, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:04:42'),
-(405, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:04:55'),
-(406, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:05:07'),
-(407, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:05:33'),
-(408, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:05:46'),
-(409, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:06:07'),
-(410, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:06:22'),
-(411, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:06:35'),
-(412, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:06:55'),
-(413, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:07:06'),
-(414, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:07:10'),
-(415, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:07:26'),
-(416, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:08:22'),
-(417, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:08:41'),
-(418, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:08:56'),
-(419, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:09:15'),
-(420, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:09:28'),
-(421, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:10:58'),
-(422, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:11:05'),
-(423, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:11:06'),
-(424, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:11:11'),
-(425, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:11:16'),
-(426, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:11:29'),
-(427, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:11:34'),
-(428, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:12:28'),
-(429, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:12:57'),
-(430, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:13:30'),
-(431, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:13:36'),
-(432, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:13:40'),
-(433, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:13:48'),
-(434, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:14:17'),
-(435, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:14:23'),
-(436, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:14:28'),
-(437, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:14:47'),
-(438, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:14:51'),
-(439, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:15:32'),
-(440, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:16:10'),
-(441, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:16:11'),
-(442, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:16:38'),
-(443, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:16:45'),
-(444, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:17:13'),
-(445, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:17:29'),
-(446, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:17:37'),
-(447, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:18:32'),
-(448, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:19:10'),
-(449, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:19:56'),
-(450, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:20:10'),
-(451, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:20:19'),
-(452, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:20:33'),
-(453, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:21:24'),
-(454, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:21:41'),
-(455, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:22:36'),
-(456, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:24:13'),
-(457, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:24:40'),
-(458, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:25:19'),
-(459, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:25:27'),
-(460, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:25:50'),
-(461, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:26:02'),
-(462, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:26:08'),
-(463, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:26:24'),
-(464, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:26:37'),
-(465, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:27:05'),
-(466, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:27:10'),
-(467, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:27:25'),
-(468, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:27:51'),
-(469, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:29:06'),
-(470, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:29:25'),
-(471, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:30:18'),
-(472, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:30:35'),
-(473, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:30:57'),
-(474, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:31:11'),
-(475, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:32:26'),
-(476, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:32:36'),
-(477, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:33:17'),
-(478, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:33:22'),
-(479, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:34:21'),
-(480, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:40:02'),
-(481, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:40:51'),
-(482, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:41:03'),
-(483, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:41:50'),
-(484, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:42:22'),
-(485, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:42:33'),
-(486, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:42:41'),
-(487, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:42:53'),
-(488, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:44:07'),
-(489, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:44:07'),
-(490, 43, 'http://localhost/', 'localhost/monsteriada-prestashop-clone/', '', '2024-11-14 20:44:49');
+(313, 54, 'http://localhost:8080/', 'localhost:8080/21-home_default/brown-bear-printed-sweater.jpg', '', '2024-11-14 18:07:30'),
+(314, 54, 'http://localhost:8080/', 'localhost:8080/5-home_default/today-is-a-good-day-framed-poster.jpg', '', '2024-11-14 18:07:30'),
+(315, 54, 'http://localhost:8080/', 'localhost:8080/6-home_default/mug-the-best-is-yet-to-come.jpg', '', '2024-11-14 18:07:30'),
+(316, 54, 'http://localhost:8080/', 'localhost:8080/4-home_default/the-adventure-begins-framed-poster.jpg', '', '2024-11-14 18:07:30'),
+(317, 54, 'http://localhost:8080/', 'localhost:8080/7-home_default/mug-the-adventure-begins.jpg', '', '2024-11-14 18:07:30'),
+(318, 54, 'http://localhost:8080/', 'localhost:8080/3-home_default/the-best-is-yet-to-come-framed-poster.jpg', '', '2024-11-14 18:07:30'),
+(319, 54, 'http://localhost:8080/', 'localhost:8080/8-home_default/mug-today-is-a-good-day.jpg', '', '2024-11-14 18:07:30'),
+(320, 54, 'http://localhost:8080/', 'localhost:8080/1-home_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:07:30'),
+(321, 54, 'http://localhost:8080/', 'localhost:8080/promocje', '', '2024-11-14 18:08:02'),
+(322, 54, 'http://localhost:8080/promocje', 'localhost:8080/21-home_default/brown-bear-printed-sweater.jpg', '', '2024-11-14 18:08:02'),
+(323, 54, 'http://localhost:8080/promocje', 'localhost:8080/1-home_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:08:02'),
+(324, 54, 'http://localhost:8080/promocje', 'localhost:8080/bestsellery', '', '2024-11-14 18:08:04'),
+(325, 54, 'http://localhost:8080/bestsellery', 'localhost:8080/5-statuetki-i-statuy', '', '2024-11-14 18:08:06'),
+(326, 54, 'http://localhost:8080/5-statuetki-i-statuy', 'localhost:8080/c/5-category_default/statuetki-i-statuy.jpg', '', '2024-11-14 18:08:06'),
+(327, 54, 'http://localhost:8080/5-statuetki-i-statuy', 'localhost:8080/21-home_default/brown-bear-printed-sweater.jpg', '', '2024-11-14 18:08:07'),
+(328, 54, 'http://localhost:8080/5-statuetki-i-statuy', 'localhost:8080/nowosci', '', '2024-11-14 18:08:08'),
+(329, 54, 'http://localhost:8080/nowosci', 'localhost:8080/nowosci', '', '2024-11-14 18:08:09'),
+(330, 54, 'http://localhost:8080/content/3-regulamin', 'localhost:8080/content/3-polityka-prywatnosci', '', '2024-11-14 18:08:15'),
+(331, 54, 'http://localhost:8080/content/3-regulamin', 'localhost:8080/content/3-polityka-prywatnosci', '', '2024-11-14 18:08:23'),
+(332, 54, 'http://localhost:8080/content/3-polityka-prywatnosci', 'localhost:8080/5-statuetki-i-statuy', '', '2024-11-14 18:08:26'),
+(333, 54, 'http://localhost:8080/5-statuetki-i-statuy', 'localhost:8080/c/5-category_default/statuetki-i-statuy.jpg', '', '2024-11-14 18:08:26'),
+(334, 54, 'http://localhost:8080/5-statuetki-i-statuy', 'localhost:8080/21-home_default/brown-bear-printed-sweater.jpg', '', '2024-11-14 18:08:26'),
+(335, 54, 'http://localhost:8080/content/3-polityka-prywatnosci', 'localhost:8080/5-statuetki-i-statuy', '', '2024-11-14 18:08:32'),
+(336, 54, 'http://localhost:8080/5-statuetki-i-statuy', 'localhost:8080/c/5-category_default/statuetki-i-statuy.jpg', '', '2024-11-14 18:08:32'),
+(337, 54, 'http://localhost:8080/5-statuetki-i-statuy', 'localhost:8080/21-home_default/brown-bear-printed-sweater.jpg', '', '2024-11-14 18:08:32'),
+(338, 54, 'http://localhost:8080/', 'localhost:8080/6-home_default/mug-the-best-is-yet-to-come.jpg', '', '2024-11-14 18:10:14'),
+(339, 54, 'http://localhost:8080/', 'localhost:8080/3-home_default/the-best-is-yet-to-come-framed-poster.jpg', '', '2024-11-14 18:10:14'),
+(340, 54, 'http://localhost:8080/', 'localhost:8080/4-home_default/the-adventure-begins-framed-poster.jpg', '', '2024-11-14 18:10:14'),
+(341, 54, 'http://localhost:8080/', 'localhost:8080/1-home_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:10:14'),
+(342, 54, 'http://localhost:8080/', 'localhost:8080/7-home_default/mug-the-adventure-begins.jpg', '', '2024-11-14 18:10:14'),
+(343, 54, 'http://localhost:8080/', 'localhost:8080/8-home_default/mug-today-is-a-good-day.jpg', '', '2024-11-14 18:10:15'),
+(344, 54, 'http://localhost:8080/', 'localhost:8080/21-home_default/brown-bear-printed-sweater.jpg', '', '2024-11-14 18:10:15'),
+(345, 54, 'http://localhost:8080/', 'localhost:8080/5-home_default/today-is-a-good-day-framed-poster.jpg', '', '2024-11-14 18:10:15'),
+(346, 54, 'http://localhost:8080/', 'localhost:8080/5-home_default/today-is-a-good-day-framed-poster.jpg', '', '2024-11-14 18:10:23'),
+(347, 54, 'http://localhost:8080/', 'localhost:8080/6-home_default/mug-the-best-is-yet-to-come.jpg', '', '2024-11-14 18:10:23'),
+(348, 54, 'http://localhost:8080/', 'localhost:8080/3-home_default/the-best-is-yet-to-come-framed-poster.jpg', '', '2024-11-14 18:10:23'),
+(349, 54, 'http://localhost:8080/', 'localhost:8080/4-home_default/the-adventure-begins-framed-poster.jpg', '', '2024-11-14 18:10:23'),
+(350, 54, 'http://localhost:8080/', 'localhost:8080/7-home_default/mug-the-adventure-begins.jpg', '', '2024-11-14 18:10:23'),
+(351, 54, 'http://localhost:8080/', 'localhost:8080/21-home_default/brown-bear-printed-sweater.jpg', '', '2024-11-14 18:10:23'),
+(352, 54, 'http://localhost:8080/', 'localhost:8080/8-home_default/mug-today-is-a-good-day.jpg', '', '2024-11-14 18:10:23'),
+(353, 54, 'http://localhost:8080/', 'localhost:8080/1-home_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:10:23'),
+(354, 54, 'http://localhost:8080/', 'localhost:8080/5-statuetki-i-statuy', '', '2024-11-14 18:10:24'),
+(355, 54, 'http://localhost:8080/5-statuetki-i-statuy', 'localhost:8080/21-home_default/brown-bear-printed-sweater.jpg', '', '2024-11-14 18:10:24'),
+(356, 54, 'http://localhost:8080/5-statuetki-i-statuy', 'localhost:8080/c/5-category_default/statuetki-i-statuy.jpg', '', '2024-11-14 18:10:24'),
+(357, 54, 'http://localhost:8080/5-statuetki-i-statuy', 'localhost:8080/bestsellery', '', '2024-11-14 18:10:28'),
+(358, 54, 'http://localhost:8080/bestsellery', 'localhost:8080/promocje', '', '2024-11-14 18:10:30'),
+(359, 54, 'http://localhost:8080/promocje', 'localhost:8080/21-home_default/brown-bear-printed-sweater.jpg', '', '2024-11-14 18:10:30'),
+(360, 54, 'http://localhost:8080/promocje', 'localhost:8080/1-home_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:10:30'),
+(361, 54, 'http://localhost:8080/promocje', 'localhost:8080/bestsellery', '', '2024-11-14 18:10:32'),
+(362, 54, 'http://localhost:8080/bestsellery', 'localhost:8080/blog', '', '2024-11-14 18:10:33'),
+(363, 54, 'http://localhost:8080/blog', 'localhost:8080/49-star-wars-inne-gadzety', '', '2024-11-14 18:10:38'),
+(364, 54, 'http://localhost:8080/49-star-wars-inne-gadzety', 'localhost:8080/', '', '2024-11-14 18:10:42'),
+(365, 54, 'http://localhost:8080/', 'localhost:8080/6-home_default/mug-the-best-is-yet-to-come.jpg', '', '2024-11-14 18:10:42'),
+(366, 54, 'http://localhost:8080/', 'localhost:8080/4-home_default/the-adventure-begins-framed-poster.jpg', '', '2024-11-14 18:10:42'),
+(367, 54, 'http://localhost:8080/', 'localhost:8080/1-home_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:10:42'),
+(368, 54, 'http://localhost:8080/', 'localhost:8080/21-home_default/brown-bear-printed-sweater.jpg', '', '2024-11-14 18:10:42'),
+(369, 54, 'http://localhost:8080/', 'localhost:8080/7-home_default/mug-the-adventure-begins.jpg', '', '2024-11-14 18:10:42'),
+(370, 54, 'http://localhost:8080/', 'localhost:8080/5-home_default/today-is-a-good-day-framed-poster.jpg', '', '2024-11-14 18:10:42'),
+(371, 54, 'http://localhost:8080/', 'localhost:8080/8-home_default/mug-today-is-a-good-day.jpg', '', '2024-11-14 18:10:42'),
+(372, 54, 'http://localhost:8080/', 'localhost:8080/3-home_default/the-best-is-yet-to-come-framed-poster.jpg', '', '2024-11-14 18:10:42'),
+(373, 54, 'http://localhost:8080/', 'localhost:8080/', '', '2024-11-14 18:10:42'),
+(374, 54, 'http://localhost:8080/', 'localhost:8080/21-home_default/brown-bear-printed-sweater.jpg', '', '2024-11-14 18:10:43'),
+(375, 54, 'http://localhost:8080/', 'localhost:8080/3-home_default/the-best-is-yet-to-come-framed-poster.jpg', '', '2024-11-14 18:10:43'),
+(376, 54, 'http://localhost:8080/', 'localhost:8080/6-home_default/mug-the-best-is-yet-to-come.jpg', '', '2024-11-14 18:10:43'),
+(377, 54, 'http://localhost:8080/', 'localhost:8080/5-home_default/today-is-a-good-day-framed-poster.jpg', '', '2024-11-14 18:10:43'),
+(378, 54, 'http://localhost:8080/', 'localhost:8080/7-home_default/mug-the-adventure-begins.jpg', '', '2024-11-14 18:10:43'),
+(379, 54, 'http://localhost:8080/', 'localhost:8080/1-home_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:10:43'),
+(380, 54, 'http://localhost:8080/', 'localhost:8080/8-home_default/mug-today-is-a-good-day.jpg', '', '2024-11-14 18:10:43'),
+(381, 54, 'http://localhost:8080/', 'localhost:8080/4-home_default/the-adventure-begins-framed-poster.jpg', '', '2024-11-14 18:10:43'),
+(382, 54, 'http://localhost:8080/', 'localhost:8080/', '', '2024-11-14 18:10:43'),
+(383, 54, 'http://localhost:8080/', 'localhost:8080/3-home_default/the-best-is-yet-to-come-framed-poster.jpg', '', '2024-11-14 18:10:43'),
+(384, 54, 'http://localhost:8080/', 'localhost:8080/5-home_default/today-is-a-good-day-framed-poster.jpg', '', '2024-11-14 18:10:43'),
+(385, 54, 'http://localhost:8080/', 'localhost:8080/21-home_default/brown-bear-printed-sweater.jpg', '', '2024-11-14 18:10:43'),
+(386, 54, 'http://localhost:8080/', 'localhost:8080/6-home_default/mug-the-best-is-yet-to-come.jpg', '', '2024-11-14 18:10:43'),
+(387, 54, 'http://localhost:8080/', 'localhost:8080/7-home_default/mug-the-adventure-begins.jpg', '', '2024-11-14 18:10:43'),
+(388, 54, 'http://localhost:8080/', 'localhost:8080/4-home_default/the-adventure-begins-framed-poster.jpg', '', '2024-11-14 18:10:43'),
+(389, 54, 'http://localhost:8080/', 'localhost:8080/8-home_default/mug-today-is-a-good-day.jpg', '', '2024-11-14 18:10:43'),
+(390, 54, 'http://localhost:8080/', 'localhost:8080/1-home_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:10:43'),
+(391, 54, 'http://localhost:8080/', 'localhost:8080/', '', '2024-11-14 18:10:44'),
+(392, 54, 'http://localhost:8080/', 'localhost:8080/3-home_default/the-best-is-yet-to-come-framed-poster.jpg', '', '2024-11-14 18:10:45'),
+(393, 54, 'http://localhost:8080/', 'localhost:8080/21-home_default/brown-bear-printed-sweater.jpg', '', '2024-11-14 18:10:45'),
+(394, 54, 'http://localhost:8080/', 'localhost:8080/4-home_default/the-adventure-begins-framed-poster.jpg', '', '2024-11-14 18:10:45'),
+(395, 54, 'http://localhost:8080/', 'localhost:8080/7-home_default/mug-the-adventure-begins.jpg', '', '2024-11-14 18:10:45'),
+(396, 54, 'http://localhost:8080/', 'localhost:8080/5-home_default/today-is-a-good-day-framed-poster.jpg', '', '2024-11-14 18:10:45'),
+(397, 54, 'http://localhost:8080/', 'localhost:8080/1-home_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:10:45'),
+(398, 54, 'http://localhost:8080/', 'localhost:8080/8-home_default/mug-today-is-a-good-day.jpg', '', '2024-11-14 18:10:45'),
+(399, 54, 'http://localhost:8080/', 'localhost:8080/6-home_default/mug-the-best-is-yet-to-come.jpg', '', '2024-11-14 18:10:45'),
+(400, 51, 'http://localhost:8080/content/3-polityka-prywatnosci', 'localhost:8080/5-statuetki-i-statuy', '', '2024-11-14 18:14:00'),
+(401, 51, 'http://localhost:8080/5-statuetki-i-statuy', 'localhost:8080/c/5-category_default/statuetki-i-statuy.jpg', '', '2024-11-14 18:14:00'),
+(402, 51, 'http://localhost:8080/5-statuetki-i-statuy', 'localhost:8080/21-home_default/brown-bear-printed-sweater.jpg', '', '2024-11-14 18:14:00'),
+(403, 51, 'http://localhost:8080/5-statuetki-i-statuy', 'localhost:8080/', '', '2024-11-14 18:14:42'),
+(404, 51, 'http://localhost:8080/', 'localhost:8080/3-home_default/the-best-is-yet-to-come-framed-poster.jpg', '', '2024-11-14 18:14:43'),
+(405, 51, 'http://localhost:8080/', 'localhost:8080/21-home_default/brown-bear-printed-sweater.jpg', '', '2024-11-14 18:14:43'),
+(406, 51, 'http://localhost:8080/', 'localhost:8080/4-home_default/the-adventure-begins-framed-poster.jpg', '', '2024-11-14 18:14:43'),
+(407, 51, 'http://localhost:8080/', 'localhost:8080/6-home_default/mug-the-best-is-yet-to-come.jpg', '', '2024-11-14 18:14:43'),
+(408, 51, 'http://localhost:8080/', 'localhost:8080/1-home_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:14:43'),
+(409, 51, 'http://localhost:8080/', 'localhost:8080/7-home_default/mug-the-adventure-begins.jpg', '', '2024-11-14 18:14:43'),
+(410, 51, 'http://localhost:8080/', 'localhost:8080/8-home_default/mug-today-is-a-good-day.jpg', '', '2024-11-14 18:14:43'),
+(411, 51, 'http://localhost:8080/', 'localhost:8080/5-home_default/today-is-a-good-day-framed-poster.jpg', '', '2024-11-14 18:14:43'),
+(412, 51, 'http://localhost:8080/', 'localhost:8080/promocje', '', '2024-11-14 18:15:58'),
+(413, 51, 'http://localhost:8080/promocje', 'localhost:8080/21-home_default/brown-bear-printed-sweater.jpg', '', '2024-11-14 18:15:58'),
+(414, 51, 'http://localhost:8080/promocje', 'localhost:8080/1-home_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:15:58'),
+(415, 51, 'http://localhost:8080/promocje', 'localhost:8080/nowosci', '', '2024-11-14 18:16:01'),
+(416, 51, 'http://localhost:8080/nowosci', 'localhost:8080/blog', '', '2024-11-14 18:16:04'),
+(417, 51, 'http://localhost:8080/blog', 'localhost:8080/bestsellery', '', '2024-11-14 18:16:06'),
+(418, 51, 'http://localhost:8080/bestsellery', 'localhost:8080/blog', '', '2024-11-14 18:16:13'),
+(419, 51, 'http://localhost:8080/blog', 'localhost:8080/', '', '2024-11-14 18:16:31'),
+(420, 51, 'http://localhost:8080/', 'localhost:8080/5-home_default/today-is-a-good-day-framed-poster.jpg', '', '2024-11-14 18:16:31'),
+(421, 51, 'http://localhost:8080/', 'localhost:8080/1-home_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:16:31'),
+(422, 51, 'http://localhost:8080/', 'localhost:8080/4-home_default/the-adventure-begins-framed-poster.jpg', '', '2024-11-14 18:16:31'),
+(423, 51, 'http://localhost:8080/', 'localhost:8080/7-home_default/mug-the-adventure-begins.jpg', '', '2024-11-14 18:16:31'),
+(424, 51, 'http://localhost:8080/', 'localhost:8080/21-home_default/brown-bear-printed-sweater.jpg', '', '2024-11-14 18:16:31'),
+(425, 51, 'http://localhost:8080/', 'localhost:8080/8-home_default/mug-today-is-a-good-day.jpg', '', '2024-11-14 18:16:31'),
+(426, 51, 'http://localhost:8080/', 'localhost:8080/6-home_default/mug-the-best-is-yet-to-come.jpg', '', '2024-11-14 18:16:31'),
+(427, 51, 'http://localhost:8080/', 'localhost:8080/3-home_default/the-best-is-yet-to-come-framed-poster.jpg', '', '2024-11-14 18:16:31'),
+(428, 51, 'http://localhost:8080/', 'localhost:8080/1-home_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:16:38'),
+(429, 51, 'http://localhost:8080/', 'localhost:8080/5-home_default/today-is-a-good-day-framed-poster.jpg', '', '2024-11-14 18:16:38'),
+(430, 51, 'http://localhost:8080/', 'localhost:8080/21-home_default/brown-bear-printed-sweater.jpg', '', '2024-11-14 18:16:38'),
+(431, 51, 'http://localhost:8080/', 'localhost:8080/3-home_default/the-best-is-yet-to-come-framed-poster.jpg', '', '2024-11-14 18:16:38'),
+(432, 51, 'http://localhost:8080/', 'localhost:8080/7-home_default/mug-the-adventure-begins.jpg', '', '2024-11-14 18:16:38'),
+(433, 51, 'http://localhost:8080/', 'localhost:8080/6-home_default/mug-the-best-is-yet-to-come.jpg', '', '2024-11-14 18:16:38'),
+(434, 51, 'http://localhost:8080/', 'localhost:8080/8-home_default/mug-today-is-a-good-day.jpg', '', '2024-11-14 18:16:38'),
+(435, 51, 'http://localhost:8080/', 'localhost:8080/4-home_default/the-adventure-begins-framed-poster.jpg', '', '2024-11-14 18:16:38'),
+(436, 51, 'http://localhost:8080/', 'localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', '', '2024-11-14 18:18:44'),
+(437, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/monsteriada-prestashop-clone/modules/blockreassurance/views/img/reassurance/pack2/parcel.svg', '', '2024-11-14 18:18:44'),
+(438, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-home_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:44'),
+(439, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/monsteriada-prestashop-clone/modules/blockreassurance/views/img/reassurance/pack2/security.svg', '', '2024-11-14 18:18:44'),
+(440, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/1-medium_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:44'),
+(441, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/monsteriada-prestashop-clone/modules/blockreassurance/views/img/reassurance/pack2/carrier.svg', '', '2024-11-14 18:18:44'),
+(442, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-large_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:44'),
+(443, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-large_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:44'),
+(444, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-home_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:44'),
+(445, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/monsteriada-prestashop-clone/modules/blockreassurance/views/img/reassurance/pack2/parcel.svg', '', '2024-11-14 18:18:44'),
+(446, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/monsteriada-prestashop-clone/modules/blockreassurance/views/img/reassurance/pack2/carrier.svg', '', '2024-11-14 18:18:44'),
+(447, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/monsteriada-prestashop-clone/modules/blockreassurance/views/img/reassurance/pack2/security.svg', '', '2024-11-14 18:18:44'),
+(448, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/1-medium_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:44'),
+(449, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-small_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:44'),
+(450, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/monsteriada-prestashop-clone/modules/blockreassurance/views/img/reassurance/pack2/security.svg', '', '2024-11-14 18:18:45'),
+(451, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/monsteriada-prestashop-clone/modules/blockreassurance/views/img/reassurance/pack2/carrier.svg', '', '2024-11-14 18:18:45'),
+(452, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/monsteriada-prestashop-clone/modules/blockreassurance/views/img/reassurance/pack2/parcel.svg', '', '2024-11-14 18:18:45');
+INSERT INTO `ps_connections_source` (`id_connections_source`, `id_connections`, `http_referer`, `request_uri`, `keywords`, `date_add`) VALUES
+(453, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-medium_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:48'),
+(454, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-large_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:48'),
+(455, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-medium_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:48'),
+(456, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-large_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:48'),
+(457, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-medium_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:49'),
+(458, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-large_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:49'),
+(459, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-medium_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:49'),
+(460, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-large_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:49'),
+(461, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-medium_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:49'),
+(462, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-large_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:49'),
+(463, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-medium_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:50'),
+(464, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-large_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:50'),
+(465, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-large_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:50'),
+(466, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-medium_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:50'),
+(467, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-large_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:50'),
+(468, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-medium_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:50'),
+(469, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-large_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:51'),
+(470, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-medium_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:51'),
+(471, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-large_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:58'),
+(472, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-large_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:57'),
+(473, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-large_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:58'),
+(474, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-large_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:58'),
+(475, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-large_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:58'),
+(476, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-large_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:58'),
+(477, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-large_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:58'),
+(478, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/2-large_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:18:59'),
+(479, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/', '', '2024-11-14 18:19:47'),
+(480, 51, 'http://localhost:8080/', 'localhost:8080/1-home_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:19:48'),
+(481, 51, 'http://localhost:8080/', 'localhost:8080/3-home_default/the-best-is-yet-to-come-framed-poster.jpg', '', '2024-11-14 18:19:48'),
+(482, 51, 'http://localhost:8080/', 'localhost:8080/4-home_default/the-adventure-begins-framed-poster.jpg', '', '2024-11-14 18:19:48'),
+(483, 51, 'http://localhost:8080/', 'localhost:8080/21-home_default/brown-bear-printed-sweater.jpg', '', '2024-11-14 18:19:48'),
+(484, 51, 'http://localhost:8080/', 'localhost:8080/5-home_default/today-is-a-good-day-framed-poster.jpg', '', '2024-11-14 18:19:51'),
+(485, 51, 'http://localhost:8080/', 'localhost:8080/6-home_default/mug-the-best-is-yet-to-come.jpg', '', '2024-11-14 18:19:51'),
+(486, 51, 'http://localhost:8080/', 'localhost:8080/8-home_default/mug-today-is-a-good-day.jpg', '', '2024-11-14 18:19:51'),
+(487, 51, 'http://localhost:8080/', 'localhost:8080/7-home_default/mug-the-adventure-begins.jpg', '', '2024-11-14 18:19:51'),
+(488, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/', '', '2024-11-14 18:19:56'),
+(489, 51, 'http://localhost:8080/', 'localhost:8080/21-home_default/brown-bear-printed-sweater.jpg', '', '2024-11-14 18:19:56'),
+(490, 51, 'http://localhost:8080/', 'localhost:8080/4-home_default/the-adventure-begins-framed-poster.jpg', '', '2024-11-14 18:19:56'),
+(491, 51, 'http://localhost:8080/', 'localhost:8080/3-home_default/the-best-is-yet-to-come-framed-poster.jpg', '', '2024-11-14 18:19:56'),
+(492, 51, 'http://localhost:8080/', 'localhost:8080/5-home_default/today-is-a-good-day-framed-poster.jpg', '', '2024-11-14 18:19:56'),
+(493, 51, 'http://localhost:8080/', 'localhost:8080/1-home_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:19:56'),
+(494, 51, 'http://localhost:8080/', 'localhost:8080/6-home_default/mug-the-best-is-yet-to-come.jpg', '', '2024-11-14 18:19:56'),
+(495, 51, 'http://localhost:8080/', 'localhost:8080/7-home_default/mug-the-adventure-begins.jpg', '', '2024-11-14 18:19:56'),
+(496, 51, 'http://localhost:8080/', 'localhost:8080/8-home_default/mug-today-is-a-good-day.jpg', '', '2024-11-14 18:19:56'),
+(497, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/', '', '2024-11-14 18:19:58'),
+(498, 51, 'http://localhost:8080/', 'localhost:8080/3-home_default/the-best-is-yet-to-come-framed-poster.jpg', '', '2024-11-14 18:19:58'),
+(499, 51, 'http://localhost:8080/', 'localhost:8080/21-home_default/brown-bear-printed-sweater.jpg', '', '2024-11-14 18:19:58'),
+(500, 51, 'http://localhost:8080/', 'localhost:8080/1-home_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:19:58'),
+(501, 51, 'http://localhost:8080/', 'localhost:8080/4-home_default/the-adventure-begins-framed-poster.jpg', '', '2024-11-14 18:19:58'),
+(502, 51, 'http://localhost:8080/', 'localhost:8080/7-home_default/mug-the-adventure-begins.jpg', '', '2024-11-14 18:19:58'),
+(503, 51, 'http://localhost:8080/', 'localhost:8080/6-home_default/mug-the-best-is-yet-to-come.jpg', '', '2024-11-14 18:19:58'),
+(504, 51, 'http://localhost:8080/', 'localhost:8080/8-home_default/mug-today-is-a-good-day.jpg', '', '2024-11-14 18:19:58'),
+(505, 51, 'http://localhost:8080/', 'localhost:8080/5-home_default/today-is-a-good-day-framed-poster.jpg', '', '2024-11-14 18:19:58'),
+(506, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/', '', '2024-11-14 18:21:20'),
+(507, 51, 'http://localhost:8080/', 'localhost:8080/4-home_default/the-adventure-begins-framed-poster.jpg', '', '2024-11-14 18:21:20'),
+(508, 51, 'http://localhost:8080/', 'localhost:8080/3-home_default/the-best-is-yet-to-come-framed-poster.jpg', '', '2024-11-14 18:21:20'),
+(509, 51, 'http://localhost:8080/', 'localhost:8080/21-home_default/brown-bear-printed-sweater.jpg', '', '2024-11-14 18:21:20'),
+(510, 51, 'http://localhost:8080/', 'localhost:8080/1-home_default/hummingbird-printed-t-shirt.jpg', '', '2024-11-14 18:21:20'),
+(511, 51, 'http://localhost:8080/', 'localhost:8080/6-home_default/mug-the-best-is-yet-to-come.jpg', '', '2024-11-14 18:21:21'),
+(512, 51, 'http://localhost:8080/', 'localhost:8080/7-home_default/mug-the-adventure-begins.jpg', '', '2024-11-14 18:21:21'),
+(513, 51, 'http://localhost:8080/', 'localhost:8080/5-home_default/today-is-a-good-day-framed-poster.jpg', '', '2024-11-14 18:21:21'),
+(514, 51, 'http://localhost:8080/', 'localhost:8080/8-home_default/mug-today-is-a-good-day.jpg', '', '2024-11-14 18:21:21'),
+(515, 51, 'http://localhost:8080/admin-dev/index.php/improve/design/modules/positions/?_token=SzzxPumeLkqpnWpCtjOWb6Qjt1Q67YlV3-iEzIor0bE', 'localhost:8080/modules/homepagecontent/logo.png?1.7.8.11', '', '2024-11-14 18:22:17'),
+(516, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/', '', '2024-11-14 18:24:12'),
+(517, 51, 'http://localhost:8080/figurki/1-1-hummingbird-printed-t-shirt.html', 'localhost:8080/', '', '2024-11-14 18:27:07'),
+(518, 59, 'http://localhost:8080/admin-dev/index.php/improve/design/modules/positions/?_token=5ck6WebTi0n-3GMMkWnzbqGlJYsAiPZWVL_pf-sfuYE', 'localhost:8080/modules/homepagecontent/logo.png?1.7.8.11', '', '2024-11-15 17:43:38'),
+(519, 59, 'http://localhost:8080/admin-dev/index.php/improve/design/modules/positions/?_token=5ck6WebTi0n-3GMMkWnzbqGlJYsAiPZWVL_pf-sfuYE', 'localhost:8080/modules/homepagecontent/logo.png?1.7.8.11', '', '2024-11-15 17:43:38'),
+(520, 59, 'http://localhost:8080/admin-dev/index.php/improve/design/modules/positions/?_token=5ck6WebTi0n-3GMMkWnzbqGlJYsAiPZWVL_pf-sfuYE&conf=16&token=94b676fc5c2e5c911982da8ad929b71f', 'localhost:8080/modules/homepagecontent/logo.png?1.7.8.11', '', '2024-11-15 17:45:31'),
+(521, 62, 'http://localhost:8080/', 'localhost:8080/content/3-polityka-prywatnosci', '', '2024-11-16 12:43:21'),
+(522, 62, 'http://localhost:8080/', 'localhost:8080/logowanie?back=identity', '', '2024-11-16 12:43:30'),
+(523, 62, 'http://localhost:8080/', 'localhost:8080/content/8-zapraszamy-do-wspolpracy', '', '2024-11-16 12:43:35'),
+(524, 62, 'http://localhost:8080/', 'localhost:8080/content/3-polityka-prywatnosci', '', '2024-11-16 12:43:41'),
+(525, 62, 'http://localhost:8080/', 'localhost:8080/content/3-polityka-prywatnosci', '', '2024-11-16 12:43:45'),
+(526, 65, 'http://localhost:8080/img/footer', 'localhost:8080/favicon.ico', '', '2024-11-16 15:16:57'),
+(527, 65, 'http://localhost:8080/themes/child_classic/assets/css/custom.css', 'localhost:8080/img/footer.jpg/footerbefore.jpg', '', '2024-11-16 15:17:26'),
+(528, 65, 'http://localhost:8080/img/harry-potter-logo.png', 'localhost:8080/favicon.ico', '', '2024-11-16 15:18:58'),
+(529, 69, 'http://localhost:8080/admin-dev/index.php/improve/design/modules/positions/?_token=nqy9JURbKt1SdTmNZ3cDxEypl8RQj0sn7dlEN1uxYFM', 'localhost:8080/modules/homepagecontent/logo.png?1.7.8.11', '', '2024-11-16 17:31:45'),
+(530, 69, 'http://localhost:8080/admin-dev/index.php/improve/design/modules/positions/?_token=neAqT8LlxLcilU7LYy7xf_qVfXJ85FTSgj4jv23CZ8U', 'localhost:8080/modules/homepagecontent/logo.png?1.7.8.11', '', '2024-11-16 17:36:55'),
+(531, 69, 'http://localhost:8080/admin-dev/index.php/improve/design/modules/positions/?_token=neAqT8LlxLcilU7LYy7xf_qVfXJ85FTSgj4jv23CZ8U', 'localhost:8080/modules/homepagecontent/logo.png?1.7.8.11', '', '2024-11-16 17:37:00'),
+(532, 69, 'http://localhost:8080/10-prezent-na-kazda-okazje', 'localhost:8080/favicon.ico', '', '2024-11-16 18:01:03'),
+(533, 69, 'http://localhost:8080/10-prezent-na-kazda-okazje', 'localhost:8080/10-repliki-i-kostiumy', '', '2024-11-16 18:01:05'),
+(534, 69, 'http://localhost:8080/', 'localhost:8080/najczesciej-kupowane', '', '2024-11-16 18:01:32'),
+(535, 69, 'http://localhost:8080/', 'localhost:8080/content/10-prezent-na-kazda-okazje', '', '2024-11-16 18:01:33'),
+(536, 69, 'http://localhost:8080/', 'localhost:8080/content/10-prezent-na-kazda-okazje', '', '2024-11-16 18:02:06'),
+(537, 69, 'http://localhost:8080/', 'localhost:8080/content/mapa-strony', '', '2024-11-16 18:02:09'),
+(538, 69, 'http://localhost:8080/', 'localhost:8080/content/prezent-na-kazda-okazje', '', '2024-11-16 18:03:19'),
+(539, 69, 'http://localhost:8080/', 'localhost:8080/content/mapa-strony', '', '2024-11-16 18:03:22'),
+(540, 69, 'http://localhost:8080/', 'localhost:8080/content/zapraszamy-do-wspolpracy', '', '2024-11-16 18:03:25'),
+(541, 69, 'http://localhost:8080/', 'localhost:8080/content/mapa-strony', '', '2024-11-16 18:03:31'),
+(542, 69, 'http://localhost:8080/', 'localhost:8080/najczesciej-kupowane', '', '2024-11-16 18:03:38'),
+(543, 69, 'http://localhost:8080/', 'localhost:8080/nowe-produkty', '', '2024-11-16 18:03:42'),
+(544, 69, 'http://localhost:8080/', 'localhost:8080/promocje', '', '2024-11-16 18:03:45'),
+(545, 69, 'http://localhost:8080/', 'localhost:8080/content/prezent-na-kazda-okazje', '', '2024-11-16 18:03:48'),
+(546, 69, 'http://localhost:8080/', 'localhost:8080/content/zapraszamy-do-wspolpracy', '', '2024-11-16 18:03:52'),
+(547, 69, 'http://localhost:8080/', 'localhost:8080/content/1-monsteriadapl-kim-jestesmy', '', '2024-11-16 18:04:00'),
+(548, 69, 'http://localhost:8080/', 'localhost:8080/content/10-prezent-na-kazda-okazje', '', '2024-11-16 18:04:27'),
+(549, 69, 'http://localhost:8080/', 'localhost:8080/content/8-zapraszamy-do-wspolpracy', '', '2024-11-16 18:04:31'),
+(550, 69, 'http://localhost:8080/', 'localhost:8080/content/8-zapraszamy-do-wspolpracy', '', '2024-11-16 18:04:37'),
+(551, 69, 'http://localhost:8080/', 'localhost:8080/kontakt', '', '2024-11-16 18:05:43');
 
 -- --------------------------------------------------------
 
@@ -4811,7 +4891,7 @@ CREATE TABLE `ps_contact` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_contact`
+-- Dumping data for table `ps_contact`
 --
 
 INSERT INTO `ps_contact` (`id_contact`, `email`, `customer_service`, `position`) VALUES
@@ -4832,7 +4912,7 @@ CREATE TABLE `ps_contact_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_contact_lang`
+-- Dumping data for table `ps_contact_lang`
 --
 
 INSERT INTO `ps_contact_lang` (`id_contact`, `id_lang`, `name`, `description`) VALUES
@@ -4851,7 +4931,7 @@ CREATE TABLE `ps_contact_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_contact_shop`
+-- Dumping data for table `ps_contact_shop`
 --
 
 INSERT INTO `ps_contact_shop` (`id_contact`, `id_shop`) VALUES
@@ -4879,7 +4959,7 @@ CREATE TABLE `ps_country` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_country`
+-- Dumping data for table `ps_country`
 --
 
 INSERT INTO `ps_country` (`id_country`, `id_zone`, `id_currency`, `iso_code`, `call_prefix`, `active`, `contains_states`, `need_identification_number`, `need_zip_code`, `zip_code_format`, `display_tax_label`) VALUES
@@ -5138,7 +5218,7 @@ CREATE TABLE `ps_country_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_country_lang`
+-- Dumping data for table `ps_country_lang`
 --
 
 INSERT INTO `ps_country_lang` (`id_country`, `id_lang`, `name`) VALUES
@@ -5396,7 +5476,7 @@ CREATE TABLE `ps_country_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_country_shop`
+-- Dumping data for table `ps_country_shop`
 --
 
 INSERT INTO `ps_country_shop` (`id_country`, `id_shop`) VALUES
@@ -5662,11 +5742,11 @@ CREATE TABLE `ps_currency` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_currency`
+-- Dumping data for table `ps_currency`
 --
 
 INSERT INTO `ps_currency` (`id_currency`, `name`, `iso_code`, `numeric_iso_code`, `precision`, `conversion_rate`, `deleted`, `active`, `unofficial`, `modified`) VALUES
-(1, '', 'PLN', '985', 2, '1.000000', 0, 1, 0, 0);
+(1, '', 'PLN', '985', 2, 1.000000, 0, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -5683,7 +5763,7 @@ CREATE TABLE `ps_currency_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_currency_lang`
+-- Dumping data for table `ps_currency_lang`
 --
 
 INSERT INTO `ps_currency_lang` (`id_currency`, `id_lang`, `name`, `symbol`, `pattern`) VALUES
@@ -5702,11 +5782,11 @@ CREATE TABLE `ps_currency_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_currency_shop`
+-- Dumping data for table `ps_currency_shop`
 --
 
 INSERT INTO `ps_currency_shop` (`id_currency`, `id_shop`, `conversion_rate`) VALUES
-(1, 1, '1.000000');
+(1, 1, 1.000000);
 
 -- --------------------------------------------------------
 
@@ -5751,14 +5831,14 @@ CREATE TABLE `ps_customer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_customer`
+-- Dumping data for table `ps_customer`
 --
 
 INSERT INTO `ps_customer` (`id_customer`, `id_shop_group`, `id_shop`, `id_gender`, `id_default_group`, `id_lang`, `id_risk`, `company`, `siret`, `ape`, `firstname`, `lastname`, `email`, `passwd`, `last_passwd_gen`, `birthday`, `newsletter`, `ip_registration_newsletter`, `newsletter_date_add`, `optin`, `website`, `outstanding_allow_amount`, `show_public_prices`, `max_payment_days`, `secure_key`, `note`, `active`, `is_guest`, `deleted`, `date_add`, `date_upd`, `reset_password_token`, `reset_password_validity`) VALUES
-(1, 1, 1, 1, 3, 1, 0, '', '', '', 'Anonymous', 'Anonymous', 'anonymous@psgdpr.com', '$2y$10$DHEVcGeuzszcCC4JvOWJNeE.FWpJbCDzslGh9R9LnUr9Rl323CIsO', '2024-10-28 10:44:30', '0000-00-00', 0, '', '0000-00-00 00:00:00', 0, '', '0.000000', 0, 0, 'efb1e240841a93c99d39277138405abe', '', 0, 0, 0, '2024-10-28 17:44:30', '2024-10-28 17:44:30', '', '0000-00-00 00:00:00'),
-(2, 1, 1, 1, 3, 1, 0, '', '', '', 'John', 'DOE', 'pub@prestashop.com', '52965c1dac9d67e5f3303ec0c46851e2', '2024-10-28 10:46:37', '1970-01-15', 1, '', '2013-12-13 08:19:15', 1, '', '0.000000', 0, 0, '595a2345a8f33c827a66d5c3ce659734', '', 1, 0, 0, '2024-10-28 17:46:37', '2024-10-28 17:46:37', '', '0000-00-00 00:00:00'),
-(3, 1, 1, 1, 3, 1, 0, '', '', '', 'Igor', 'Test', 'igortest@gmail.com', '$2y$10$/efSyNRdcrUsf6rY9Vs4BO/856D.891YcRiJiAyfPaVTtYtR01lq6', '2024-11-02 15:43:06', '2000-01-01', 1, '', '2024-11-02 22:43:06', 0, '', '0.000000', 0, 0, '998c5dde02477ddf8d10548e9ec72ef8', '', 1, 0, 0, '2024-11-02 22:43:06', '2024-11-02 22:43:06', '', '0000-00-00 00:00:00'),
-(4, 1, 1, 1, 3, 1, 0, '', '', '', 'Jan', 'Rogowski', 'prestashop@sklepik.pl', '$2y$10$ydCO2wsUSUovyBhG8r8bC.9D4buOeFo8xvc404HModCS5cS.aAjt2', '2024-11-11 06:58:06', '1970-05-31', 1, '', '2024-11-11 13:58:06', 1, '', '0.000000', 0, 0, 'abac108c8c20a7f5402c4332c7bc06ff', '', 1, 0, 0, '2024-11-11 13:58:06', '2024-11-11 13:58:06', '', '0000-00-00 00:00:00');
+(1, 1, 1, 1, 3, 1, 0, '', '', '', 'Anonymous', 'Anonymous', 'anonymous@psgdpr.com', '$2y$10$DHEVcGeuzszcCC4JvOWJNeE.FWpJbCDzslGh9R9LnUr9Rl323CIsO', '2024-10-28 10:44:30', '0000-00-00', 0, '', '0000-00-00 00:00:00', 0, '', 0.000000, 0, 0, 'efb1e240841a93c99d39277138405abe', '', 0, 0, 0, '2024-10-28 17:44:30', '2024-10-28 17:44:30', '', '0000-00-00 00:00:00'),
+(2, 1, 1, 1, 3, 1, 0, '', '', '', 'John', 'DOE', 'pub@prestashop.com', '52965c1dac9d67e5f3303ec0c46851e2', '2024-10-28 10:46:37', '1970-01-15', 1, '', '2013-12-13 08:19:15', 1, '', 0.000000, 0, 0, '595a2345a8f33c827a66d5c3ce659734', '', 1, 0, 0, '2024-10-28 17:46:37', '2024-10-28 17:46:37', '', '0000-00-00 00:00:00'),
+(3, 1, 1, 1, 3, 1, 0, '', '', '', 'Igor', 'Test', 'igortest@gmail.com', '$2y$10$/efSyNRdcrUsf6rY9Vs4BO/856D.891YcRiJiAyfPaVTtYtR01lq6', '2024-11-02 15:43:06', '2000-01-01', 1, '', '2024-11-02 22:43:06', 0, '', 0.000000, 0, 0, '998c5dde02477ddf8d10548e9ec72ef8', '', 1, 0, 0, '2024-11-02 22:43:06', '2024-11-02 22:43:06', '', '0000-00-00 00:00:00'),
+(4, 1, 1, 1, 3, 1, 0, '', '', '', 'Jan', 'Rogowski', 'prestashop@sklepik.pl', '$2y$10$ydCO2wsUSUovyBhG8r8bC.9D4buOeFo8xvc404HModCS5cS.aAjt2', '2024-11-11 06:58:06', '1970-05-31', 1, '', '2024-11-11 13:58:06', 1, '', 0.000000, 0, 0, 'abac108c8c20a7f5402c4332c7bc06ff', '', 1, 0, 0, '2024-11-11 13:58:06', '2024-11-11 13:58:06', '', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -5772,7 +5852,7 @@ CREATE TABLE `ps_customer_group` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_customer_group`
+-- Dumping data for table `ps_customer_group`
 --
 
 INSERT INTO `ps_customer_group` (`id_customer`, `id_group`) VALUES
@@ -5824,7 +5904,7 @@ CREATE TABLE `ps_customer_session` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_customer_session`
+-- Dumping data for table `ps_customer_session`
 --
 
 INSERT INTO `ps_customer_session` (`id_customer_session`, `id_customer`, `token`) VALUES
@@ -5885,7 +5965,7 @@ CREATE TABLE `ps_customization_field` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_customization_field`
+-- Dumping data for table `ps_customization_field`
 --
 
 INSERT INTO `ps_customization_field` (`id_customization_field`, `id_product`, `type`, `required`, `is_module`, `is_deleted`) VALUES
@@ -5905,7 +5985,7 @@ CREATE TABLE `ps_customization_field_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_customization_field_lang`
+-- Dumping data for table `ps_customization_field_lang`
 --
 
 INSERT INTO `ps_customization_field_lang` (`id_customization_field`, `id_lang`, `id_shop`, `name`) VALUES
@@ -5957,26 +6037,26 @@ CREATE TABLE `ps_delivery` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_delivery`
+-- Dumping data for table `ps_delivery`
 --
 
 INSERT INTO `ps_delivery` (`id_delivery`, `id_shop`, `id_shop_group`, `id_carrier`, `id_range_price`, `id_range_weight`, `id_zone`, `price`) VALUES
-(1, NULL, NULL, 2, 0, 1, 1, '5.000000'),
-(2, NULL, NULL, 2, 0, 1, 2, '5.000000'),
-(3, NULL, NULL, 2, 1, 0, 1, '5.000000'),
-(4, NULL, NULL, 2, 1, 0, 2, '5.000000'),
-(5, NULL, NULL, 3, 2, 0, 1, '3.000000'),
-(6, NULL, NULL, 3, 2, 0, 2, '4.000000'),
-(7, NULL, NULL, 3, 3, 0, 1, '1.000000'),
-(8, NULL, NULL, 3, 3, 0, 2, '2.000000'),
-(9, NULL, NULL, 3, 4, 0, 1, '0.000000'),
-(10, NULL, NULL, 3, 4, 0, 2, '0.000000'),
-(11, NULL, NULL, 4, 0, 2, 1, '0.000000'),
-(12, NULL, NULL, 4, 0, 2, 2, '0.000000'),
-(13, NULL, NULL, 4, 0, 3, 1, '2.000000'),
-(14, NULL, NULL, 4, 0, 3, 2, '3.000000'),
-(15, NULL, NULL, 4, 0, 4, 1, '5.000000'),
-(16, NULL, NULL, 4, 0, 4, 2, '6.000000');
+(1, NULL, NULL, 2, 0, 1, 1, 5.000000),
+(2, NULL, NULL, 2, 0, 1, 2, 5.000000),
+(3, NULL, NULL, 2, 1, 0, 1, 5.000000),
+(4, NULL, NULL, 2, 1, 0, 2, 5.000000),
+(5, NULL, NULL, 3, 2, 0, 1, 3.000000),
+(6, NULL, NULL, 3, 2, 0, 2, 4.000000),
+(7, NULL, NULL, 3, 3, 0, 1, 1.000000),
+(8, NULL, NULL, 3, 3, 0, 2, 2.000000),
+(9, NULL, NULL, 3, 4, 0, 1, 0.000000),
+(10, NULL, NULL, 3, 4, 0, 2, 0.000000),
+(11, NULL, NULL, 4, 0, 2, 1, 0.000000),
+(12, NULL, NULL, 4, 0, 2, 2, 0.000000),
+(13, NULL, NULL, 4, 0, 3, 1, 2.000000),
+(14, NULL, NULL, 4, 0, 3, 2, 3.000000),
+(15, NULL, NULL, 4, 0, 4, 1, 5.000000),
+(16, NULL, NULL, 4, 0, 4, 2, 6.000000);
 
 -- --------------------------------------------------------
 
@@ -5995,6 +6075,15 @@ CREATE TABLE `ps_emailsubscription` (
   `active` tinyint(1) NOT NULL DEFAULT 0,
   `id_lang` int(10) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `ps_emailsubscription`
+--
+
+INSERT INTO `ps_emailsubscription` (`id`, `id_shop`, `id_shop_group`, `email`, `newsletter_date_add`, `ip_registration_newsletter`, `http_referer`, `active`, `id_lang`) VALUES
+(1, 1, 1, 'pyglatingt@gmail.com', '2024-11-16 13:58:46', '172.18.0.1', NULL, 1, 1),
+(2, 1, 1, 'jasiek2r@gmail.com', '2024-11-16 14:02:46', '172.18.0.1', NULL, 1, 1),
+(3, 1, 1, 'dsds@dsds.pl', '2024-11-16 17:41:14', '172.18.0.1', NULL, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -6035,12 +6124,12 @@ CREATE TABLE `ps_employee` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_employee`
+-- Dumping data for table `ps_employee`
 --
 
 INSERT INTO `ps_employee` (`id_employee`, `id_profile`, `id_lang`, `lastname`, `firstname`, `email`, `passwd`, `last_passwd_gen`, `stats_date_from`, `stats_date_to`, `stats_compare_from`, `stats_compare_to`, `stats_compare_option`, `preselect_date_range`, `bo_color`, `bo_theme`, `bo_css`, `default_tab`, `bo_width`, `bo_menu`, `active`, `optin`, `id_last_order`, `id_last_customer_message`, `id_last_customer`, `last_connection_date`, `reset_password_token`, `reset_password_validity`, `has_enabled_gravatar`) VALUES
 (1, 1, 1, 'P', 'A', 'aanatfc.kp@gmail.com', '$2y$10$JwuGU7HLp7CdNwfRVBtHYe.V0ADNNQHBTPSMa14ZvRui9IQZ6yPmi', '2024-10-28 10:42:12', '2023-01-01', '2023-12-31', '0000-00-00', '0000-00-00', 1, 'prev-year', '', 'default', 'theme.css', 1, 0, 1, 1, NULL, 6, 0, 4, '2024-11-14', '', '0000-00-00 00:00:00', 0),
-(2, 1, 1, 'Józefowicz', 'Igor', 'igorjozefowicz@gmail.com', '$2y$10$0/nt4OkiPLPEtcCG6EZkhuUgLhnEZqmnInTv7WA4FAGZFqtpucWg6', '2024-11-02 14:17:32', '2024-10-02', '2024-11-02', '0000-00-00', '0000-00-00', 1, NULL, NULL, NULL, 'theme.css', 1, 0, 1, 1, NULL, 5, 0, 2, '2024-11-14', NULL, '0000-00-00 00:00:00', 0);
+(2, 1, 1, 'Józefowicz', 'Igor', 'igorjozefowicz@gmail.com', '$2y$10$0/nt4OkiPLPEtcCG6EZkhuUgLhnEZqmnInTv7WA4FAGZFqtpucWg6', '2024-11-02 14:17:32', '2024-10-02', '2024-11-02', '0000-00-00', '0000-00-00', 1, NULL, NULL, NULL, 'theme.css', 1, 0, 1, 1, NULL, 5, 0, 2, '2024-11-16', NULL, '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -6070,7 +6159,7 @@ CREATE TABLE `ps_employee_session` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_employee_session`
+-- Dumping data for table `ps_employee_session`
 --
 
 INSERT INTO `ps_employee_session` (`id_employee_session`, `id_employee`, `token`) VALUES
@@ -6078,8 +6167,11 @@ INSERT INTO `ps_employee_session` (`id_employee_session`, `id_employee`, `token`
 (4, 1, 'a1438beee39c6667190b6541a10b8ed9ee5359ce'),
 (5, 1, '2f8ef7800282a258e7729515af9fa0e03aaaf3d8'),
 (8, 2, 'ae03a382b1dc36f82bc8c7f44dbe5d19affbd4d9'),
+(9, 1, 'd331e0823e3ae7e6db89594452a50a78586b5e66'),
 (10, 1, '6347267ec38ac76e514fb320279b3674f50346f2'),
-(13, 2, '7da84c7de1bc62b1a68807fb23cecc6762385599');
+(11, 2, 'b6bbab0a2789ca2f2a4540f3bc9360ed95028c05'),
+(12, 2, '500b103beef09771665c24e7bb39c6d6b4e11ef5'),
+(13, 2, '73f4010eb4c109a4cbcdfcadc809366c5a711c1c');
 
 -- --------------------------------------------------------
 
@@ -6093,7 +6185,7 @@ CREATE TABLE `ps_employee_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_employee_shop`
+-- Dumping data for table `ps_employee_shop`
 --
 
 INSERT INTO `ps_employee_shop` (`id_employee`, `id_shop`) VALUES
@@ -6114,7 +6206,7 @@ CREATE TABLE `ps_eventbus_deleted_objects` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_eventbus_deleted_objects`
+-- Dumping data for table `ps_eventbus_deleted_objects`
 --
 
 INSERT INTO `ps_eventbus_deleted_objects` (`type`, `id_object`, `id_shop`, `created_at`) VALUES
@@ -6203,7 +6295,7 @@ CREATE TABLE `ps_feature` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_feature`
+-- Dumping data for table `ps_feature`
 --
 
 INSERT INTO `ps_feature` (`id_feature`, `position`) VALUES
@@ -6227,7 +6319,7 @@ CREATE TABLE `ps_feature_flag` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `ps_feature_flag`
+-- Dumping data for table `ps_feature_flag`
 --
 
 INSERT INTO `ps_feature_flag` (`id_feature_flag`, `name`, `state`, `label_wording`, `label_domain`, `description_wording`, `description_domain`) VALUES
@@ -6246,7 +6338,7 @@ CREATE TABLE `ps_feature_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_feature_lang`
+-- Dumping data for table `ps_feature_lang`
 --
 
 INSERT INTO `ps_feature_lang` (`id_feature`, `id_lang`, `name`) VALUES
@@ -6266,7 +6358,7 @@ CREATE TABLE `ps_feature_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_feature_product`
+-- Dumping data for table `ps_feature_product`
 --
 
 INSERT INTO `ps_feature_product` (`id_feature`, `id_product`, `id_feature_value`) VALUES
@@ -6306,7 +6398,7 @@ CREATE TABLE `ps_feature_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_feature_shop`
+-- Dumping data for table `ps_feature_shop`
 --
 
 INSERT INTO `ps_feature_shop` (`id_feature`, `id_shop`) VALUES
@@ -6326,7 +6418,7 @@ CREATE TABLE `ps_feature_value` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_feature_value`
+-- Dumping data for table `ps_feature_value`
 --
 
 INSERT INTO `ps_feature_value` (`id_feature_value`, `id_feature`, `custom`) VALUES
@@ -6354,7 +6446,7 @@ CREATE TABLE `ps_feature_value_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_feature_value_lang`
+-- Dumping data for table `ps_feature_value_lang`
 --
 
 INSERT INTO `ps_feature_value_lang` (`id_feature_value`, `id_lang`, `value`) VALUES
@@ -6381,7 +6473,7 @@ CREATE TABLE `ps_gender` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_gender`
+-- Dumping data for table `ps_gender`
 --
 
 INSERT INTO `ps_gender` (`id_gender`, `type`) VALUES
@@ -6401,7 +6493,7 @@ CREATE TABLE `ps_gender_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_gender_lang`
+-- Dumping data for table `ps_gender_lang`
 --
 
 INSERT INTO `ps_gender_lang` (`id_gender`, `id_lang`, `name`) VALUES
@@ -6424,13 +6516,13 @@ CREATE TABLE `ps_group` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_group`
+-- Dumping data for table `ps_group`
 --
 
 INSERT INTO `ps_group` (`id_group`, `reduction`, `price_display_method`, `show_prices`, `date_add`, `date_upd`) VALUES
-(1, '0.00', 0, 1, '2024-10-28 17:42:09', '2024-10-28 17:42:09'),
-(2, '0.00', 0, 1, '2024-10-28 17:42:09', '2024-10-28 17:42:09'),
-(3, '0.00', 0, 1, '2024-10-28 17:42:09', '2024-10-28 17:42:09');
+(1, 0.00, 0, 1, '2024-10-28 17:42:09', '2024-10-28 17:42:09'),
+(2, 0.00, 0, 1, '2024-10-28 17:42:09', '2024-10-28 17:42:09'),
+(3, 0.00, 0, 1, '2024-10-28 17:42:09', '2024-10-28 17:42:09');
 
 -- --------------------------------------------------------
 
@@ -6445,7 +6537,7 @@ CREATE TABLE `ps_group_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_group_lang`
+-- Dumping data for table `ps_group_lang`
 --
 
 INSERT INTO `ps_group_lang` (`id_group`, `id_lang`, `name`) VALUES
@@ -6478,7 +6570,7 @@ CREATE TABLE `ps_group_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_group_shop`
+-- Dumping data for table `ps_group_shop`
 --
 
 INSERT INTO `ps_group_shop` (`id_group`, `id_shop`) VALUES
@@ -6523,7 +6615,7 @@ CREATE TABLE `ps_guest` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_guest`
+-- Dumping data for table `ps_guest`
 --
 
 INSERT INTO `ps_guest` (`id_guest`, `id_operating_system`, `id_web_browser`, `id_customer`, `javascript`, `screen_resolution_x`, `screen_resolution_y`, `screen_color`, `sun_java`, `adobe_flash`, `adobe_director`, `apple_quicktime`, `real_player`, `windows_media`, `accept_language`, `mobile_theme`) VALUES
@@ -6541,7 +6633,13 @@ INSERT INTO `ps_guest` (`id_guest`, `id_operating_system`, `id_web_browser`, `id
 (14, 6, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pl', 0),
 (15, 6, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pl', 0),
 (16, 6, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pl', 0),
-(17, 6, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pl', 0);
+(17, 6, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pl', 0),
+(18, 6, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pl', 0),
+(19, 6, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pl', 0),
+(20, 6, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pl', 0),
+(21, 6, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pl', 0),
+(22, 6, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pl', 0),
+(23, 6, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pl', 0);
 
 -- --------------------------------------------------------
 
@@ -6555,7 +6653,7 @@ CREATE TABLE `ps_homeslider` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_homeslider`
+-- Dumping data for table `ps_homeslider`
 --
 
 INSERT INTO `ps_homeslider` (`id_homeslider_slides`, `id_shop`) VALUES
@@ -6574,7 +6672,7 @@ CREATE TABLE `ps_homeslider_slides` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_homeslider_slides`
+-- Dumping data for table `ps_homeslider_slides`
 --
 
 INSERT INTO `ps_homeslider_slides` (`id_homeslider_slides`, `position`, `active`) VALUES
@@ -6597,7 +6695,7 @@ CREATE TABLE `ps_homeslider_slides_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_homeslider_slides_lang`
+-- Dumping data for table `ps_homeslider_slides_lang`
 --
 
 INSERT INTO `ps_homeslider_slides_lang` (`id_homeslider_slides`, `id_lang`, `title`, `description`, `legend`, `url`, `image`) VALUES
@@ -6619,7 +6717,7 @@ CREATE TABLE `ps_hook` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_hook`
+-- Dumping data for table `ps_hook`
 --
 
 INSERT INTO `ps_hook` (`id_hook`, `name`, `title`, `description`, `active`, `position`) VALUES
@@ -7447,7 +7545,7 @@ CREATE TABLE `ps_hook_alias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_hook_alias`
+-- Dumping data for table `ps_hook_alias`
 --
 
 INSERT INTO `ps_hook_alias` (`id_hook_alias`, `alias`, `name`) VALUES
@@ -7554,7 +7652,7 @@ CREATE TABLE `ps_hook_module` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_hook_module`
+-- Dumping data for table `ps_hook_module`
 --
 
 INSERT INTO `ps_hook_module` (`id_module`, `id_shop`, `id_hook`, `position`) VALUES
@@ -7873,7 +7971,7 @@ CREATE TABLE `ps_image` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_image`
+-- Dumping data for table `ps_image`
 --
 
 INSERT INTO `ps_image` (`id_image`, `id_product`, `position`, `cover`) VALUES
@@ -7914,7 +8012,7 @@ CREATE TABLE `ps_image_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_image_lang`
+-- Dumping data for table `ps_image_lang`
 --
 
 INSERT INTO `ps_image_lang` (`id_image`, `id_lang`, `legend`) VALUES
@@ -7956,7 +8054,7 @@ CREATE TABLE `ps_image_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_image_shop`
+-- Dumping data for table `ps_image_shop`
 --
 
 INSERT INTO `ps_image_shop` (`id_product`, `id_image`, `id_shop`, `cover`) VALUES
@@ -8003,7 +8101,7 @@ CREATE TABLE `ps_image_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_image_type`
+-- Dumping data for table `ps_image_type`
 --
 
 INSERT INTO `ps_image_type` (`id_image_type`, `name`, `width`, `height`, `products`, `categories`, `manufacturers`, `suppliers`, `stores`) VALUES
@@ -8039,7 +8137,7 @@ CREATE TABLE `ps_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_info`
+-- Dumping data for table `ps_info`
 --
 
 INSERT INTO `ps_info` (`id_info`) VALUES
@@ -8059,7 +8157,7 @@ CREATE TABLE `ps_info_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_info_lang`
+-- Dumping data for table `ps_info_lang`
 --
 
 INSERT INTO `ps_info_lang` (`id_info`, `id_shop`, `id_lang`, `text`) VALUES
@@ -8077,7 +8175,7 @@ CREATE TABLE `ps_info_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_info_shop`
+-- Dumping data for table `ps_info_shop`
 --
 
 INSERT INTO `ps_info_shop` (`id_info`, `id_shop`) VALUES
@@ -8102,7 +8200,7 @@ CREATE TABLE `ps_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `ps_lang`
+-- Dumping data for table `ps_lang`
 --
 
 INSERT INTO `ps_lang` (`id_lang`, `name`, `active`, `iso_code`, `language_code`, `locale`, `date_format_lite`, `date_format_full`, `is_rtl`) VALUES
@@ -8120,7 +8218,7 @@ CREATE TABLE `ps_lang_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `ps_lang_shop`
+-- Dumping data for table `ps_lang_shop`
 --
 
 INSERT INTO `ps_lang_shop` (`id_lang`, `id_shop`) VALUES
@@ -8145,7 +8243,7 @@ CREATE TABLE `ps_layered_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_layered_category`
+-- Dumping data for table `ps_layered_category`
 --
 
 INSERT INTO `ps_layered_category` (`id_layered_category`, `id_shop`, `controller`, `id_category`, `id_value`, `type`, `position`, `filter_type`, `filter_show_limit`) VALUES
@@ -8295,7 +8393,7 @@ CREATE TABLE `ps_layered_filter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_layered_filter`
+-- Dumping data for table `ps_layered_filter`
 --
 
 INSERT INTO `ps_layered_filter` (`id_layered_filter`, `name`, `filters`, `n_categories`, `date_add`) VALUES
@@ -8313,7 +8411,7 @@ CREATE TABLE `ps_layered_filter_block` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_layered_filter_block`
+-- Dumping data for table `ps_layered_filter_block`
 --
 
 INSERT INTO `ps_layered_filter_block` (`hash`, `data`) VALUES
@@ -8328,7 +8426,10 @@ INSERT INTO `ps_layered_filter_block` (`hash`, `data`) VALUES
 ('8dffaeab3bbcde394beb556757678029', 'a:1:{s:7:\"filters\";a:0:{}}'),
 ('af71ca1f7657434c791d790f283cc6f9', 'a:1:{s:7:\"filters\";a:11:{i:0;a:7:{s:9:\"type_lite\";s:12:\"availability\";s:4:\"type\";s:12:\"availability\";s:6:\"id_key\";i:0;s:4:\"name\";s:13:\"Dostępność\";s:6:\"values\";a:2:{i:2;a:2:{s:4:\"name\";s:11:\"W magazynie\";s:3:\"nbr\";i:9;}i:0;a:2:{s:4:\"name\";s:12:\"Niedostępny\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:1;a:7:{s:9:\"type_lite\";s:6:\"extras\";s:4:\"type\";s:6:\"extras\";s:6:\"id_key\";i:0;s:4:\"name\";s:10:\"Selections\";s:6:\"values\";a:3:{s:4:\"sale\";a:2:{s:4:\"name\";s:7:\"On sale\";s:3:\"nbr\";i:0;}s:3:\"new\";a:2:{s:4:\"name\";s:11:\"New product\";s:3:\"nbr\";i:9;}s:8:\"discount\";a:2:{s:4:\"name\";s:10:\"Discounted\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:2;a:12:{s:9:\"type_lite\";s:5:\"price\";s:4:\"type\";s:5:\"price\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Cena\";s:3:\"max\";d:36;s:3:\"min\";d:11;s:4:\"unit\";s:3:\"zł\";s:14:\"specifications\";a:11:{s:6:\"symbol\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:12:\"currencyCode\";s:3:\"PLN\";s:14:\"currencySymbol\";s:3:\"zł\";s:13:\"numberSymbols\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:15:\"positivePattern\";s:12:\"#,##0.00 ¤\";s:15:\"negativePattern\";s:13:\"-#,##0.00 ¤\";s:17:\"maxFractionDigits\";i:2;s:17:\"minFractionDigits\";i:2;s:12:\"groupingUsed\";b:1;s:16:\"primaryGroupSize\";i:3;s:18:\"secondaryGroupSize\";i:3;}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:3:\"nbr\";i:9;s:5:\"value\";N;}i:3;a:7:{s:9:\"type_lite\";s:8:\"category\";s:4:\"type\";s:8:\"category\";s:6:\"id_key\";i:0;s:4:\"name\";s:9:\"Kategorie\";s:6:\"values\";a:0:{}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:4;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"1\";s:6:\"values\";a:2:{i:6;a:4:{s:3:\"nbr\";s:1:\"3\";s:4:\"name\";s:10:\"Matt paper\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:5;a:4:{s:3:\"nbr\";s:1:\"3\";s:4:\"name\";s:18:\"Recycled cardboard\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:11:\"Composition\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:5;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"2\";s:6:\"values\";a:1:{i:10;a:4:{s:3:\"nbr\";s:1:\"3\";s:4:\"name\";s:9:\"120 pages\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:8:\"Property\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:6;a:7:{s:9:\"type_lite\";s:12:\"manufacturer\";s:4:\"type\";s:12:\"manufacturer\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Marka\";s:6:\"values\";a:1:{i:2;a:2:{s:4:\"name\";s:14:\"Graphic Corner\";s:3:\"nbr\";s:1:\"9\";}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:7;a:7:{s:9:\"type_lite\";s:9:\"condition\";s:4:\"type\";s:9:\"condition\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Stan:\";s:6:\"values\";a:3:{s:3:\"new\";a:2:{s:4:\"name\";s:4:\"Nowy\";s:3:\"nbr\";s:1:\"9\";}s:4:\"used\";a:2:{s:4:\"name\";s:8:\"Używany\";s:3:\"nbr\";i:0;}s:11:\"refurbished\";a:2:{s:4:\"name\";s:9:\"Odnowiony\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:8;a:12:{s:9:\"type_lite\";s:6:\"weight\";s:4:\"type\";s:6:\"weight\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Waga\";s:3:\"max\";d:0.3;s:3:\"min\";d:0.3;s:4:\"unit\";s:2:\"kg\";s:14:\"specifications\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:5:\"value\";N;s:3:\"nbr\";i:9;}i:9;a:10:{s:9:\"type_lite\";s:18:\"id_attribute_group\";s:4:\"type\";s:18:\"id_attribute_group\";s:6:\"id_key\";s:1:\"3\";s:4:\"name\";s:9:\"Dimension\";s:14:\"is_color_group\";b:0;s:6:\"values\";a:3:{i:19;a:4:{s:4:\"name\";s:7:\"40x60cm\";s:3:\"nbr\";s:1:\"3\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:20;a:4:{s:4:\"name\";s:7:\"60x90cm\";s:3:\"nbr\";s:1:\"3\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:21;a:4:{s:4:\"name\";s:8:\"80x120cm\";s:3:\"nbr\";s:1:\"3\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:10;a:10:{s:9:\"type_lite\";s:18:\"id_attribute_group\";s:4:\"type\";s:18:\"id_attribute_group\";s:6:\"id_key\";s:1:\"4\";s:4:\"name\";s:10:\"Paper Type\";s:14:\"is_color_group\";b:0;s:6:\"values\";a:4:{i:22;a:4:{s:4:\"name\";s:5:\"Ruled\";s:3:\"nbr\";s:1:\"3\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:23;a:4:{s:4:\"name\";s:5:\"Plain\";s:3:\"nbr\";s:1:\"3\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:24;a:4:{s:4:\"name\";s:8:\"Squarred\";s:3:\"nbr\";s:1:\"3\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:25;a:4:{s:4:\"name\";s:5:\"Doted\";s:3:\"nbr\";s:1:\"3\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}}}'),
 ('c3472b35e09c5c3aa26a5d39af308a9c', 'a:1:{s:7:\"filters\";a:0:{}}'),
+('c3eaa4a60d9807441019a11dbd71a470', 'a:1:{s:7:\"filters\";a:0:{}}'),
 ('cbaf09941c5f4e55676ee8580f9bdd55', 'a:1:{s:7:\"filters\";a:7:{i:0;a:7:{s:9:\"type_lite\";s:12:\"availability\";s:4:\"type\";s:12:\"availability\";s:6:\"id_key\";i:0;s:4:\"name\";s:13:\"Dostępność\";s:6:\"values\";a:2:{i:2;a:2:{s:4:\"name\";s:11:\"W magazynie\";s:3:\"nbr\";i:0;}i:0;a:2:{s:4:\"name\";s:12:\"Niedostępny\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:1;a:7:{s:9:\"type_lite\";s:6:\"extras\";s:4:\"type\";s:6:\"extras\";s:6:\"id_key\";i:0;s:4:\"name\";s:10:\"Selections\";s:6:\"values\";a:3:{s:4:\"sale\";a:2:{s:4:\"name\";s:7:\"On sale\";s:3:\"nbr\";i:0;}s:3:\"new\";a:2:{s:4:\"name\";s:11:\"New product\";s:3:\"nbr\";i:0;}s:8:\"discount\";a:2:{s:4:\"name\";s:10:\"Discounted\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:2;a:12:{s:9:\"type_lite\";s:5:\"price\";s:4:\"type\";s:5:\"price\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Cena\";s:3:\"max\";d:0;s:3:\"min\";d:0;s:4:\"unit\";s:3:\"zł\";s:14:\"specifications\";a:11:{s:6:\"symbol\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:12:\"currencyCode\";s:3:\"PLN\";s:14:\"currencySymbol\";s:3:\"zł\";s:13:\"numberSymbols\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:15:\"positivePattern\";s:12:\"#,##0.00 ¤\";s:15:\"negativePattern\";s:13:\"-#,##0.00 ¤\";s:17:\"maxFractionDigits\";i:2;s:17:\"minFractionDigits\";i:2;s:12:\"groupingUsed\";b:1;s:16:\"primaryGroupSize\";i:3;s:18:\"secondaryGroupSize\";i:3;}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:3:\"nbr\";i:0;s:5:\"value\";N;}i:3;a:7:{s:9:\"type_lite\";s:8:\"category\";s:4:\"type\";s:8:\"category\";s:6:\"id_key\";i:0;s:4:\"name\";s:9:\"Kategorie\";s:6:\"values\";a:0:{}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:4;a:7:{s:9:\"type_lite\";s:12:\"manufacturer\";s:4:\"type\";s:12:\"manufacturer\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Marka\";s:6:\"values\";a:0:{}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:5;a:7:{s:9:\"type_lite\";s:9:\"condition\";s:4:\"type\";s:9:\"condition\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Stan:\";s:6:\"values\";a:3:{s:3:\"new\";a:2:{s:4:\"name\";s:4:\"Nowy\";s:3:\"nbr\";i:0;}s:4:\"used\";a:2:{s:4:\"name\";s:8:\"Używany\";s:3:\"nbr\";i:0;}s:11:\"refurbished\";a:2:{s:4:\"name\";s:9:\"Odnowiony\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:6;a:0:{}}}'),
+('ec693875414cc6adea27343a2f27206a', 'a:1:{s:7:\"filters\";a:0:{}}'),
+('f2619c289a72ef0027dfb8d3c9ffa28a', 'a:1:{s:7:\"filters\";a:10:{i:0;a:7:{s:9:\"type_lite\";s:12:\"availability\";s:4:\"type\";s:12:\"availability\";s:6:\"id_key\";i:0;s:4:\"name\";s:13:\"Dostępność\";s:6:\"values\";a:2:{i:2;a:2:{s:4:\"name\";s:11:\"W magazynie\";s:3:\"nbr\";i:1;}i:0;a:2:{s:4:\"name\";s:12:\"Niedostępny\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:1;a:7:{s:9:\"type_lite\";s:6:\"extras\";s:4:\"type\";s:6:\"extras\";s:6:\"id_key\";i:0;s:4:\"name\";s:10:\"Selections\";s:6:\"values\";a:3:{s:4:\"sale\";a:2:{s:4:\"name\";s:7:\"On sale\";s:3:\"nbr\";i:0;}s:3:\"new\";a:2:{s:4:\"name\";s:11:\"New product\";s:3:\"nbr\";i:1;}s:8:\"discount\";a:2:{s:4:\"name\";s:10:\"Discounted\";s:3:\"nbr\";i:1;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:2;a:12:{s:9:\"type_lite\";s:5:\"price\";s:4:\"type\";s:5:\"price\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Cena\";s:3:\"max\";d:45;s:3:\"min\";d:35;s:4:\"unit\";s:3:\"zł\";s:14:\"specifications\";a:11:{s:6:\"symbol\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:12:\"currencyCode\";s:3:\"PLN\";s:14:\"currencySymbol\";s:3:\"zł\";s:13:\"numberSymbols\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:15:\"positivePattern\";s:12:\"#,##0.00 ¤\";s:15:\"negativePattern\";s:13:\"-#,##0.00 ¤\";s:17:\"maxFractionDigits\";i:2;s:17:\"minFractionDigits\";i:2;s:12:\"groupingUsed\";b:1;s:16:\"primaryGroupSize\";i:3;s:18:\"secondaryGroupSize\";i:3;}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:3:\"nbr\";i:1;s:5:\"value\";N;}i:3;a:7:{s:9:\"type_lite\";s:8:\"category\";s:4:\"type\";s:8:\"category\";s:6:\"id_key\";i:0;s:4:\"name\";s:9:\"Kategorie\";s:6:\"values\";a:0:{}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:4;a:10:{s:9:\"type_lite\";s:18:\"id_attribute_group\";s:4:\"type\";s:18:\"id_attribute_group\";s:6:\"id_key\";s:1:\"1\";s:4:\"name\";s:7:\"Rozmiar\";s:14:\"is_color_group\";b:0;s:6:\"values\";a:4:{i:1;a:4:{s:4:\"name\";s:1:\"S\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:2;a:4:{s:4:\"name\";s:1:\"M\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:3;a:4:{s:4:\"name\";s:1:\"L\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:4;a:4:{s:4:\"name\";s:2:\"XL\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:5;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"1\";s:6:\"values\";a:1:{i:4;a:4:{s:3:\"nbr\";s:1:\"1\";s:4:\"name\";s:8:\"Bawełna\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:11:\"Composition\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:6;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"2\";s:6:\"values\";a:1:{i:7;a:4:{s:3:\"nbr\";s:1:\"1\";s:4:\"name\";s:12:\"Long sleeves\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:8:\"Property\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:7;a:7:{s:9:\"type_lite\";s:12:\"manufacturer\";s:4:\"type\";s:12:\"manufacturer\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Marka\";s:6:\"values\";a:1:{i:1;a:2:{s:4:\"name\";s:8:\"Aquarius\";s:3:\"nbr\";s:1:\"1\";}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:8;a:7:{s:9:\"type_lite\";s:9:\"condition\";s:4:\"type\";s:9:\"condition\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Stan:\";s:6:\"values\";a:3:{s:3:\"new\";a:2:{s:4:\"name\";s:4:\"Nowy\";s:3:\"nbr\";s:1:\"1\";}s:4:\"used\";a:2:{s:4:\"name\";s:8:\"Używany\";s:3:\"nbr\";i:0;}s:11:\"refurbished\";a:2:{s:4:\"name\";s:9:\"Odnowiony\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:9;a:12:{s:9:\"type_lite\";s:6:\"weight\";s:4:\"type\";s:6:\"weight\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Waga\";s:3:\"max\";d:0.29999999999999999;s:3:\"min\";d:0.29999999999999999;s:4:\"unit\";s:2:\"kg\";s:14:\"specifications\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:5:\"value\";N;s:3:\"nbr\";i:1;}}}'),
 ('f861404d7f6e828c19b2f10275fe36f3', 'a:1:{s:7:\"filters\";a:0:{}}'),
 ('f8fa7c9a40f3b2a3ac087fd94b0d1854', 'a:1:{s:7:\"filters\";a:11:{i:0;a:7:{s:9:\"type_lite\";s:12:\"availability\";s:4:\"type\";s:12:\"availability\";s:6:\"id_key\";i:0;s:4:\"name\";s:13:\"Dostępność\";s:6:\"values\";a:2:{i:2;a:2:{s:4:\"name\";s:11:\"W magazynie\";s:3:\"nbr\";i:9;}i:0;a:2:{s:4:\"name\";s:12:\"Niedostępny\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:1;a:7:{s:9:\"type_lite\";s:6:\"extras\";s:4:\"type\";s:6:\"extras\";s:6:\"id_key\";i:0;s:4:\"name\";s:10:\"Selections\";s:6:\"values\";a:3:{s:4:\"sale\";a:2:{s:4:\"name\";s:7:\"On sale\";s:3:\"nbr\";i:0;}s:3:\"new\";a:2:{s:4:\"name\";s:11:\"New product\";s:3:\"nbr\";i:9;}s:8:\"discount\";a:2:{s:4:\"name\";s:10:\"Discounted\";s:3:\"nbr\";i:2;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:2;a:12:{s:9:\"type_lite\";s:5:\"price\";s:4:\"type\";s:5:\"price\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Cena\";s:3:\"max\";d:45;s:3:\"min\";d:14;s:4:\"unit\";s:3:\"zł\";s:14:\"specifications\";a:11:{s:6:\"symbol\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:12:\"currencyCode\";s:3:\"PLN\";s:14:\"currencySymbol\";s:3:\"zł\";s:13:\"numberSymbols\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:15:\"positivePattern\";s:12:\"#,##0.00 ¤\";s:15:\"negativePattern\";s:13:\"-#,##0.00 ¤\";s:17:\"maxFractionDigits\";i:2;s:17:\"minFractionDigits\";i:2;s:12:\"groupingUsed\";b:1;s:16:\"primaryGroupSize\";i:3;s:18:\"secondaryGroupSize\";i:3;}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:3:\"nbr\";i:9;s:5:\"value\";N;}i:3;a:7:{s:9:\"type_lite\";s:8:\"category\";s:4:\"type\";s:8:\"category\";s:6:\"id_key\";i:0;s:4:\"name\";s:9:\"Kategorie\";s:6:\"values\";a:0:{}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:4;a:10:{s:9:\"type_lite\";s:18:\"id_attribute_group\";s:4:\"type\";s:18:\"id_attribute_group\";s:6:\"id_key\";s:1:\"1\";s:4:\"name\";s:7:\"Rozmiar\";s:14:\"is_color_group\";b:0;s:6:\"values\";a:4:{i:1;a:4:{s:4:\"name\";s:1:\"S\";s:3:\"nbr\";s:1:\"2\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:2;a:4:{s:4:\"name\";s:1:\"M\";s:3:\"nbr\";s:1:\"2\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:3;a:4:{s:4:\"name\";s:1:\"L\";s:3:\"nbr\";s:1:\"2\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:4;a:4:{s:4:\"name\";s:2:\"XL\";s:3:\"nbr\";s:1:\"2\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:5;a:10:{s:9:\"type_lite\";s:18:\"id_attribute_group\";s:4:\"type\";s:18:\"id_attribute_group\";s:6:\"id_key\";s:1:\"2\";s:4:\"name\";s:5:\"Kolor\";s:14:\"is_color_group\";b:1;s:6:\"values\";a:2:{i:8;a:5:{s:4:\"name\";s:6:\"Biały\";s:3:\"nbr\";s:1:\"4\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:5:\"color\";s:7:\"#ffffff\";}i:11;a:5:{s:4:\"name\";s:6:\"czarny\";s:3:\"nbr\";s:1:\"4\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:5:\"color\";s:7:\"#434A54\";}}s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:6;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"1\";s:6:\"values\";a:3:{i:4;a:4:{s:3:\"nbr\";s:1:\"2\";s:4:\"name\";s:8:\"Bawełna\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:3;a:4:{s:3:\"nbr\";s:1:\"4\";s:4:\"name\";s:7:\"Ceramic\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:1;a:4:{s:3:\"nbr\";s:1:\"3\";s:4:\"name\";s:9:\"Poliester\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:11:\"Composition\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:7;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"2\";s:6:\"values\";a:3:{i:7;a:4:{s:3:\"nbr\";s:1:\"1\";s:4:\"name\";s:12:\"Long sleeves\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:9;a:4:{s:3:\"nbr\";s:1:\"3\";s:4:\"name\";s:15:\"Removable cover\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:8;a:4:{s:3:\"nbr\";s:1:\"1\";s:4:\"name\";s:13:\"Short sleeves\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:8:\"Property\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:8;a:7:{s:9:\"type_lite\";s:12:\"manufacturer\";s:4:\"type\";s:12:\"manufacturer\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Marka\";s:6:\"values\";a:1:{i:1;a:2:{s:4:\"name\";s:13:\"Studio Design\";s:3:\"nbr\";s:1:\"9\";}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:9;a:7:{s:9:\"type_lite\";s:9:\"condition\";s:4:\"type\";s:9:\"condition\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Stan:\";s:6:\"values\";a:3:{s:3:\"new\";a:2:{s:4:\"name\";s:4:\"Nowy\";s:3:\"nbr\";s:1:\"9\";}s:4:\"used\";a:2:{s:4:\"name\";s:8:\"Używany\";s:3:\"nbr\";i:0;}s:11:\"refurbished\";a:2:{s:4:\"name\";s:9:\"Odnowiony\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:10;a:12:{s:9:\"type_lite\";s:6:\"weight\";s:4:\"type\";s:6:\"weight\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Waga\";s:3:\"max\";d:0.3;s:3:\"min\";d:0.3;s:4:\"unit\";s:2:\"kg\";s:14:\"specifications\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:5:\"value\";N;s:3:\"nbr\";i:9;}}}');
 
@@ -8344,7 +8445,7 @@ CREATE TABLE `ps_layered_filter_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_layered_filter_shop`
+-- Dumping data for table `ps_layered_filter_shop`
 --
 
 INSERT INTO `ps_layered_filter_shop` (`id_layered_filter`, `id_shop`) VALUES
@@ -8362,7 +8463,7 @@ CREATE TABLE `ps_layered_indexable_attribute_group` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_layered_indexable_attribute_group`
+-- Dumping data for table `ps_layered_indexable_attribute_group`
 --
 
 INSERT INTO `ps_layered_indexable_attribute_group` (`id_attribute_group`, `indexable`) VALUES
@@ -8409,7 +8510,7 @@ CREATE TABLE `ps_layered_indexable_feature` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_layered_indexable_feature`
+-- Dumping data for table `ps_layered_indexable_feature`
 --
 
 INSERT INTO `ps_layered_indexable_feature` (`id_feature`, `indexable`) VALUES
@@ -8458,31 +8559,31 @@ CREATE TABLE `ps_layered_price_index` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_layered_price_index`
+-- Dumping data for table `ps_layered_price_index`
 --
 
 INSERT INTO `ps_layered_price_index` (`id_product`, `id_currency`, `id_shop`, `price_min`, `price_max`, `id_country`) VALUES
-(1, 1, 1, '23.517600', '29.397000', 14),
-(2, 1, 1, '35.325600', '44.157000', 14),
-(3, 1, 1, '35.670000', '35.670000', 14),
-(4, 1, 1, '35.670000', '35.670000', 14),
-(5, 1, 1, '35.670000', '35.670000', 14),
-(6, 1, 1, '14.637000', '14.637000', 14),
-(7, 1, 1, '14.637000', '14.637000', 14),
-(8, 1, 1, '14.637000', '14.637000', 14),
-(9, 1, 1, '23.247000', '23.247000', 14),
-(10, 1, 1, '23.247000', '23.247000', 14),
-(11, 1, 1, '23.247000', '23.247000', 14),
-(12, 1, 1, '11.070000', '11.070000', 14),
-(13, 1, 1, '11.070000', '11.070000', 14),
-(14, 1, 1, '11.070000', '11.070000', 14),
-(15, 1, 1, '43.050000', '43.050000', 14),
-(16, 1, 1, '15.867000', '15.867000', 14),
-(17, 1, 1, '15.867000', '15.867000', 14),
-(18, 1, 1, '15.867000', '15.867000', 14),
-(19, 1, 1, '17.097000', '17.097000', 14),
-(20, 1, 1, '0.000000', '0.000000', 14),
-(21, 1, 1, '0.000000', '0.000000', 14);
+(1, 1, 1, 23.517600, 29.397000, 14),
+(2, 1, 1, 35.325600, 44.157000, 14),
+(3, 1, 1, 35.670000, 35.670000, 14),
+(4, 1, 1, 35.670000, 35.670000, 14),
+(5, 1, 1, 35.670000, 35.670000, 14),
+(6, 1, 1, 14.637000, 14.637000, 14),
+(7, 1, 1, 14.637000, 14.637000, 14),
+(8, 1, 1, 14.637000, 14.637000, 14),
+(9, 1, 1, 23.247000, 23.247000, 14),
+(10, 1, 1, 23.247000, 23.247000, 14),
+(11, 1, 1, 23.247000, 23.247000, 14),
+(12, 1, 1, 11.070000, 11.070000, 14),
+(13, 1, 1, 11.070000, 11.070000, 14),
+(14, 1, 1, 11.070000, 11.070000, 14),
+(15, 1, 1, 43.050000, 43.050000, 14),
+(16, 1, 1, 15.867000, 15.867000, 14),
+(17, 1, 1, 15.867000, 15.867000, 14),
+(18, 1, 1, 15.867000, 15.867000, 14),
+(19, 1, 1, 17.097000, 17.097000, 14),
+(20, 1, 1, 0.000000, 0.000000, 14),
+(21, 1, 1, 0.000000, 0.000000, 14);
 
 -- --------------------------------------------------------
 
@@ -8498,7 +8599,7 @@ CREATE TABLE `ps_layered_product_attribute` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_layered_product_attribute`
+-- Dumping data for table `ps_layered_product_attribute`
 --
 
 INSERT INTO `ps_layered_product_attribute` (`id_attribute`, `id_product`, `id_attribute_group`, `id_shop`) VALUES
@@ -8580,12 +8681,12 @@ CREATE TABLE `ps_link_block` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_link_block`
+-- Dumping data for table `ps_link_block`
 --
 
 INSERT INTO `ps_link_block` (`id_link_block`, `id_hook`, `position`, `content`) VALUES
-(1, 41, 0, '{\"cms\":[\"1\",\"2\",\"3\",\"4\",\"5\",\"6\"],\"static\":[false],\"product\":[false],\"category\":[false]}'),
-(2, 41, 1, '{\"cms\":[false],\"static\":{\"1\":\"sitemap\",\"2\":\"stores\"},\"product\":[\"prices-drop\",\"new-products\",\"best-sales\"],\"category\":[false]}');
+(1, 41, 0, '{\"cms\":{\"0\":\"1\",\"1\":\"2\",\"2\":\"3\",\"3\":\"4\",\"4\":\"5\",\"7\":\"7\",\"9\":\"6\"},\"static\":[false],\"product\":[false],\"category\":[false]}'),
+(2, 41, 1, '{\"cms\":[false],\"static\":[false],\"product\":[\"prices-drop\",\"new-products\",\"best-sales\"],\"category\":[false]}');
 
 -- --------------------------------------------------------
 
@@ -8601,12 +8702,12 @@ CREATE TABLE `ps_link_block_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_link_block_lang`
+-- Dumping data for table `ps_link_block_lang`
 --
 
 INSERT INTO `ps_link_block_lang` (`id_link_block`, `id_lang`, `name`, `custom_content`) VALUES
 (1, 1, 'Informacja', NULL),
-(2, 1, 'Nasza oferta', '[{\"title\":\"Zapraszamy do wsp\\u00f3\\u0142pracy\",\"url\":\"http:\\/\\/localhost\\/monsteriada-prestashop-clone\\/zapraszamy-do-wspolpracy\"},{\"title\":\"Kontakt z nami\",\"url\":\"http:\\/\\/localhost\\/monsteriada-prestashop-clone\\/kontakt\"}]');
+(2, 1, 'Nasza oferta', '[{\"title\":\"Mapa strony\",\"url\":\"http:\\/\\/localhost:8080\\/content\\/mapa-strony\"},{\"title\":\"Prezent na ka\\u017cd\\u0105 okazj\\u0119\",\"url\":\"http:\\/\\/localhost:8080\\/content\\/10-prezent-na-kazda-okazje\"},{\"title\":\"Zapraszamy do wsp\\u00f3\\u0142pracy\",\"url\":\"http:\\/\\/localhost:8080\\/content\\/8-zapraszamy-do-wspolpracy\"},{\"title\":\"Kontakt z nami\",\"url\":\"http:\\/\\/localhost:8080\\/kontakt\"}]');
 
 -- --------------------------------------------------------
 
@@ -8621,7 +8722,7 @@ CREATE TABLE `ps_link_block_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_link_block_shop`
+-- Dumping data for table `ps_link_block_shop`
 --
 
 INSERT INTO `ps_link_block_shop` (`id_link_block`, `id_shop`, `position`) VALUES
@@ -8651,7 +8752,7 @@ CREATE TABLE `ps_log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_log`
+-- Dumping data for table `ps_log`
 --
 
 INSERT INTO `ps_log` (`id_log`, `severity`, `error_code`, `message`, `object_type`, `object_id`, `id_shop`, `id_shop_group`, `id_lang`, `in_all_shops`, `id_employee`, `date_add`, `date_upd`) VALUES
@@ -8942,9 +9043,9 @@ INSERT INTO `ps_log` (`id_log`, `severity`, `error_code`, `message`, `object_typ
 (285, 1, 0, 'Module homepagecontent has no vendor folder', '', 0, 1, NULL, 1, 0, 1, '2024-11-14 01:53:34', '2024-11-14 01:53:34'),
 (286, 1, 0, 'Protect vendor folder in module homepagecontent', '', 0, 1, NULL, 1, 0, 1, '2024-11-14 01:54:25', '2024-11-14 01:54:25'),
 (287, 1, 0, 'Module homepagecontent has no vendor folder', '', 0, 1, NULL, 1, 0, 1, '2024-11-14 01:54:25', '2024-11-14 01:54:25'),
-(288, 1, 0, 'Połączenie z panelem administracyjnym z ::1', '', 0, NULL, NULL, 1, 1, 2, '2024-11-14 12:01:57', '2024-11-14 12:01:57'),
-(289, 1, 0, 'Połączenie z panelem administracyjnym z ::1', '', 0, NULL, NULL, 1, 1, 2, '2024-11-14 17:12:17', '2024-11-14 17:12:17'),
-(290, 1, 0, 'Połączenie z panelem administracyjnym z ::1', '', 0, NULL, NULL, 1, 1, 2, '2024-11-14 19:05:44', '2024-11-14 19:05:44');
+(288, 1, 0, 'Połączenie z panelem administracyjnym z 172.18.0.1', '', 0, NULL, NULL, 1, 1, 2, '2024-11-14 18:17:14', '2024-11-14 18:17:14'),
+(289, 1, 0, 'Połączenie z panelem administracyjnym z 172.18.0.1', '', 0, NULL, NULL, 1, 1, 2, '2024-11-15 17:43:28', '2024-11-15 17:43:28'),
+(290, 1, 0, 'Połączenie z panelem administracyjnym z 172.18.0.1', '', 0, NULL, NULL, 1, 1, 2, '2024-11-16 17:31:33', '2024-11-16 17:31:33');
 
 -- --------------------------------------------------------
 
@@ -8976,7 +9077,7 @@ CREATE TABLE `ps_manufacturer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_manufacturer`
+-- Dumping data for table `ps_manufacturer`
 --
 
 INSERT INTO `ps_manufacturer` (`id_manufacturer`, `name`, `date_add`, `date_upd`, `active`) VALUES
@@ -9008,7 +9109,7 @@ CREATE TABLE `ps_manufacturer_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_manufacturer_lang`
+-- Dumping data for table `ps_manufacturer_lang`
 --
 
 INSERT INTO `ps_manufacturer_lang` (`id_manufacturer`, `id_lang`, `description`, `short_description`, `meta_title`, `meta_keywords`, `meta_description`) VALUES
@@ -9035,7 +9136,7 @@ CREATE TABLE `ps_manufacturer_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_manufacturer_shop`
+-- Dumping data for table `ps_manufacturer_shop`
 --
 
 INSERT INTO `ps_manufacturer_shop` (`id_manufacturer`, `id_shop`) VALUES
@@ -9105,7 +9206,7 @@ CREATE TABLE `ps_meta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_meta`
+-- Dumping data for table `ps_meta`
 --
 
 INSERT INTO `ps_meta` (`id_meta`, `page`, `configurable`) VALUES
@@ -9167,7 +9268,7 @@ CREATE TABLE `ps_meta_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_meta_lang`
+-- Dumping data for table `ps_meta_lang`
 --
 
 INSERT INTO `ps_meta_lang` (`id_meta`, `id_shop`, `id_lang`, `title`, `description`, `keywords`, `url_rewrite`) VALUES
@@ -9218,7 +9319,7 @@ CREATE TABLE `ps_module` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_module`
+-- Dumping data for table `ps_module`
 --
 
 INSERT INTO `ps_module` (`id_module`, `name`, `active`, `version`) VALUES
@@ -9299,7 +9400,7 @@ CREATE TABLE `ps_module_access` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_module_access`
+-- Dumping data for table `ps_module_access`
 --
 
 INSERT INTO `ps_module_access` (`id_profile`, `id_authorization_role`) VALUES
@@ -9573,7 +9674,7 @@ CREATE TABLE `ps_module_carrier` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_module_carrier`
+-- Dumping data for table `ps_module_carrier`
 --
 
 INSERT INTO `ps_module_carrier` (`id_module`, `id_shop`, `id_reference`) VALUES
@@ -9603,7 +9704,7 @@ CREATE TABLE `ps_module_country` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_module_country`
+-- Dumping data for table `ps_module_country`
 --
 
 INSERT INTO `ps_module_country` (`id_module`, `id_shop`, `id_country`) VALUES
@@ -9823,7 +9924,7 @@ CREATE TABLE `ps_module_currency` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_module_currency`
+-- Dumping data for table `ps_module_currency`
 --
 
 INSERT INTO `ps_module_currency` (`id_module`, `id_shop`, `id_currency`) VALUES
@@ -9844,7 +9945,7 @@ CREATE TABLE `ps_module_group` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_module_group`
+-- Dumping data for table `ps_module_group`
 --
 
 INSERT INTO `ps_module_group` (`id_module`, `id_shop`, `id_group`) VALUES
@@ -10056,15 +10157,14 @@ CREATE TABLE `ps_module_history` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `ps_module_history`
+-- Dumping data for table `ps_module_history`
 --
 
 INSERT INTO `ps_module_history` (`id`, `id_employee`, `id_module`, `date_add`, `date_upd`) VALUES
 (1, 2, 12, '2024-11-11 12:42:33', '2024-11-11 12:44:40'),
-(2, 2, 15, '2024-11-11 12:44:52', '2024-11-14 19:19:25'),
+(2, 2, 15, '2024-11-11 12:44:52', '2024-11-11 12:44:52'),
 (3, 2, 26, '2024-11-11 12:54:46', '2024-11-11 14:33:49'),
-(4, 1, 12, '2024-11-13 23:46:16', '2024-11-14 01:20:14'),
-(5, 2, 28, '2024-11-14 12:20:55', '2024-11-14 19:06:15');
+(4, 1, 12, '2024-11-13 23:46:16', '2024-11-14 01:20:14');
 
 -- --------------------------------------------------------
 
@@ -10093,7 +10193,7 @@ CREATE TABLE `ps_module_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_module_shop`
+-- Dumping data for table `ps_module_shop`
 --
 
 INSERT INTO `ps_module_shop` (`id_module`, `id_shop`, `enable_device`) VALUES
@@ -10172,7 +10272,7 @@ CREATE TABLE `ps_operating_system` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_operating_system`
+-- Dumping data for table `ps_operating_system`
 --
 
 INSERT INTO `ps_operating_system` (`id_operating_system`, `name`) VALUES
@@ -10243,16 +10343,16 @@ CREATE TABLE `ps_orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_orders`
+-- Dumping data for table `ps_orders`
 --
 
 INSERT INTO `ps_orders` (`id_order`, `reference`, `id_shop_group`, `id_shop`, `id_carrier`, `id_lang`, `id_customer`, `id_cart`, `id_currency`, `id_address_delivery`, `id_address_invoice`, `current_state`, `secure_key`, `payment`, `conversion_rate`, `module`, `recyclable`, `gift`, `gift_message`, `mobile_theme`, `shipping_number`, `total_discounts`, `total_discounts_tax_incl`, `total_discounts_tax_excl`, `total_paid`, `total_paid_tax_incl`, `total_paid_tax_excl`, `total_paid_real`, `total_products`, `total_products_wt`, `total_shipping`, `total_shipping_tax_incl`, `total_shipping_tax_excl`, `carrier_tax_rate`, `total_wrapping`, `total_wrapping_tax_incl`, `total_wrapping_tax_excl`, `round_mode`, `round_type`, `invoice_number`, `delivery_number`, `invoice_date`, `delivery_date`, `valid`, `date_add`, `date_upd`, `note`) VALUES
-(1, 'XKBKNABJK', 1, 1, 2, 1, 2, 1, 1, 5, 5, 6, 'b44a6d9efd7a0076a0fbce6b15eaf3b1', 'Payment by check', '1.000000', 'ps_checkpayment', 0, 0, '', 0, '', '0.000000', '0.000000', '0.000000', '61.800000', '68.200000', '66.800000', '0.000000', '59.800000', '59.800000', '7.000000', '8.400000', '7.000000', '0.000', '0.000000', '0.000000', '0.000000', 0, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2024-10-28 17:46:40', '2024-10-28 17:46:40', 'Test'),
-(2, 'OHSATSERP', 1, 1, 2, 1, 2, 2, 1, 5, 5, 1, 'b44a6d9efd7a0076a0fbce6b15eaf3b1', 'Payment by check', '1.000000', 'ps_checkpayment', 0, 0, '', 0, '', '0.000000', '0.000000', '0.000000', '169.900000', '169.900000', '169.900000', '0.000000', '169.900000', '169.900000', '0.000000', '0.000000', '0.000000', '0.000', '0.000000', '0.000000', '0.000000', 0, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2024-10-28 17:46:40', '2024-10-28 17:46:40', ''),
-(3, 'UOYEVOLI', 1, 1, 2, 1, 2, 3, 1, 5, 5, 8, 'b44a6d9efd7a0076a0fbce6b15eaf3b1', 'Payment by check', '1.000000', 'ps_checkpayment', 0, 0, '', 0, '', '0.000000', '0.000000', '0.000000', '14.900000', '21.300000', '19.900000', '0.000000', '12.900000', '12.900000', '7.000000', '8.400000', '7.000000', '0.000', '0.000000', '0.000000', '0.000000', 0, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2024-10-28 17:46:40', '2024-10-28 17:46:40', ''),
-(4, 'FFATNOMMJ', 1, 1, 2, 1, 2, 4, 1, 5, 5, 1, 'b44a6d9efd7a0076a0fbce6b15eaf3b1', 'Payment by check', '1.000000', 'ps_checkpayment', 0, 0, '', 0, '', '0.000000', '0.000000', '0.000000', '14.900000', '21.300000', '19.900000', '0.000000', '12.900000', '12.900000', '7.000000', '8.400000', '7.000000', '0.000', '0.000000', '0.000000', '0.000000', 0, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2024-10-28 17:46:40', '2024-10-28 17:46:40', ''),
-(5, 'KHWLILZLL', 1, 1, 2, 1, 2, 5, 1, 5, 5, 10, 'b44a6d9efd7a0076a0fbce6b15eaf3b1', 'Bank wire', '1.000000', 'ps_wirepayment', 0, 0, '', 0, '', '0.000000', '0.000000', '0.000000', '20.900000', '27.300000', '25.900000', '0.000000', '18.900000', '18.900000', '7.000000', '8.400000', '7.000000', '0.000', '0.000000', '0.000000', '0.000000', 0, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2024-10-28 17:46:40', '2024-10-28 17:46:40', ''),
-(6, 'LCSIYKVUV', 1, 1, 1, 1, 4, 9, 1, 7, 7, 10, 'abac108c8c20a7f5402c4332c7bc06ff', 'Płatności elektroniczne', '1.000000', 'ps_wirepayment', 0, 0, '', 0, '', '0.000000', '0.000000', '0.000000', '23.520000', '23.520000', '19.120000', '0.000000', '19.120000', '23.520000', '0.000000', '0.000000', '0.000000', '23.000', '0.000000', '0.000000', '0.000000', 2, 2, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2024-11-11 14:00:29', '2024-11-11 14:00:29', '');
+(1, 'XKBKNABJK', 1, 1, 2, 1, 2, 1, 1, 5, 5, 6, 'b44a6d9efd7a0076a0fbce6b15eaf3b1', 'Payment by check', 1.000000, 'ps_checkpayment', 0, 0, '', 0, '', 0.000000, 0.000000, 0.000000, 61.800000, 68.200000, 66.800000, 0.000000, 59.800000, 59.800000, 7.000000, 8.400000, 7.000000, 0.000, 0.000000, 0.000000, 0.000000, 0, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2024-10-28 17:46:40', '2024-10-28 17:46:40', 'Test'),
+(2, 'OHSATSERP', 1, 1, 2, 1, 2, 2, 1, 5, 5, 1, 'b44a6d9efd7a0076a0fbce6b15eaf3b1', 'Payment by check', 1.000000, 'ps_checkpayment', 0, 0, '', 0, '', 0.000000, 0.000000, 0.000000, 169.900000, 169.900000, 169.900000, 0.000000, 169.900000, 169.900000, 0.000000, 0.000000, 0.000000, 0.000, 0.000000, 0.000000, 0.000000, 0, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2024-10-28 17:46:40', '2024-10-28 17:46:40', ''),
+(3, 'UOYEVOLI', 1, 1, 2, 1, 2, 3, 1, 5, 5, 8, 'b44a6d9efd7a0076a0fbce6b15eaf3b1', 'Payment by check', 1.000000, 'ps_checkpayment', 0, 0, '', 0, '', 0.000000, 0.000000, 0.000000, 14.900000, 21.300000, 19.900000, 0.000000, 12.900000, 12.900000, 7.000000, 8.400000, 7.000000, 0.000, 0.000000, 0.000000, 0.000000, 0, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2024-10-28 17:46:40', '2024-10-28 17:46:40', ''),
+(4, 'FFATNOMMJ', 1, 1, 2, 1, 2, 4, 1, 5, 5, 1, 'b44a6d9efd7a0076a0fbce6b15eaf3b1', 'Payment by check', 1.000000, 'ps_checkpayment', 0, 0, '', 0, '', 0.000000, 0.000000, 0.000000, 14.900000, 21.300000, 19.900000, 0.000000, 12.900000, 12.900000, 7.000000, 8.400000, 7.000000, 0.000, 0.000000, 0.000000, 0.000000, 0, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2024-10-28 17:46:40', '2024-10-28 17:46:40', ''),
+(5, 'KHWLILZLL', 1, 1, 2, 1, 2, 5, 1, 5, 5, 10, 'b44a6d9efd7a0076a0fbce6b15eaf3b1', 'Bank wire', 1.000000, 'ps_wirepayment', 0, 0, '', 0, '', 0.000000, 0.000000, 0.000000, 20.900000, 27.300000, 25.900000, 0.000000, 18.900000, 18.900000, 7.000000, 8.400000, 7.000000, 0.000, 0.000000, 0.000000, 0.000000, 0, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2024-10-28 17:46:40', '2024-10-28 17:46:40', ''),
+(6, 'LCSIYKVUV', 1, 1, 1, 1, 4, 9, 1, 7, 7, 10, 'abac108c8c20a7f5402c4332c7bc06ff', 'Płatności elektroniczne', 1.000000, 'ps_wirepayment', 0, 0, '', 0, '', 0.000000, 0.000000, 0.000000, 23.520000, 23.520000, 19.120000, 0.000000, 19.120000, 23.520000, 0.000000, 0.000000, 0.000000, 23.000, 0.000000, 0.000000, 0.000000, 2, 2, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2024-11-11 14:00:29', '2024-11-11 14:00:29', '');
 
 -- --------------------------------------------------------
 
@@ -10273,16 +10373,16 @@ CREATE TABLE `ps_order_carrier` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_order_carrier`
+-- Dumping data for table `ps_order_carrier`
 --
 
 INSERT INTO `ps_order_carrier` (`id_order_carrier`, `id_order`, `id_carrier`, `id_order_invoice`, `weight`, `shipping_cost_tax_excl`, `shipping_cost_tax_incl`, `tracking_number`, `date_add`) VALUES
-(1, 1, 2, 0, '0.000000', '7.000000', '8.400000', '', '2024-10-28 17:46:40'),
-(2, 2, 2, 0, '0.000000', '7.000000', '8.400000', '', '2024-10-28 17:46:40'),
-(3, 3, 2, 0, '0.000000', '7.000000', '8.400000', '', '2024-10-28 17:46:40'),
-(4, 4, 2, 0, '0.000000', '7.000000', '8.400000', '', '2024-10-28 17:46:40'),
-(5, 5, 2, 0, '0.000000', '7.000000', '8.400000', '', '2024-10-28 17:46:40'),
-(6, 6, 1, 0, '0.300000', '0.000000', '0.000000', '', '2024-11-11 14:00:29');
+(1, 1, 2, 0, 0.000000, 7.000000, 8.400000, '', '2024-10-28 17:46:40'),
+(2, 2, 2, 0, 0.000000, 7.000000, 8.400000, '', '2024-10-28 17:46:40'),
+(3, 3, 2, 0, 0.000000, 7.000000, 8.400000, '', '2024-10-28 17:46:40'),
+(4, 4, 2, 0, 0.000000, 7.000000, 8.400000, '', '2024-10-28 17:46:40'),
+(5, 5, 2, 0, 0.000000, 7.000000, 8.400000, '', '2024-10-28 17:46:40'),
+(6, 6, 1, 0, 0.300000, 0.000000, 0.000000, '', '2024-11-11 14:00:29');
 
 -- --------------------------------------------------------
 
@@ -10361,18 +10461,18 @@ CREATE TABLE `ps_order_detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_order_detail`
+-- Dumping data for table `ps_order_detail`
 --
 
 INSERT INTO `ps_order_detail` (`id_order_detail`, `id_order`, `id_order_invoice`, `id_warehouse`, `id_shop`, `product_id`, `product_attribute_id`, `id_customization`, `product_name`, `product_quantity`, `product_quantity_in_stock`, `product_quantity_refunded`, `product_quantity_return`, `product_quantity_reinjected`, `product_price`, `reduction_percent`, `reduction_amount`, `reduction_amount_tax_incl`, `reduction_amount_tax_excl`, `group_reduction`, `product_quantity_discount`, `product_ean13`, `product_isbn`, `product_upc`, `product_mpn`, `product_reference`, `product_supplier_reference`, `product_weight`, `id_tax_rules_group`, `tax_computation_method`, `tax_name`, `tax_rate`, `ecotax`, `ecotax_tax_rate`, `discount_quantity_applied`, `download_hash`, `download_nb`, `download_deadline`, `total_price_tax_incl`, `total_price_tax_excl`, `unit_price_tax_incl`, `unit_price_tax_excl`, `total_shipping_price_tax_incl`, `total_shipping_price_tax_excl`, `purchase_supplier_price`, `original_product_price`, `original_wholesale_price`, `total_refunded_tax_excl`, `total_refunded_tax_incl`) VALUES
-(1, 1, 0, 0, 1, 1, 1, 0, 'Hummingbird printed t-shirt - Color : White, Size : S', 1, 1, 0, 0, 0, '23.900000', '0.00', '0.000000', '0.000000', '0.000000', '0.00', '0.000000', '', '', '', '', 'demo_1', '', '0.000000', 0, 0, '', '0.000', '0.000000', '0.000', 0, '', 0, '0000-00-00 00:00:00', '23.900000', '23.900000', '23.900000', '23.900000', '0.000000', '0.000000', '0.000000', '23.900000', '0.000000', '0.000000', '0.000000'),
-(2, 1, 0, 0, 1, 2, 9, 0, 'Hummingbird printed sweater - Color : White, Size : S', 1, 1, 0, 0, 0, '35.900000', '0.00', '0.000000', '0.000000', '0.000000', '0.00', '0.000000', '', '', '', '', 'demo_3', '', '0.000000', 0, 0, '', '0.000', '0.000000', '0.000', 0, '', 0, '0000-00-00 00:00:00', '35.900000', '35.900000', '35.900000', '35.900000', '0.000000', '0.000000', '0.000000', '35.900000', '0.000000', '0.000000', '0.000000'),
-(3, 2, 0, 0, 1, 4, 18, 0, 'The adventure begins Framed poster - Size : 80x120cm', 2, 3, 0, 0, 0, '79.000000', '0.00', '0.000000', '0.000000', '0.000000', '0.00', '0.000000', '', '', '', '', 'demo_5', '', '0.000000', 0, 0, '', '0.000', '0.000000', '0.000', 0, '', 0, '0000-00-00 00:00:00', '158.000000', '79.000000', '79.000000', '79.000000', '0.000000', '0.000000', '0.000000', '79.000000', '0.000000', '0.000000', '0.000000'),
-(4, 2, 0, 0, 1, 8, 0, 0, 'Mug Today is a good day', 1, 1, 0, 0, 0, '11.900000', '0.00', '0.000000', '0.000000', '0.000000', '0.00', '0.000000', '', '', '', '', 'demo_13', '', '0.000000', 0, 0, '', '0.000', '0.000000', '0.000', 0, '', 0, '0000-00-00 00:00:00', '11.900000', '11.900000', '11.900000', '11.900000', '0.000000', '0.000000', '0.000000', '11.900000', '0.000000', '0.000000', '0.000000'),
-(5, 3, 0, 0, 1, 16, 28, 0, 'Mountain fox notebook Style : Ruled', 1, 1, 0, 0, 0, '12.900000', '0.00', '0.000000', '0.000000', '0.000000', '0.00', '0.000000', '', '', '', '', 'demo_8', '', '0.000000', 0, 0, '', '0.000', '0.000000', '0.000', 0, '', 0, '0000-00-00 00:00:00', '12.900000', '12.900000', '12.900000', '12.900000', '0.000000', '0.000000', '0.000000', '12.900000', '0.000000', '0.000000', '0.000000'),
-(6, 4, 0, 0, 1, 16, 29, 0, 'Mountain fox notebook Style : Plain', 1, 1, 0, 0, 0, '12.900000', '0.00', '0.000000', '0.000000', '0.000000', '0.00', '0.000000', '', '', '', '', 'demo_8', '', '0.000000', 0, 0, '', '0.000', '0.000000', '0.000', 0, '', 0, '0000-00-00 00:00:00', '12.900000', '12.900000', '12.900000', '12.900000', '0.000000', '0.000000', '0.000000', '12.900000', '0.000000', '0.000000', '0.000000'),
-(7, 5, 0, 0, 1, 10, 25, 0, 'Brown bear cushion Color : Black', 1, 1, 0, 0, 0, '18.900000', '0.00', '0.000000', '0.000000', '0.000000', '0.00', '0.000000', '', '', '', '', 'demo_16', '', '0.000000', 0, 0, '', '0.000', '0.000000', '0.000', 0, '', 0, '0000-00-00 00:00:00', '18.900000', '18.900000', '18.900000', '18.900000', '0.000000', '0.000000', '0.000000', '18.900000', '0.000000', '0.000000', '0.000000'),
-(8, 6, 0, 0, 1, 1, 3, 0, 'Hummingbird printed t-shirt (Rozmiar: M - Kolor: Biały)', 1, 1, 0, 0, 0, '19.120000', '20.00', '0.000000', '0.000000', '0.000000', '0.00', '24.750000', '', '', '', '', 'demo_1', 'demo_1_48', '0.300000', 1, 0, 'PTU PL 23%', '23.000', '0.000000', '0.000', 0, '', 0, '0000-00-00 00:00:00', '23.520000', '19.120000', '23.517600', '19.120000', '0.000000', '0.000000', '5.490000', '23.900000', '0.000000', '0.000000', '0.000000');
+(1, 1, 0, 0, 1, 1, 1, 0, 'Hummingbird printed t-shirt - Color : White, Size : S', 1, 1, 0, 0, 0, 23.900000, 0.00, 0.000000, 0.000000, 0.000000, 0.00, 0.000000, '', '', '', '', 'demo_1', '', 0.000000, 0, 0, '', 0.000, 0.000000, 0.000, 0, '', 0, '0000-00-00 00:00:00', 23.900000, 23.900000, 23.900000, 23.900000, 0.000000, 0.000000, 0.000000, 23.900000, 0.000000, 0.000000, 0.000000),
+(2, 1, 0, 0, 1, 2, 9, 0, 'Hummingbird printed sweater - Color : White, Size : S', 1, 1, 0, 0, 0, 35.900000, 0.00, 0.000000, 0.000000, 0.000000, 0.00, 0.000000, '', '', '', '', 'demo_3', '', 0.000000, 0, 0, '', 0.000, 0.000000, 0.000, 0, '', 0, '0000-00-00 00:00:00', 35.900000, 35.900000, 35.900000, 35.900000, 0.000000, 0.000000, 0.000000, 35.900000, 0.000000, 0.000000, 0.000000),
+(3, 2, 0, 0, 1, 4, 18, 0, 'The adventure begins Framed poster - Size : 80x120cm', 2, 3, 0, 0, 0, 79.000000, 0.00, 0.000000, 0.000000, 0.000000, 0.00, 0.000000, '', '', '', '', 'demo_5', '', 0.000000, 0, 0, '', 0.000, 0.000000, 0.000, 0, '', 0, '0000-00-00 00:00:00', 158.000000, 79.000000, 79.000000, 79.000000, 0.000000, 0.000000, 0.000000, 79.000000, 0.000000, 0.000000, 0.000000),
+(4, 2, 0, 0, 1, 8, 0, 0, 'Mug Today is a good day', 1, 1, 0, 0, 0, 11.900000, 0.00, 0.000000, 0.000000, 0.000000, 0.00, 0.000000, '', '', '', '', 'demo_13', '', 0.000000, 0, 0, '', 0.000, 0.000000, 0.000, 0, '', 0, '0000-00-00 00:00:00', 11.900000, 11.900000, 11.900000, 11.900000, 0.000000, 0.000000, 0.000000, 11.900000, 0.000000, 0.000000, 0.000000),
+(5, 3, 0, 0, 1, 16, 28, 0, 'Mountain fox notebook Style : Ruled', 1, 1, 0, 0, 0, 12.900000, 0.00, 0.000000, 0.000000, 0.000000, 0.00, 0.000000, '', '', '', '', 'demo_8', '', 0.000000, 0, 0, '', 0.000, 0.000000, 0.000, 0, '', 0, '0000-00-00 00:00:00', 12.900000, 12.900000, 12.900000, 12.900000, 0.000000, 0.000000, 0.000000, 12.900000, 0.000000, 0.000000, 0.000000),
+(6, 4, 0, 0, 1, 16, 29, 0, 'Mountain fox notebook Style : Plain', 1, 1, 0, 0, 0, 12.900000, 0.00, 0.000000, 0.000000, 0.000000, 0.00, 0.000000, '', '', '', '', 'demo_8', '', 0.000000, 0, 0, '', 0.000, 0.000000, 0.000, 0, '', 0, '0000-00-00 00:00:00', 12.900000, 12.900000, 12.900000, 12.900000, 0.000000, 0.000000, 0.000000, 12.900000, 0.000000, 0.000000, 0.000000),
+(7, 5, 0, 0, 1, 10, 25, 0, 'Brown bear cushion Color : Black', 1, 1, 0, 0, 0, 18.900000, 0.00, 0.000000, 0.000000, 0.000000, 0.00, 0.000000, '', '', '', '', 'demo_16', '', 0.000000, 0, 0, '', 0.000, 0.000000, 0.000, 0, '', 0, '0000-00-00 00:00:00', 18.900000, 18.900000, 18.900000, 18.900000, 0.000000, 0.000000, 0.000000, 18.900000, 0.000000, 0.000000, 0.000000),
+(8, 6, 0, 0, 1, 1, 3, 0, 'Hummingbird printed t-shirt (Rozmiar: M - Kolor: Biały)', 1, 1, 0, 0, 0, 19.120000, 20.00, 0.000000, 0.000000, 0.000000, 0.00, 24.750000, '', '', '', '', 'demo_1', 'demo_1_48', 0.300000, 1, 0, 'PTU PL 23%', 23.000, 0.000000, 0.000, 0, '', 0, '0000-00-00 00:00:00', 23.520000, 19.120000, 23.517600, 19.120000, 0.000000, 0.000000, 5.490000, 23.900000, 0.000000, 0.000000, 0.000000);
 
 -- --------------------------------------------------------
 
@@ -10388,11 +10488,11 @@ CREATE TABLE `ps_order_detail_tax` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_order_detail_tax`
+-- Dumping data for table `ps_order_detail_tax`
 --
 
 INSERT INTO `ps_order_detail_tax` (`id_order_detail`, `id_tax`, `unit_amount`, `total_amount`) VALUES
-(8, 1, '4.397600', '4.400000');
+(8, 1, 4.397600, 4.400000);
 
 -- --------------------------------------------------------
 
@@ -10409,7 +10509,7 @@ CREATE TABLE `ps_order_history` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_order_history`
+-- Dumping data for table `ps_order_history`
 --
 
 INSERT INTO `ps_order_history` (`id_order_history`, `id_employee`, `id_order`, `id_order_state`, `date_add`) VALUES
@@ -10487,7 +10587,7 @@ CREATE TABLE `ps_order_message` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_order_message`
+-- Dumping data for table `ps_order_message`
 --
 
 INSERT INTO `ps_order_message` (`id_order_message`, `date_add`) VALUES
@@ -10507,7 +10607,7 @@ CREATE TABLE `ps_order_message_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_order_message_lang`
+-- Dumping data for table `ps_order_message_lang`
 --
 
 INSERT INTO `ps_order_message_lang` (`id_order_message`, `id_lang`, `name`, `message`) VALUES
@@ -10575,7 +10675,7 @@ CREATE TABLE `ps_order_return_state` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_order_return_state`
+-- Dumping data for table `ps_order_return_state`
 --
 
 INSERT INTO `ps_order_return_state` (`id_order_return_state`, `color`) VALUES
@@ -10598,7 +10698,7 @@ CREATE TABLE `ps_order_return_state_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_order_return_state_lang`
+-- Dumping data for table `ps_order_return_state_lang`
 --
 
 INSERT INTO `ps_order_return_state_lang` (`id_order_return_state`, `id_lang`, `name`) VALUES
@@ -10674,7 +10774,7 @@ CREATE TABLE `ps_order_state` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_order_state`
+-- Dumping data for table `ps_order_state`
 --
 
 INSERT INTO `ps_order_state` (`id_order_state`, `invoice`, `send_email`, `module_name`, `color`, `unremovable`, `hidden`, `logable`, `delivery`, `shipped`, `paid`, `pdf_invoice`, `pdf_delivery`, `deleted`) VALUES
@@ -10710,7 +10810,7 @@ CREATE TABLE `ps_order_state_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_order_state_lang`
+-- Dumping data for table `ps_order_state_lang`
 --
 
 INSERT INTO `ps_order_state_lang` (`id_order_state`, `id_lang`, `name`, `template`) VALUES
@@ -10746,7 +10846,7 @@ CREATE TABLE `ps_pack` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_pack`
+-- Dumping data for table `ps_pack`
 --
 
 INSERT INTO `ps_pack` (`id_product_pack`, `id_product_item`, `id_product_attribute_item`, `quantity`) VALUES
@@ -10766,7 +10866,7 @@ CREATE TABLE `ps_page` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_page`
+-- Dumping data for table `ps_page`
 --
 
 INSERT INTO `ps_page` (`id_page`, `id_page_type`, `id_object`) VALUES
@@ -10775,7 +10875,8 @@ INSERT INTO `ps_page` (`id_page`, `id_page_type`, `id_object`) VALUES
 (3, 3, NULL),
 (4, 4, NULL),
 (5, 5, NULL),
-(6, 6, 0);
+(6, 6, 0),
+(7, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -10804,7 +10905,7 @@ CREATE TABLE `ps_page_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_page_type`
+-- Dumping data for table `ps_page_type`
 --
 
 INSERT INTO `ps_page_type` (`id_page_type`, `name`) VALUES
@@ -10813,7 +10914,8 @@ INSERT INTO `ps_page_type` (`id_page_type`, `name`) VALUES
 (5, 'contact'),
 (1, 'index'),
 (6, 'manufacturer'),
-(3, 'pagenotfound');
+(3, 'pagenotfound'),
+(7, 'product');
 
 -- --------------------------------------------------------
 
@@ -10894,29 +10996,29 @@ CREATE TABLE `ps_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_product`
+-- Dumping data for table `ps_product`
 --
 
 INSERT INTO `ps_product` (`id_product`, `id_supplier`, `id_manufacturer`, `id_category_default`, `id_shop_default`, `id_tax_rules_group`, `on_sale`, `online_only`, `ean13`, `isbn`, `upc`, `mpn`, `ecotax`, `quantity`, `minimal_quantity`, `low_stock_threshold`, `low_stock_alert`, `price`, `wholesale_price`, `unity`, `unit_price_ratio`, `additional_shipping_cost`, `reference`, `supplier_reference`, `location`, `width`, `height`, `depth`, `weight`, `out_of_stock`, `additional_delivery_times`, `quantity_discount`, `customizable`, `uploadable_files`, `text_fields`, `active`, `redirect_type`, `id_type_redirected`, `available_for_order`, `available_date`, `show_condition`, `condition`, `show_price`, `indexed`, `visibility`, `cache_is_pack`, `cache_has_attachments`, `is_virtual`, `cache_default_attribute`, `date_add`, `date_upd`, `advanced_stock_management`, `pack_stock_type`, `state`, `product_type`) VALUES
-(1, 1, 1, 4, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '23.900000', '0.000000', '', '0.000000', '0.000000', 'demo_1', '', '', '0.000000', '0.000000', '0.000000', '0.300000', 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 1, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'combinations'),
-(2, 1, 1, 5, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '35.900000', '0.000000', '', '0.000000', '0.000000', 'demo_3', '', '', '0.000000', '0.000000', '0.000000', '0.300000', 2, 1, 0, 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 9, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'combinations'),
-(3, 1, 2, 9, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '29.000000', '0.000000', '', '0.000000', '0.000000', 'demo_6', '', '', '0.000000', '0.000000', '0.000000', '0.300000', 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 13, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'combinations'),
-(4, 1, 2, 9, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '29.000000', '0.000000', '', '0.000000', '0.000000', 'demo_5', '', '', '0.000000', '0.000000', '0.000000', '0.300000', 2, 1, 0, 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 16, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'combinations'),
-(5, 1, 2, 9, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '29.000000', '0.000000', '', '0.000000', '0.000000', 'demo_7', '', '', '0.000000', '0.000000', '0.000000', '0.300000', 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 19, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'combinations'),
-(6, 2, 1, 8, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '11.900000', '0.000000', '', '0.000000', '0.000000', 'demo_11', '', '', '0.000000', '0.000000', '0.000000', '0.300000', 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'standard'),
-(7, 2, 1, 8, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '11.900000', '0.000000', '', '0.000000', '0.000000', 'demo_12', '', '', '0.000000', '0.000000', '0.000000', '0.300000', 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'standard'),
-(8, 2, 1, 8, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '11.900000', '0.000000', '', '0.000000', '0.000000', 'demo_13', '', '', '0.000000', '0.000000', '0.000000', '0.300000', 2, 1, 0, 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'standard'),
-(9, 2, 1, 8, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '18.900000', '0.000000', '', '0.000000', '0.000000', 'demo_15', '', '', '0.000000', '0.000000', '0.000000', '0.300000', 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 22, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'combinations'),
-(10, 2, 1, 8, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '18.900000', '0.000000', '', '0.000000', '0.000000', 'demo_16', '', '', '0.000000', '0.000000', '0.000000', '0.300000', 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 24, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'combinations'),
-(11, 2, 1, 8, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '18.900000', '0.000000', '', '0.000000', '0.000000', 'demo_17', '', '', '0.000000', '0.000000', '0.000000', '0.300000', 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 26, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'combinations'),
-(12, 2, 2, 9, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '9.000000', '0.000000', '', '0.000000', '0.000000', 'demo_18', '', '', '0.000000', '0.000000', '0.000000', '0.300000', 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 1, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'virtual'),
-(13, 2, 2, 9, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '9.000000', '0.000000', '', '0.000000', '0.000000', 'demo_19', '', '', '0.000000', '0.000000', '0.000000', '0.300000', 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 1, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'virtual'),
-(14, 2, 2, 9, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '9.000000', '0.000000', '', '0.000000', '0.000000', 'demo_20', '', '', '0.000000', '0.000000', '0.000000', '0.300000', 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 1, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'virtual'),
-(15, 2, 0, 8, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '35.000000', '0.000000', '', '0.000000', '0.000000', 'demo_21', '', '', '0.000000', '0.000000', '0.000000', '0.300000', 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 1, 0, 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'pack'),
-(16, 2, 2, 7, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '12.900000', '0.000000', '', '0.000000', '0.000000', 'demo_8', '', '', '0.000000', '0.000000', '0.000000', '0.300000', 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 28, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'combinations'),
-(17, 2, 2, 7, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '12.900000', '0.000000', '', '0.000000', '0.000000', 'demo_9', '', '', '0.000000', '0.000000', '0.000000', '0.300000', 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 32, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'combinations'),
-(18, 2, 2, 7, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '12.900000', '0.000000', '', '0.000000', '0.000000', 'demo_10', '', '', '0.000000', '0.000000', '0.000000', '0.300000', 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 36, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'combinations'),
-(19, 2, 1, 8, 1, 1, 0, 0, '', '', '', '', '0.000000', 0, 1, NULL, 0, '13.900000', '0.000000', '', '0.000000', '0.000000', 'demo_14', '', '', '0.000000', '0.000000', '0.000000', '0.300000', 2, 1, 0, 1, 0, 1, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'standard');
+(1, 1, 1, 4, 1, 1, 0, 0, '', '', '', '', 0.000000, 0, 1, NULL, 0, 23.900000, 0.000000, '', 0.000000, 0.000000, 'demo_1', '', '', 0.000000, 0.000000, 0.000000, 0.300000, 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 1, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'combinations'),
+(2, 1, 1, 5, 1, 1, 0, 0, '', '', '', '', 0.000000, 0, 1, NULL, 0, 35.900000, 0.000000, '', 0.000000, 0.000000, 'demo_3', '', '', 0.000000, 0.000000, 0.000000, 0.300000, 2, 1, 0, 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 9, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'combinations'),
+(3, 1, 2, 9, 1, 1, 0, 0, '', '', '', '', 0.000000, 0, 1, NULL, 0, 29.000000, 0.000000, '', 0.000000, 0.000000, 'demo_6', '', '', 0.000000, 0.000000, 0.000000, 0.300000, 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 13, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'combinations'),
+(4, 1, 2, 9, 1, 1, 0, 0, '', '', '', '', 0.000000, 0, 1, NULL, 0, 29.000000, 0.000000, '', 0.000000, 0.000000, 'demo_5', '', '', 0.000000, 0.000000, 0.000000, 0.300000, 2, 1, 0, 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 16, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'combinations'),
+(5, 1, 2, 9, 1, 1, 0, 0, '', '', '', '', 0.000000, 0, 1, NULL, 0, 29.000000, 0.000000, '', 0.000000, 0.000000, 'demo_7', '', '', 0.000000, 0.000000, 0.000000, 0.300000, 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 19, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'combinations'),
+(6, 2, 1, 8, 1, 1, 0, 0, '', '', '', '', 0.000000, 0, 1, NULL, 0, 11.900000, 0.000000, '', 0.000000, 0.000000, 'demo_11', '', '', 0.000000, 0.000000, 0.000000, 0.300000, 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'standard'),
+(7, 2, 1, 8, 1, 1, 0, 0, '', '', '', '', 0.000000, 0, 1, NULL, 0, 11.900000, 0.000000, '', 0.000000, 0.000000, 'demo_12', '', '', 0.000000, 0.000000, 0.000000, 0.300000, 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'standard'),
+(8, 2, 1, 8, 1, 1, 0, 0, '', '', '', '', 0.000000, 0, 1, NULL, 0, 11.900000, 0.000000, '', 0.000000, 0.000000, 'demo_13', '', '', 0.000000, 0.000000, 0.000000, 0.300000, 2, 1, 0, 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'standard'),
+(9, 2, 1, 8, 1, 1, 0, 0, '', '', '', '', 0.000000, 0, 1, NULL, 0, 18.900000, 0.000000, '', 0.000000, 0.000000, 'demo_15', '', '', 0.000000, 0.000000, 0.000000, 0.300000, 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 22, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'combinations'),
+(10, 2, 1, 8, 1, 1, 0, 0, '', '', '', '', 0.000000, 0, 1, NULL, 0, 18.900000, 0.000000, '', 0.000000, 0.000000, 'demo_16', '', '', 0.000000, 0.000000, 0.000000, 0.300000, 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 24, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'combinations'),
+(11, 2, 1, 8, 1, 1, 0, 0, '', '', '', '', 0.000000, 0, 1, NULL, 0, 18.900000, 0.000000, '', 0.000000, 0.000000, 'demo_17', '', '', 0.000000, 0.000000, 0.000000, 0.300000, 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 26, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'combinations'),
+(12, 2, 2, 9, 1, 1, 0, 0, '', '', '', '', 0.000000, 0, 1, NULL, 0, 9.000000, 0.000000, '', 0.000000, 0.000000, 'demo_18', '', '', 0.000000, 0.000000, 0.000000, 0.300000, 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 1, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'virtual'),
+(13, 2, 2, 9, 1, 1, 0, 0, '', '', '', '', 0.000000, 0, 1, NULL, 0, 9.000000, 0.000000, '', 0.000000, 0.000000, 'demo_19', '', '', 0.000000, 0.000000, 0.000000, 0.300000, 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 1, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'virtual'),
+(14, 2, 2, 9, 1, 1, 0, 0, '', '', '', '', 0.000000, 0, 1, NULL, 0, 9.000000, 0.000000, '', 0.000000, 0.000000, 'demo_20', '', '', 0.000000, 0.000000, 0.000000, 0.300000, 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 1, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'virtual'),
+(15, 2, 0, 8, 1, 1, 0, 0, '', '', '', '', 0.000000, 0, 1, NULL, 0, 35.000000, 0.000000, '', 0.000000, 0.000000, 'demo_21', '', '', 0.000000, 0.000000, 0.000000, 0.300000, 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 1, 0, 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'pack'),
+(16, 2, 2, 7, 1, 1, 0, 0, '', '', '', '', 0.000000, 0, 1, NULL, 0, 12.900000, 0.000000, '', 0.000000, 0.000000, 'demo_8', '', '', 0.000000, 0.000000, 0.000000, 0.300000, 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 28, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'combinations'),
+(17, 2, 2, 7, 1, 1, 0, 0, '', '', '', '', 0.000000, 0, 1, NULL, 0, 12.900000, 0.000000, '', 0.000000, 0.000000, 'demo_9', '', '', 0.000000, 0.000000, 0.000000, 0.300000, 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 32, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'combinations'),
+(18, 2, 2, 7, 1, 1, 0, 0, '', '', '', '', 0.000000, 0, 1, NULL, 0, 12.900000, 0.000000, '', 0.000000, 0.000000, 'demo_10', '', '', 0.000000, 0.000000, 0.000000, 0.300000, 2, 1, 0, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 36, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'combinations'),
+(19, 2, 1, 8, 1, 1, 0, 0, '', '', '', '', 0.000000, 0, 1, NULL, 0, 13.900000, 0.000000, '', 0.000000, 0.000000, 'demo_14', '', '', 0.000000, 0.000000, 0.000000, 0.300000, 2, 1, 0, 1, 0, 1, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 0, 3, 1, 'standard');
 
 -- --------------------------------------------------------
 
@@ -10959,49 +11061,49 @@ CREATE TABLE `ps_product_attribute` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_product_attribute`
+-- Dumping data for table `ps_product_attribute`
 --
 
 INSERT INTO `ps_product_attribute` (`id_product_attribute`, `id_product`, `reference`, `supplier_reference`, `location`, `ean13`, `isbn`, `upc`, `mpn`, `wholesale_price`, `price`, `ecotax`, `quantity`, `weight`, `unit_price_impact`, `default_on`, `minimal_quantity`, `low_stock_threshold`, `low_stock_alert`, `available_date`) VALUES
-(1, 1, 'demo_1', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
-(2, 1, 'demo_1', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(3, 1, 'demo_1', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(4, 1, 'demo_1', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(5, 1, 'demo_1', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(6, 1, 'demo_1', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(7, 1, 'demo_1', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(8, 1, 'demo_1', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(9, 2, 'demo_3', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
-(10, 2, 'demo_3', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(11, 2, 'demo_3', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(12, 2, 'demo_3', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(13, 3, 'demo_6', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 0, '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
-(14, 3, 'demo_6', '', '', '', '', '', '', '0.000000', '20.000000', '0.000000', 0, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(15, 3, 'demo_6', '', '', '', '', '', '', '0.000000', '50.000000', '0.000000', 0, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(16, 4, 'demo_5', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
-(17, 4, 'demo_5', '', '', '', '', '', '', '0.000000', '20.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(18, 4, 'demo_5', '', '', '', '', '', '', '0.000000', '50.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(19, 5, 'demo_7', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
-(20, 5, 'demo_7', '', '', '', '', '', '', '0.000000', '20.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(21, 5, 'demo_7', '', '', '', '', '', '', '0.000000', '50.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(22, 9, 'demo_15', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 0, '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
-(23, 9, 'demo_15', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 0, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(24, 10, 'demo_16', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
-(25, 10, 'demo_16', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(26, 11, 'demo_17', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
-(27, 11, 'demo_17', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(28, 16, 'demo_8', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
-(29, 16, 'demo_8', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(30, 16, 'demo_8', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(31, 16, 'demo_8', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(32, 17, 'demo_9', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
-(33, 17, 'demo_9', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(34, 17, 'demo_9', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(35, 17, 'demo_9', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(36, 18, 'demo_10', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
-(37, 18, 'demo_10', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(38, 18, 'demo_10', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(39, 18, 'demo_10', '', '', '', '', '', '', '0.000000', '0.000000', '0.000000', 300, '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00');
+(1, 1, 'demo_1', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, 1, 1, NULL, 0, '0000-00-00'),
+(2, 1, 'demo_1', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(3, 1, 'demo_1', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(4, 1, 'demo_1', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(5, 1, 'demo_1', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(6, 1, 'demo_1', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(7, 1, 'demo_1', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(8, 1, 'demo_1', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(9, 2, 'demo_3', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, 1, 1, NULL, 0, '0000-00-00'),
+(10, 2, 'demo_3', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(11, 2, 'demo_3', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(12, 2, 'demo_3', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(13, 3, 'demo_6', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 0, 0.000000, 0.000000, 1, 1, NULL, 0, '0000-00-00'),
+(14, 3, 'demo_6', '', '', '', '', '', '', 0.000000, 20.000000, 0.000000, 0, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(15, 3, 'demo_6', '', '', '', '', '', '', 0.000000, 50.000000, 0.000000, 0, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(16, 4, 'demo_5', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, 1, 1, NULL, 0, '0000-00-00'),
+(17, 4, 'demo_5', '', '', '', '', '', '', 0.000000, 20.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(18, 4, 'demo_5', '', '', '', '', '', '', 0.000000, 50.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(19, 5, 'demo_7', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, 1, 1, NULL, 0, '0000-00-00'),
+(20, 5, 'demo_7', '', '', '', '', '', '', 0.000000, 20.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(21, 5, 'demo_7', '', '', '', '', '', '', 0.000000, 50.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(22, 9, 'demo_15', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 0, 0.000000, 0.000000, 1, 1, NULL, 0, '0000-00-00'),
+(23, 9, 'demo_15', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 0, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(24, 10, 'demo_16', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, 1, 1, NULL, 0, '0000-00-00'),
+(25, 10, 'demo_16', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(26, 11, 'demo_17', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, 1, 1, NULL, 0, '0000-00-00'),
+(27, 11, 'demo_17', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(28, 16, 'demo_8', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, 1, 1, NULL, 0, '0000-00-00'),
+(29, 16, 'demo_8', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(30, 16, 'demo_8', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(31, 16, 'demo_8', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(32, 17, 'demo_9', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, 1, 1, NULL, 0, '0000-00-00'),
+(33, 17, 'demo_9', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(34, 17, 'demo_9', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(35, 17, 'demo_9', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(36, 18, 'demo_10', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, 1, 1, NULL, 0, '0000-00-00'),
+(37, 18, 'demo_10', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(38, 18, 'demo_10', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(39, 18, 'demo_10', '', '', '', '', '', '', 0.000000, 0.000000, 0.000000, 300, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -11015,7 +11117,7 @@ CREATE TABLE `ps_product_attribute_combination` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_product_attribute_combination`
+-- Dumping data for table `ps_product_attribute_combination`
 --
 
 INSERT INTO `ps_product_attribute_combination` (`id_attribute`, `id_product_attribute`) VALUES
@@ -11079,7 +11181,7 @@ CREATE TABLE `ps_product_attribute_image` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_product_attribute_image`
+-- Dumping data for table `ps_product_attribute_image`
 --
 
 INSERT INTO `ps_product_attribute_image` (`id_product_attribute`, `id_image`) VALUES
@@ -11146,49 +11248,49 @@ CREATE TABLE `ps_product_attribute_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_product_attribute_shop`
+-- Dumping data for table `ps_product_attribute_shop`
 --
 
 INSERT INTO `ps_product_attribute_shop` (`id_product`, `id_product_attribute`, `id_shop`, `wholesale_price`, `price`, `ecotax`, `weight`, `unit_price_impact`, `default_on`, `minimal_quantity`, `low_stock_threshold`, `low_stock_alert`, `available_date`) VALUES
-(1, 1, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
-(1, 2, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(1, 3, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(1, 4, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(1, 5, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(1, 6, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(1, 7, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(1, 8, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(2, 9, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
-(2, 10, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(2, 11, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(2, 12, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(3, 13, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
-(3, 14, 1, '0.000000', '20.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(3, 15, 1, '0.000000', '50.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(4, 16, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
-(4, 17, 1, '0.000000', '20.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(4, 18, 1, '0.000000', '50.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(5, 19, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
-(5, 20, 1, '0.000000', '20.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(5, 21, 1, '0.000000', '50.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(9, 22, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
-(9, 23, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(10, 24, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
-(10, 25, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(11, 26, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
-(11, 27, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(16, 28, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
-(16, 29, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(16, 30, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(16, 31, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(17, 32, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
-(17, 33, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(17, 34, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(17, 35, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(18, 36, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', 1, 1, NULL, 0, '0000-00-00'),
-(18, 37, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(18, 38, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00'),
-(18, 39, 1, '0.000000', '0.000000', '0.000000', '0.000000', '0.000000', NULL, 1, NULL, 0, '0000-00-00');
+(1, 1, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1, 1, NULL, 0, '0000-00-00'),
+(1, 2, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(1, 3, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(1, 4, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(1, 5, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(1, 6, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(1, 7, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(1, 8, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(2, 9, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1, 1, NULL, 0, '0000-00-00'),
+(2, 10, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(2, 11, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(2, 12, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(3, 13, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1, 1, NULL, 0, '0000-00-00'),
+(3, 14, 1, 0.000000, 20.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(3, 15, 1, 0.000000, 50.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(4, 16, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1, 1, NULL, 0, '0000-00-00'),
+(4, 17, 1, 0.000000, 20.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(4, 18, 1, 0.000000, 50.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(5, 19, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1, 1, NULL, 0, '0000-00-00'),
+(5, 20, 1, 0.000000, 20.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(5, 21, 1, 0.000000, 50.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(9, 22, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1, 1, NULL, 0, '0000-00-00'),
+(9, 23, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(10, 24, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1, 1, NULL, 0, '0000-00-00'),
+(10, 25, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(11, 26, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1, 1, NULL, 0, '0000-00-00'),
+(11, 27, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(16, 28, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1, 1, NULL, 0, '0000-00-00'),
+(16, 29, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(16, 30, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(16, 31, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(17, 32, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1, 1, NULL, 0, '0000-00-00'),
+(17, 33, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(17, 34, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(17, 35, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(18, 36, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1, 1, NULL, 0, '0000-00-00'),
+(18, 37, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(18, 38, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00'),
+(18, 39, 1, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, NULL, 1, NULL, 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -11235,7 +11337,7 @@ CREATE TABLE `ps_product_comment_criterion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_product_comment_criterion`
+-- Dumping data for table `ps_product_comment_criterion`
 --
 
 INSERT INTO `ps_product_comment_criterion` (`id_product_comment_criterion`, `id_product_comment_criterion_type`, `active`) VALUES
@@ -11265,7 +11367,7 @@ CREATE TABLE `ps_product_comment_criterion_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_product_comment_criterion_lang`
+-- Dumping data for table `ps_product_comment_criterion_lang`
 --
 
 INSERT INTO `ps_product_comment_criterion_lang` (`id_product_comment_criterion`, `id_lang`, `name`) VALUES
@@ -11384,7 +11486,7 @@ CREATE TABLE `ps_product_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_product_lang`
+-- Dumping data for table `ps_product_lang`
 --
 
 INSERT INTO `ps_product_lang` (`id_product`, `id_shop`, `id_lang`, `description`, `description_short`, `link_rewrite`, `meta_description`, `meta_keywords`, `meta_title`, `name`, `available_now`, `available_later`, `delivery_in_stock`, `delivery_out_stock`) VALUES
@@ -11464,29 +11566,29 @@ CREATE TABLE `ps_product_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_product_shop`
+-- Dumping data for table `ps_product_shop`
 --
 
 INSERT INTO `ps_product_shop` (`id_product`, `id_shop`, `id_category_default`, `id_tax_rules_group`, `on_sale`, `online_only`, `ecotax`, `minimal_quantity`, `low_stock_threshold`, `low_stock_alert`, `price`, `wholesale_price`, `unity`, `unit_price_ratio`, `additional_shipping_cost`, `customizable`, `uploadable_files`, `text_fields`, `active`, `redirect_type`, `id_type_redirected`, `available_for_order`, `available_date`, `show_condition`, `condition`, `show_price`, `indexed`, `visibility`, `cache_default_attribute`, `advanced_stock_management`, `date_add`, `date_upd`, `pack_stock_type`) VALUES
-(1, 1, 4, 1, 0, 0, '0.000000', 1, NULL, 0, '23.900000', '0.000000', '', '0.000000', '0.000000', 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 1, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
-(2, 1, 5, 1, 0, 0, '0.000000', 1, NULL, 0, '35.900000', '0.000000', '', '0.000000', '0.000000', 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 9, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
-(3, 1, 9, 1, 0, 0, '0.000000', 1, NULL, 0, '29.000000', '0.000000', '', '0.000000', '0.000000', 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 13, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
-(4, 1, 9, 1, 0, 0, '0.000000', 1, NULL, 0, '29.000000', '0.000000', '', '0.000000', '0.000000', 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 16, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
-(5, 1, 9, 1, 0, 0, '0.000000', 1, NULL, 0, '29.000000', '0.000000', '', '0.000000', '0.000000', 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 19, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
-(6, 1, 8, 1, 0, 0, '0.000000', 1, NULL, 0, '11.900000', '0.000000', '', '0.000000', '0.000000', 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
-(7, 1, 8, 1, 0, 0, '0.000000', 1, NULL, 0, '11.900000', '0.000000', '', '0.000000', '0.000000', 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
-(8, 1, 8, 1, 0, 0, '0.000000', 1, NULL, 0, '11.900000', '0.000000', '', '0.000000', '0.000000', 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
-(9, 1, 8, 1, 0, 0, '0.000000', 1, NULL, 0, '18.900000', '0.000000', '', '0.000000', '0.000000', 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 22, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
-(10, 1, 8, 1, 0, 0, '0.000000', 1, NULL, 0, '18.900000', '0.000000', '', '0.000000', '0.000000', 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 24, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
-(11, 1, 8, 1, 0, 0, '0.000000', 1, NULL, 0, '18.900000', '0.000000', '', '0.000000', '0.000000', 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 26, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
-(12, 1, 9, 1, 0, 0, '0.000000', 1, NULL, 0, '9.000000', '0.000000', '', '0.000000', '0.000000', 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
-(13, 1, 9, 1, 0, 0, '0.000000', 1, NULL, 0, '9.000000', '0.000000', '', '0.000000', '0.000000', 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
-(14, 1, 9, 1, 0, 0, '0.000000', 1, NULL, 0, '9.000000', '0.000000', '', '0.000000', '0.000000', 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
-(15, 1, 8, 1, 0, 0, '0.000000', 1, NULL, 0, '35.000000', '0.000000', '', '0.000000', '0.000000', 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
-(16, 1, 7, 1, 0, 0, '0.000000', 1, NULL, 0, '12.900000', '0.000000', '', '0.000000', '0.000000', 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 28, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
-(17, 1, 7, 1, 0, 0, '0.000000', 1, NULL, 0, '12.900000', '0.000000', '', '0.000000', '0.000000', 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 32, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
-(18, 1, 7, 1, 0, 0, '0.000000', 1, NULL, 0, '12.900000', '0.000000', '', '0.000000', '0.000000', 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 36, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
-(19, 1, 8, 1, 0, 0, '0.000000', 1, NULL, 0, '13.900000', '0.000000', '', '0.000000', '0.000000', 1, 0, 1, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3);
+(1, 1, 4, 1, 0, 0, 0.000000, 1, NULL, 0, 23.900000, 0.000000, '', 0.000000, 0.000000, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 1, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
+(2, 1, 5, 1, 0, 0, 0.000000, 1, NULL, 0, 35.900000, 0.000000, '', 0.000000, 0.000000, 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 9, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
+(3, 1, 9, 1, 0, 0, 0.000000, 1, NULL, 0, 29.000000, 0.000000, '', 0.000000, 0.000000, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 13, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
+(4, 1, 9, 1, 0, 0, 0.000000, 1, NULL, 0, 29.000000, 0.000000, '', 0.000000, 0.000000, 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 16, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
+(5, 1, 9, 1, 0, 0, 0.000000, 1, NULL, 0, 29.000000, 0.000000, '', 0.000000, 0.000000, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 19, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
+(6, 1, 8, 1, 0, 0, 0.000000, 1, NULL, 0, 11.900000, 0.000000, '', 0.000000, 0.000000, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
+(7, 1, 8, 1, 0, 0, 0.000000, 1, NULL, 0, 11.900000, 0.000000, '', 0.000000, 0.000000, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
+(8, 1, 8, 1, 0, 0, 0.000000, 1, NULL, 0, 11.900000, 0.000000, '', 0.000000, 0.000000, 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
+(9, 1, 8, 1, 0, 0, 0.000000, 1, NULL, 0, 18.900000, 0.000000, '', 0.000000, 0.000000, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 22, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
+(10, 1, 8, 1, 0, 0, 0.000000, 1, NULL, 0, 18.900000, 0.000000, '', 0.000000, 0.000000, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 24, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
+(11, 1, 8, 1, 0, 0, 0.000000, 1, NULL, 0, 18.900000, 0.000000, '', 0.000000, 0.000000, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 26, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
+(12, 1, 9, 1, 0, 0, 0.000000, 1, NULL, 0, 9.000000, 0.000000, '', 0.000000, 0.000000, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
+(13, 1, 9, 1, 0, 0, 0.000000, 1, NULL, 0, 9.000000, 0.000000, '', 0.000000, 0.000000, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
+(14, 1, 9, 1, 0, 0, 0.000000, 1, NULL, 0, 9.000000, 0.000000, '', 0.000000, 0.000000, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
+(15, 1, 8, 1, 0, 0, 0.000000, 1, NULL, 0, 35.000000, 0.000000, '', 0.000000, 0.000000, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
+(16, 1, 7, 1, 0, 0, 0.000000, 1, NULL, 0, 12.900000, 0.000000, '', 0.000000, 0.000000, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 28, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
+(17, 1, 7, 1, 0, 0, 0.000000, 1, NULL, 0, 12.900000, 0.000000, '', 0.000000, 0.000000, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 32, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
+(18, 1, 7, 1, 0, 0, 0.000000, 1, NULL, 0, 12.900000, 0.000000, '', 0.000000, 0.000000, 0, 0, 0, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 36, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3),
+(19, 1, 8, 1, 0, 0, 0.000000, 1, NULL, 0, 13.900000, 0.000000, '', 0.000000, 0.000000, 1, 0, 1, 1, '301-category', 0, 1, '0000-00-00', 0, 'new', 1, 1, 'both', 0, 0, '2024-10-28 17:46:38', '2024-10-28 17:46:38', 3);
 
 -- --------------------------------------------------------
 
@@ -11505,80 +11607,80 @@ CREATE TABLE `ps_product_supplier` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_product_supplier`
+-- Dumping data for table `ps_product_supplier`
 --
 
 INSERT INTO `ps_product_supplier` (`id_product_supplier`, `id_product`, `id_product_attribute`, `id_supplier`, `product_supplier_reference`, `product_supplier_price_te`, `id_currency`) VALUES
-(1, 6, 0, 2, 'demo_11', '5.490000', 0),
-(2, 7, 0, 2, 'demo_12', '5.490000', 0),
-(3, 8, 0, 2, 'demo_13', '5.490000', 0),
-(4, 19, 0, 2, 'demo_14', '5.490000', 0),
-(5, 12, 0, 2, 'demo_18', '5.490000', 0),
-(6, 13, 0, 2, 'demo_19', '5.490000', 0),
-(7, 14, 0, 2, 'demo_20', '5.490000', 0),
-(8, 1, 0, 1, 'demo_1_46', '5.490000', 0),
-(9, 1, 1, 1, 'demo_1_46', '5.490000', 0),
-(10, 1, 2, 1, 'demo_1_47', '5.490000', 0),
-(11, 1, 3, 1, 'demo_1_48', '5.490000', 0),
-(12, 1, 4, 1, 'demo_1_49', '5.490000', 0),
-(13, 1, 5, 1, 'demo_1_50', '5.490000', 0),
-(14, 1, 6, 1, 'demo_1_51', '5.490000', 0),
-(15, 1, 7, 1, 'demo_1_52', '5.490000', 0),
-(16, 1, 8, 1, 'demo_1_53', '5.490000', 0),
-(17, 2, 0, 1, 'demo_3_62', '5.490000', 0),
-(18, 2, 9, 1, 'demo_3_62', '5.490000', 0),
-(19, 2, 10, 1, 'demo_3_63', '5.490000', 0),
-(20, 2, 11, 1, 'demo_3_64', '5.490000', 0),
-(21, 2, 12, 1, 'demo_3_65', '5.490000', 0),
-(22, 3, 0, 1, 'demo_6_70', '5.490000', 0),
-(23, 3, 13, 1, 'demo_6_70', '5.490000', 0),
-(24, 3, 14, 1, 'demo_6_71', '5.490000', 0),
-(25, 3, 15, 1, 'demo_6_72', '5.490000', 0),
-(26, 4, 0, 1, 'demo_5_73', '5.490000', 0),
-(27, 4, 16, 1, 'demo_5_73', '5.490000', 0),
-(28, 4, 17, 1, 'demo_5_74', '5.490000', 0),
-(29, 4, 18, 1, 'demo_5_75', '5.490000', 0),
-(30, 5, 0, 1, 'demo_5_76', '5.490000', 0),
-(31, 5, 19, 1, 'demo_5_76', '5.490000', 0),
-(32, 5, 20, 1, 'demo_5_77', '5.490000', 0),
-(33, 5, 21, 1, 'demo_5_78', '5.490000', 0),
-(34, 3, 0, 2, 'demo_6_70', '2.490000', 0),
-(35, 3, 13, 2, 'demo_6_70', '2.490000', 0),
-(36, 3, 14, 2, 'demo_6_71', '2.490000', 0),
-(37, 3, 15, 2, 'demo_6_72', '2.490000', 0),
-(38, 4, 0, 2, 'demo_5_73', '2.490000', 0),
-(39, 4, 16, 2, 'demo_5_73', '2.490000', 0),
-(40, 4, 17, 2, 'demo_5_74', '2.490000', 0),
-(41, 4, 18, 2, 'demo_5_75', '2.490000', 0),
-(42, 5, 0, 2, 'demo_5_76', '2.490000', 0),
-(43, 5, 19, 2, 'demo_5_76', '2.490000', 0),
-(44, 5, 20, 2, 'demo_5_77', '2.490000', 0),
-(45, 5, 21, 2, 'demo_5_78', '2.490000', 0),
-(46, 9, 0, 2, 'demo_15_79', '5.490000', 0),
-(47, 9, 22, 2, 'demo_15_79', '5.490000', 0),
-(48, 9, 23, 2, 'demo_15_80', '5.490000', 0),
-(49, 10, 0, 2, 'demo_16_81', '5.490000', 0),
-(50, 10, 24, 2, 'demo_16_81', '5.490000', 0),
-(51, 10, 25, 2, 'demo_16_82', '5.490000', 0),
-(52, 11, 0, 2, 'demo_17_83', '5.490000', 0),
-(53, 11, 26, 2, 'demo_17_83', '5.490000', 0),
-(54, 11, 27, 2, 'demo_17_84', '5.490000', 0),
-(55, 16, 0, 2, 'demo_8_85', '5.490000', 0),
-(56, 16, 28, 2, 'demo_8_85', '5.490000', 0),
-(57, 16, 29, 2, 'demo_8_86', '5.490000', 0),
-(58, 16, 30, 2, 'demo_8_87', '5.490000', 0),
-(59, 16, 31, 2, 'demo_8_88', '5.490000', 0),
-(60, 17, 0, 2, 'demo_9_89', '5.490000', 0),
-(61, 17, 32, 2, 'demo_9_89', '5.490000', 0),
-(62, 17, 33, 2, 'demo_9_90', '5.490000', 0),
-(63, 17, 34, 2, 'demo_9_91', '5.490000', 0),
-(64, 17, 35, 2, 'demo_9_92', '5.490000', 0),
-(65, 18, 0, 2, 'demo_10_93', '5.490000', 0),
-(66, 18, 36, 2, 'demo_10_93', '5.490000', 0),
-(67, 18, 37, 2, 'demo_10_94', '5.490000', 0),
-(68, 18, 38, 2, 'demo_10_95', '5.490000', 0),
-(69, 18, 39, 2, 'demo_10_96', '5.490000', 0),
-(70, 15, 0, 2, '', '0.000000', 0);
+(1, 6, 0, 2, 'demo_11', 5.490000, 0),
+(2, 7, 0, 2, 'demo_12', 5.490000, 0),
+(3, 8, 0, 2, 'demo_13', 5.490000, 0),
+(4, 19, 0, 2, 'demo_14', 5.490000, 0),
+(5, 12, 0, 2, 'demo_18', 5.490000, 0),
+(6, 13, 0, 2, 'demo_19', 5.490000, 0),
+(7, 14, 0, 2, 'demo_20', 5.490000, 0),
+(8, 1, 0, 1, 'demo_1_46', 5.490000, 0),
+(9, 1, 1, 1, 'demo_1_46', 5.490000, 0),
+(10, 1, 2, 1, 'demo_1_47', 5.490000, 0),
+(11, 1, 3, 1, 'demo_1_48', 5.490000, 0),
+(12, 1, 4, 1, 'demo_1_49', 5.490000, 0),
+(13, 1, 5, 1, 'demo_1_50', 5.490000, 0),
+(14, 1, 6, 1, 'demo_1_51', 5.490000, 0),
+(15, 1, 7, 1, 'demo_1_52', 5.490000, 0),
+(16, 1, 8, 1, 'demo_1_53', 5.490000, 0),
+(17, 2, 0, 1, 'demo_3_62', 5.490000, 0),
+(18, 2, 9, 1, 'demo_3_62', 5.490000, 0),
+(19, 2, 10, 1, 'demo_3_63', 5.490000, 0),
+(20, 2, 11, 1, 'demo_3_64', 5.490000, 0),
+(21, 2, 12, 1, 'demo_3_65', 5.490000, 0),
+(22, 3, 0, 1, 'demo_6_70', 5.490000, 0),
+(23, 3, 13, 1, 'demo_6_70', 5.490000, 0),
+(24, 3, 14, 1, 'demo_6_71', 5.490000, 0),
+(25, 3, 15, 1, 'demo_6_72', 5.490000, 0),
+(26, 4, 0, 1, 'demo_5_73', 5.490000, 0),
+(27, 4, 16, 1, 'demo_5_73', 5.490000, 0),
+(28, 4, 17, 1, 'demo_5_74', 5.490000, 0),
+(29, 4, 18, 1, 'demo_5_75', 5.490000, 0),
+(30, 5, 0, 1, 'demo_5_76', 5.490000, 0),
+(31, 5, 19, 1, 'demo_5_76', 5.490000, 0),
+(32, 5, 20, 1, 'demo_5_77', 5.490000, 0),
+(33, 5, 21, 1, 'demo_5_78', 5.490000, 0),
+(34, 3, 0, 2, 'demo_6_70', 2.490000, 0),
+(35, 3, 13, 2, 'demo_6_70', 2.490000, 0),
+(36, 3, 14, 2, 'demo_6_71', 2.490000, 0),
+(37, 3, 15, 2, 'demo_6_72', 2.490000, 0),
+(38, 4, 0, 2, 'demo_5_73', 2.490000, 0),
+(39, 4, 16, 2, 'demo_5_73', 2.490000, 0),
+(40, 4, 17, 2, 'demo_5_74', 2.490000, 0),
+(41, 4, 18, 2, 'demo_5_75', 2.490000, 0),
+(42, 5, 0, 2, 'demo_5_76', 2.490000, 0),
+(43, 5, 19, 2, 'demo_5_76', 2.490000, 0),
+(44, 5, 20, 2, 'demo_5_77', 2.490000, 0),
+(45, 5, 21, 2, 'demo_5_78', 2.490000, 0),
+(46, 9, 0, 2, 'demo_15_79', 5.490000, 0),
+(47, 9, 22, 2, 'demo_15_79', 5.490000, 0),
+(48, 9, 23, 2, 'demo_15_80', 5.490000, 0),
+(49, 10, 0, 2, 'demo_16_81', 5.490000, 0),
+(50, 10, 24, 2, 'demo_16_81', 5.490000, 0),
+(51, 10, 25, 2, 'demo_16_82', 5.490000, 0),
+(52, 11, 0, 2, 'demo_17_83', 5.490000, 0),
+(53, 11, 26, 2, 'demo_17_83', 5.490000, 0),
+(54, 11, 27, 2, 'demo_17_84', 5.490000, 0),
+(55, 16, 0, 2, 'demo_8_85', 5.490000, 0),
+(56, 16, 28, 2, 'demo_8_85', 5.490000, 0),
+(57, 16, 29, 2, 'demo_8_86', 5.490000, 0),
+(58, 16, 30, 2, 'demo_8_87', 5.490000, 0),
+(59, 16, 31, 2, 'demo_8_88', 5.490000, 0),
+(60, 17, 0, 2, 'demo_9_89', 5.490000, 0),
+(61, 17, 32, 2, 'demo_9_89', 5.490000, 0),
+(62, 17, 33, 2, 'demo_9_90', 5.490000, 0),
+(63, 17, 34, 2, 'demo_9_91', 5.490000, 0),
+(64, 17, 35, 2, 'demo_9_92', 5.490000, 0),
+(65, 18, 0, 2, 'demo_10_93', 5.490000, 0),
+(66, 18, 36, 2, 'demo_10_93', 5.490000, 0),
+(67, 18, 37, 2, 'demo_10_94', 5.490000, 0),
+(68, 18, 38, 2, 'demo_10_95', 5.490000, 0),
+(69, 18, 39, 2, 'demo_10_96', 5.490000, 0),
+(70, 15, 0, 2, '', 0.000000, 0);
 
 -- --------------------------------------------------------
 
@@ -11603,7 +11705,7 @@ CREATE TABLE `ps_profile` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_profile`
+-- Dumping data for table `ps_profile`
 --
 
 INSERT INTO `ps_profile` (`id_profile`) VALUES
@@ -11625,7 +11727,7 @@ CREATE TABLE `ps_profile_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_profile_lang`
+-- Dumping data for table `ps_profile_lang`
 --
 
 INSERT INTO `ps_profile_lang` (`id_lang`, `id_profile`, `name`) VALUES
@@ -11671,7 +11773,7 @@ CREATE TABLE `ps_pscheckout_funding_source` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_pscheckout_funding_source`
+-- Dumping data for table `ps_pscheckout_funding_source`
 --
 
 INSERT INTO `ps_pscheckout_funding_source` (`name`, `active`, `position`, `id_shop`) VALUES
@@ -11745,7 +11847,7 @@ CREATE TABLE `ps_psgdpr_log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_psgdpr_log`
+-- Dumping data for table `ps_psgdpr_log`
 --
 
 INSERT INTO `ps_psgdpr_log` (`id_gdpr_log`, `id_customer`, `id_guest`, `client_name`, `id_module`, `request_type`, `date_add`, `date_upd`) VALUES
@@ -11771,7 +11873,7 @@ CREATE TABLE `ps_psreassurance` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_psreassurance`
+-- Dumping data for table `ps_psreassurance`
 --
 
 INSERT INTO `ps_psreassurance` (`id_psreassurance`, `icon`, `custom_icon`, `status`, `position`, `type_link`, `id_cms`, `date_add`, `date_upd`) VALUES
@@ -11794,7 +11896,7 @@ CREATE TABLE `ps_psreassurance_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_psreassurance_lang`
+-- Dumping data for table `ps_psreassurance_lang`
 --
 
 INSERT INTO `ps_psreassurance_lang` (`id_psreassurance`, `id_lang`, `title`, `description`, `link`) VALUES
@@ -11815,7 +11917,7 @@ CREATE TABLE `ps_quick_access` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_quick_access`
+-- Dumping data for table `ps_quick_access`
 --
 
 INSERT INTO `ps_quick_access` (`id_quick_access`, `new_window`, `link`) VALUES
@@ -11839,7 +11941,7 @@ CREATE TABLE `ps_quick_access_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_quick_access_lang`
+-- Dumping data for table `ps_quick_access_lang`
 --
 
 INSERT INTO `ps_quick_access_lang` (`id_quick_access`, `id_lang`, `name`) VALUES
@@ -11864,14 +11966,14 @@ CREATE TABLE `ps_range_price` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_range_price`
+-- Dumping data for table `ps_range_price`
 --
 
 INSERT INTO `ps_range_price` (`id_range_price`, `id_carrier`, `delimiter1`, `delimiter2`) VALUES
-(1, 2, '0.000000', '10000.000000'),
-(2, 3, '0.000000', '50.000000'),
-(3, 3, '50.000000', '100.000000'),
-(4, 3, '100.000000', '200.000000');
+(1, 2, 0.000000, 10000.000000),
+(2, 3, 0.000000, 50.000000),
+(3, 3, 50.000000, 100.000000),
+(4, 3, 100.000000, 200.000000);
 
 -- --------------------------------------------------------
 
@@ -11887,14 +11989,14 @@ CREATE TABLE `ps_range_weight` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_range_weight`
+-- Dumping data for table `ps_range_weight`
 --
 
 INSERT INTO `ps_range_weight` (`id_range_weight`, `id_carrier`, `delimiter1`, `delimiter2`) VALUES
-(1, 2, '0.000000', '10000.000000'),
-(2, 4, '0.000000', '1.000000'),
-(3, 4, '1.000000', '3.000000'),
-(4, 4, '3.000000', '10000.000000');
+(1, 2, 0.000000, 10000.000000),
+(2, 4, 0.000000, 1.000000),
+(3, 4, 1.000000, 3.000000),
+(4, 4, 3.000000, 10000.000000);
 
 -- --------------------------------------------------------
 
@@ -11987,7 +12089,7 @@ CREATE TABLE `ps_risk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_risk`
+-- Dumping data for table `ps_risk`
 --
 
 INSERT INTO `ps_risk` (`id_risk`, `percent`, `color`) VALUES
@@ -12009,7 +12111,7 @@ CREATE TABLE `ps_risk_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_risk_lang`
+-- Dumping data for table `ps_risk_lang`
 --
 
 INSERT INTO `ps_risk_lang` (`id_risk`, `id_lang`, `name`) VALUES
@@ -12031,7 +12133,7 @@ CREATE TABLE `ps_search_engine` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_search_engine`
+-- Dumping data for table `ps_search_engine`
 --
 
 INSERT INTO `ps_search_engine` (`id_search_engine`, `server`, `getvar`) VALUES
@@ -12087,7 +12189,7 @@ CREATE TABLE `ps_search_index` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_search_index`
+-- Dumping data for table `ps_search_index`
 --
 
 INSERT INTO `ps_search_index` (`id_product`, `id_word`, `weight`) VALUES
@@ -12771,7 +12873,7 @@ CREATE TABLE `ps_search_word` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_search_word`
+-- Dumping data for table `ps_search_word`
 --
 
 INSERT INTO `ps_search_word` (`id_word`, `id_shop`, `id_lang`, `word`) VALUES
@@ -13012,7 +13114,7 @@ CREATE TABLE `ps_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `ps_shop`
+-- Dumping data for table `ps_shop`
 --
 
 INSERT INTO `ps_shop` (`id_shop`, `id_shop_group`, `name`, `color`, `id_category`, `theme_name`, `active`, `deleted`) VALUES
@@ -13036,7 +13138,7 @@ CREATE TABLE `ps_shop_group` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `ps_shop_group`
+-- Dumping data for table `ps_shop_group`
 --
 
 INSERT INTO `ps_shop_group` (`id_shop_group`, `name`, `color`, `share_customer`, `share_order`, `share_stock`, `active`, `deleted`) VALUES
@@ -13060,11 +13162,11 @@ CREATE TABLE `ps_shop_url` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_shop_url`
+-- Dumping data for table `ps_shop_url`
 --
 
 INSERT INTO `ps_shop_url` (`id_shop_url`, `id_shop`, `domain`, `domain_ssl`, `physical_uri`, `virtual_uri`, `main`, `active`) VALUES
-(1, 1, 'localhost', 'localhost', '/monsteriada-prestashop-clone/', '', 1, 1);
+(1, 1, 'localhost:8080', 'localhost:8080', '/', '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -13133,12 +13235,12 @@ CREATE TABLE `ps_specific_price` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_specific_price`
+-- Dumping data for table `ps_specific_price`
 --
 
 INSERT INTO `ps_specific_price` (`id_specific_price`, `id_specific_price_rule`, `id_cart`, `id_product`, `id_shop`, `id_shop_group`, `id_currency`, `id_country`, `id_group`, `id_customer`, `id_product_attribute`, `price`, `from_quantity`, `reduction`, `reduction_tax`, `reduction_type`, `from`, `to`) VALUES
-(1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, '-1.000000', 1, '0.200000', 1, 'percentage', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, '-1.000000', 1, '0.200000', 1, 'percentage', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, -1.000000, 1, 0.200000, 1, 'percentage', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, -1.000000, 1, 0.200000, 1, 'percentage', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -13215,7 +13317,7 @@ CREATE TABLE `ps_state` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_state`
+-- Dumping data for table `ps_state`
 --
 
 INSERT INTO `ps_state` (`id_state`, `id_country`, `id_zone`, `name`, `iso_code`, `tax_behavior`, `active`) VALUES
@@ -13588,7 +13690,7 @@ CREATE TABLE `ps_statssearch` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_statssearch`
+-- Dumping data for table `ps_statssearch`
 --
 
 INSERT INTO `ps_statssearch` (`id_statssearch`, `id_shop`, `id_shop_group`, `keywords`, `results`, `date_add`) VALUES
@@ -13639,7 +13741,7 @@ CREATE TABLE `ps_stock_available` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_stock_available`
+-- Dumping data for table `ps_stock_available`
 --
 
 INSERT INTO `ps_stock_available` (`id_stock_available`, `id_product`, `id_product_attribute`, `id_shop`, `id_shop_group`, `quantity`, `physical_quantity`, `reserved_quantity`, `depends_on_stock`, `out_of_stock`, `location`) VALUES
@@ -13741,7 +13843,7 @@ CREATE TABLE `ps_stock_mvt_reason` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_stock_mvt_reason`
+-- Dumping data for table `ps_stock_mvt_reason`
 --
 
 INSERT INTO `ps_stock_mvt_reason` (`id_stock_mvt_reason`, `sign`, `date_add`, `date_upd`, `deleted`) VALUES
@@ -13771,7 +13873,7 @@ CREATE TABLE `ps_stock_mvt_reason_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_stock_mvt_reason_lang`
+-- Dumping data for table `ps_stock_mvt_reason_lang`
 --
 
 INSERT INTO `ps_stock_mvt_reason_lang` (`id_stock_mvt_reason`, `id_lang`, `name`) VALUES
@@ -13811,11 +13913,11 @@ CREATE TABLE `ps_store` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_store`
+-- Dumping data for table `ps_store`
 --
 
 INSERT INTO `ps_store` (`id_store`, `id_country`, `id_state`, `city`, `postcode`, `latitude`, `longitude`, `phone`, `fax`, `email`, `active`, `date_add`, `date_upd`) VALUES
-(2, 21, 12, 'Miami', '33304', '26.13793600', '-80.13943500', '', '', '', 1, '2024-10-28 17:46:41', '2024-10-28 17:46:41');
+(2, 21, 12, 'Miami', '33304', 26.13793600, -80.13943500, '', '', '', 1, '2024-10-28 17:46:41', '2024-10-28 17:46:41');
 
 -- --------------------------------------------------------
 
@@ -13834,7 +13936,7 @@ CREATE TABLE `ps_store_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_store_lang`
+-- Dumping data for table `ps_store_lang`
 --
 
 INSERT INTO `ps_store_lang` (`id_store`, `id_lang`, `name`, `address1`, `address2`, `hours`, `note`) VALUES
@@ -13852,7 +13954,7 @@ CREATE TABLE `ps_store_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_store_shop`
+-- Dumping data for table `ps_store_shop`
 --
 
 INSERT INTO `ps_store_shop` (`id_store`, `id_shop`) VALUES
@@ -13873,7 +13975,7 @@ CREATE TABLE `ps_supplier` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_supplier`
+-- Dumping data for table `ps_supplier`
 --
 
 INSERT INTO `ps_supplier` (`id_supplier`, `name`, `date_add`, `date_upd`, `active`) VALUES
@@ -13896,7 +13998,7 @@ CREATE TABLE `ps_supplier_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_supplier_lang`
+-- Dumping data for table `ps_supplier_lang`
 --
 
 INSERT INTO `ps_supplier_lang` (`id_supplier`, `id_lang`, `description`, `meta_title`, `meta_keywords`, `meta_description`) VALUES
@@ -13915,7 +14017,7 @@ CREATE TABLE `ps_supplier_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_supplier_shop`
+-- Dumping data for table `ps_supplier_shop`
 --
 
 INSERT INTO `ps_supplier_shop` (`id_supplier`, `id_shop`) VALUES
@@ -14034,7 +14136,7 @@ CREATE TABLE `ps_supply_order_state` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_supply_order_state`
+-- Dumping data for table `ps_supply_order_state`
 --
 
 INSERT INTO `ps_supply_order_state` (`id_supply_order_state`, `delivery_note`, `editable`, `receipt_state`, `pending_receipt`, `enclosed`, `color`) VALUES
@@ -14058,7 +14160,7 @@ CREATE TABLE `ps_supply_order_state_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_supply_order_state_lang`
+-- Dumping data for table `ps_supply_order_state_lang`
 --
 
 INSERT INTO `ps_supply_order_state_lang` (`id_supply_order_state`, `id_lang`, `name`) VALUES
@@ -14091,7 +14193,7 @@ CREATE TABLE `ps_tab` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `ps_tab`
+-- Dumping data for table `ps_tab`
 --
 
 INSERT INTO `ps_tab` (`id_tab`, `id_parent`, `position`, `module`, `class_name`, `route_name`, `active`, `enabled`, `hide_host_mode`, `icon`, `wording`, `wording_domain`) VALUES
@@ -14267,7 +14369,7 @@ CREATE TABLE `ps_tab_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Zrzut danych tabeli `ps_tab_lang`
+-- Dumping data for table `ps_tab_lang`
 --
 
 INSERT INTO `ps_tab_lang` (`id_tab`, `id_lang`, `name`) VALUES
@@ -14479,41 +14581,41 @@ CREATE TABLE `ps_tax` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_tax`
+-- Dumping data for table `ps_tax`
 --
 
 INSERT INTO `ps_tax` (`id_tax`, `rate`, `active`, `deleted`) VALUES
-(1, '23.000', 1, 0),
-(2, '8.000', 1, 0),
-(3, '5.000', 1, 0),
-(4, '0.000', 1, 0),
-(5, '20.000', 1, 0),
-(6, '21.000', 1, 0),
-(7, '20.000', 1, 0),
-(8, '19.000', 1, 0),
-(9, '21.000', 1, 0),
-(10, '19.000', 1, 0),
-(11, '25.000', 1, 0),
-(12, '20.000', 1, 0),
-(13, '21.000', 1, 0),
-(14, '24.000', 1, 0),
-(15, '20.000', 1, 0),
-(16, '20.000', 1, 0),
-(17, '24.000', 1, 0),
-(18, '25.000', 1, 0),
-(19, '27.000', 1, 0),
-(20, '23.000', 1, 0),
-(21, '22.000', 1, 0),
-(22, '21.000', 1, 0),
-(23, '17.000', 1, 0),
-(24, '21.000', 1, 0),
-(25, '18.000', 1, 0),
-(26, '21.000', 1, 0),
-(27, '23.000', 1, 0),
-(28, '19.000', 1, 0),
-(29, '25.000', 1, 0),
-(30, '22.000', 1, 0),
-(31, '20.000', 1, 0);
+(1, 23.000, 1, 0),
+(2, 8.000, 1, 0),
+(3, 5.000, 1, 0),
+(4, 0.000, 1, 0),
+(5, 20.000, 1, 0),
+(6, 21.000, 1, 0),
+(7, 20.000, 1, 0),
+(8, 19.000, 1, 0),
+(9, 21.000, 1, 0),
+(10, 19.000, 1, 0),
+(11, 25.000, 1, 0),
+(12, 20.000, 1, 0),
+(13, 21.000, 1, 0),
+(14, 24.000, 1, 0),
+(15, 20.000, 1, 0),
+(16, 20.000, 1, 0),
+(17, 24.000, 1, 0),
+(18, 25.000, 1, 0),
+(19, 27.000, 1, 0),
+(20, 23.000, 1, 0),
+(21, 22.000, 1, 0),
+(22, 21.000, 1, 0),
+(23, 17.000, 1, 0),
+(24, 21.000, 1, 0),
+(25, 18.000, 1, 0),
+(26, 21.000, 1, 0),
+(27, 23.000, 1, 0),
+(28, 19.000, 1, 0),
+(29, 25.000, 1, 0),
+(30, 22.000, 1, 0),
+(31, 20.000, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -14528,7 +14630,7 @@ CREATE TABLE `ps_tax_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_tax_lang`
+-- Dumping data for table `ps_tax_lang`
 --
 
 INSERT INTO `ps_tax_lang` (`id_tax`, `id_lang`, `name`) VALUES
@@ -14583,7 +14685,7 @@ CREATE TABLE `ps_tax_rule` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_tax_rule`
+-- Dumping data for table `ps_tax_rule`
 --
 
 INSERT INTO `ps_tax_rule` (`id_tax_rule`, `id_tax_rules_group`, `id_country`, `id_state`, `zipcode_from`, `zipcode_to`, `id_tax`, `behavior`, `description`) VALUES
@@ -14742,7 +14844,7 @@ CREATE TABLE `ps_tax_rules_group` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_tax_rules_group`
+-- Dumping data for table `ps_tax_rules_group`
 --
 
 INSERT INTO `ps_tax_rules_group` (`id_tax_rules_group`, `name`, `active`, `deleted`, `date_add`, `date_upd`) VALUES
@@ -14764,7 +14866,7 @@ CREATE TABLE `ps_tax_rules_group_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_tax_rules_group_shop`
+-- Dumping data for table `ps_tax_rules_group_shop`
 --
 
 INSERT INTO `ps_tax_rules_group_shop` (`id_tax_rules_group`, `id_shop`) VALUES
@@ -14786,7 +14888,7 @@ CREATE TABLE `ps_timezone` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_timezone`
+-- Dumping data for table `ps_timezone`
 --
 
 INSERT INTO `ps_timezone` (`id_timezone`, `name`) VALUES
@@ -15471,7 +15573,7 @@ CREATE TABLE `ps_web_browser` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_web_browser`
+-- Dumping data for table `ps_web_browser`
 --
 
 INSERT INTO `ps_web_browser` (`id_web_browser`, `name`) VALUES
@@ -15507,7 +15609,7 @@ CREATE TABLE `ps_wishlist` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `ps_wishlist`
+-- Dumping data for table `ps_wishlist`
 --
 
 INSERT INTO `ps_wishlist` (`id_wishlist`, `id_customer`, `id_shop`, `id_shop_group`, `token`, `name`, `counter`, `date_add`, `date_upd`, `default`) VALUES
@@ -15555,7 +15657,7 @@ CREATE TABLE `ps_zone` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_zone`
+-- Dumping data for table `ps_zone`
 --
 
 INSERT INTO `ps_zone` (`id_zone`, `name`, `active`) VALUES
@@ -15580,7 +15682,7 @@ CREATE TABLE `ps_zone_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Zrzut danych tabeli `ps_zone_shop`
+-- Dumping data for table `ps_zone_shop`
 --
 
 INSERT INTO `ps_zone_shop` (`id_zone`, `id_shop`) VALUES
@@ -17585,881 +17687,881 @@ ALTER TABLE `ps_zone_shop`
   ADD KEY `id_shop` (`id_shop`);
 
 --
--- AUTO_INCREMENT dla zrzuconych tabel
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT dla tabeli `ps_address`
+-- AUTO_INCREMENT for table `ps_address`
 --
 ALTER TABLE `ps_address`
   MODIFY `id_address` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_admin_filter`
+-- AUTO_INCREMENT for table `ps_admin_filter`
 --
 ALTER TABLE `ps_admin_filter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_alias`
+-- AUTO_INCREMENT for table `ps_alias`
 --
 ALTER TABLE `ps_alias`
   MODIFY `id_alias` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_attachment`
+-- AUTO_INCREMENT for table `ps_attachment`
 --
 ALTER TABLE `ps_attachment`
   MODIFY `id_attachment` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_attachment_lang`
+-- AUTO_INCREMENT for table `ps_attachment_lang`
 --
 ALTER TABLE `ps_attachment_lang`
   MODIFY `id_attachment` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_attribute`
+-- AUTO_INCREMENT for table `ps_attribute`
 --
 ALTER TABLE `ps_attribute`
   MODIFY `id_attribute` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_attribute_group`
+-- AUTO_INCREMENT for table `ps_attribute_group`
 --
 ALTER TABLE `ps_attribute_group`
   MODIFY `id_attribute_group` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_attribute_impact`
+-- AUTO_INCREMENT for table `ps_attribute_impact`
 --
 ALTER TABLE `ps_attribute_impact`
   MODIFY `id_attribute_impact` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_authorization_role`
+-- AUTO_INCREMENT for table `ps_authorization_role`
 --
 ALTER TABLE `ps_authorization_role`
   MODIFY `id_authorization_role` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=933;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_blockwishlist_statistics`
+-- AUTO_INCREMENT for table `ps_blockwishlist_statistics`
 --
 ALTER TABLE `ps_blockwishlist_statistics`
   MODIFY `id_statistics` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_carrier`
+-- AUTO_INCREMENT for table `ps_carrier`
 --
 ALTER TABLE `ps_carrier`
   MODIFY `id_carrier` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_cart`
+-- AUTO_INCREMENT for table `ps_cart`
 --
 ALTER TABLE `ps_cart`
   MODIFY `id_cart` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_cart_rule`
+-- AUTO_INCREMENT for table `ps_cart_rule`
 --
 ALTER TABLE `ps_cart_rule`
   MODIFY `id_cart_rule` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_cart_rule_product_rule`
+-- AUTO_INCREMENT for table `ps_cart_rule_product_rule`
 --
 ALTER TABLE `ps_cart_rule_product_rule`
   MODIFY `id_product_rule` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_cart_rule_product_rule_group`
+-- AUTO_INCREMENT for table `ps_cart_rule_product_rule_group`
 --
 ALTER TABLE `ps_cart_rule_product_rule_group`
   MODIFY `id_product_rule_group` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_category`
+-- AUTO_INCREMENT for table `ps_category`
 --
 ALTER TABLE `ps_category`
   MODIFY `id_category` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_cms`
+-- AUTO_INCREMENT for table `ps_cms`
 --
 ALTER TABLE `ps_cms`
-  MODIFY `id_cms` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_cms` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_cms_category`
+-- AUTO_INCREMENT for table `ps_cms_category`
 --
 ALTER TABLE `ps_cms_category`
   MODIFY `id_cms_category` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_cms_category_shop`
+-- AUTO_INCREMENT for table `ps_cms_category_shop`
 --
 ALTER TABLE `ps_cms_category_shop`
   MODIFY `id_cms_category` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_cms_role`
+-- AUTO_INCREMENT for table `ps_cms_role`
 --
 ALTER TABLE `ps_cms_role`
   MODIFY `id_cms_role` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_configuration`
+-- AUTO_INCREMENT for table `ps_configuration`
 --
 ALTER TABLE `ps_configuration`
   MODIFY `id_configuration` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=453;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_configuration_kpi`
+-- AUTO_INCREMENT for table `ps_configuration_kpi`
 --
 ALTER TABLE `ps_configuration_kpi`
   MODIFY `id_configuration_kpi` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_connections`
+-- AUTO_INCREMENT for table `ps_connections`
 --
 ALTER TABLE `ps_connections`
-  MODIFY `id_connections` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id_connections` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_connections_source`
+-- AUTO_INCREMENT for table `ps_connections_source`
 --
 ALTER TABLE `ps_connections_source`
-  MODIFY `id_connections_source` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=491;
+  MODIFY `id_connections_source` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=552;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_contact`
+-- AUTO_INCREMENT for table `ps_contact`
 --
 ALTER TABLE `ps_contact`
   MODIFY `id_contact` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_country`
+-- AUTO_INCREMENT for table `ps_country`
 --
 ALTER TABLE `ps_country`
   MODIFY `id_country` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=242;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_currency`
+-- AUTO_INCREMENT for table `ps_currency`
 --
 ALTER TABLE `ps_currency`
   MODIFY `id_currency` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_customer`
+-- AUTO_INCREMENT for table `ps_customer`
 --
 ALTER TABLE `ps_customer`
   MODIFY `id_customer` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_customer_message`
+-- AUTO_INCREMENT for table `ps_customer_message`
 --
 ALTER TABLE `ps_customer_message`
   MODIFY `id_customer_message` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_customer_session`
+-- AUTO_INCREMENT for table `ps_customer_session`
 --
 ALTER TABLE `ps_customer_session`
   MODIFY `id_customer_session` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_customer_thread`
+-- AUTO_INCREMENT for table `ps_customer_thread`
 --
 ALTER TABLE `ps_customer_thread`
   MODIFY `id_customer_thread` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_customization`
+-- AUTO_INCREMENT for table `ps_customization`
 --
 ALTER TABLE `ps_customization`
   MODIFY `id_customization` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_customization_field`
+-- AUTO_INCREMENT for table `ps_customization_field`
 --
 ALTER TABLE `ps_customization_field`
   MODIFY `id_customization_field` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_date_range`
+-- AUTO_INCREMENT for table `ps_date_range`
 --
 ALTER TABLE `ps_date_range`
   MODIFY `id_date_range` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_delivery`
+-- AUTO_INCREMENT for table `ps_delivery`
 --
 ALTER TABLE `ps_delivery`
   MODIFY `id_delivery` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_emailsubscription`
+-- AUTO_INCREMENT for table `ps_emailsubscription`
 --
 ALTER TABLE `ps_emailsubscription`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_employee`
+-- AUTO_INCREMENT for table `ps_employee`
 --
 ALTER TABLE `ps_employee`
   MODIFY `id_employee` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_employee_account`
+-- AUTO_INCREMENT for table `ps_employee_account`
 --
 ALTER TABLE `ps_employee_account`
   MODIFY `id_employee_account` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_employee_session`
+-- AUTO_INCREMENT for table `ps_employee_session`
 --
 ALTER TABLE `ps_employee_session`
   MODIFY `id_employee_session` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_feature`
+-- AUTO_INCREMENT for table `ps_feature`
 --
 ALTER TABLE `ps_feature`
   MODIFY `id_feature` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_feature_flag`
+-- AUTO_INCREMENT for table `ps_feature_flag`
 --
 ALTER TABLE `ps_feature_flag`
   MODIFY `id_feature_flag` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_feature_value`
+-- AUTO_INCREMENT for table `ps_feature_value`
 --
 ALTER TABLE `ps_feature_value`
   MODIFY `id_feature_value` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_gender`
+-- AUTO_INCREMENT for table `ps_gender`
 --
 ALTER TABLE `ps_gender`
   MODIFY `id_gender` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_group`
+-- AUTO_INCREMENT for table `ps_group`
 --
 ALTER TABLE `ps_group`
   MODIFY `id_group` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_group_reduction`
+-- AUTO_INCREMENT for table `ps_group_reduction`
 --
 ALTER TABLE `ps_group_reduction`
   MODIFY `id_group_reduction` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_guest`
+-- AUTO_INCREMENT for table `ps_guest`
 --
 ALTER TABLE `ps_guest`
-  MODIFY `id_guest` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_guest` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_homeslider`
+-- AUTO_INCREMENT for table `ps_homeslider`
 --
 ALTER TABLE `ps_homeslider`
   MODIFY `id_homeslider_slides` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_homeslider_slides`
+-- AUTO_INCREMENT for table `ps_homeslider_slides`
 --
 ALTER TABLE `ps_homeslider_slides`
   MODIFY `id_homeslider_slides` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_hook`
+-- AUTO_INCREMENT for table `ps_hook`
 --
 ALTER TABLE `ps_hook`
   MODIFY `id_hook` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=812;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_hook_alias`
+-- AUTO_INCREMENT for table `ps_hook_alias`
 --
 ALTER TABLE `ps_hook_alias`
   MODIFY `id_hook_alias` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_hook_module_exceptions`
+-- AUTO_INCREMENT for table `ps_hook_module_exceptions`
 --
 ALTER TABLE `ps_hook_module_exceptions`
   MODIFY `id_hook_module_exceptions` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_image`
+-- AUTO_INCREMENT for table `ps_image`
 --
 ALTER TABLE `ps_image`
   MODIFY `id_image` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_image_type`
+-- AUTO_INCREMENT for table `ps_image_type`
 --
 ALTER TABLE `ps_image_type`
   MODIFY `id_image_type` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_import_match`
+-- AUTO_INCREMENT for table `ps_import_match`
 --
 ALTER TABLE `ps_import_match`
   MODIFY `id_import_match` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_info`
+-- AUTO_INCREMENT for table `ps_info`
 --
 ALTER TABLE `ps_info`
   MODIFY `id_info` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_lang`
+-- AUTO_INCREMENT for table `ps_lang`
 --
 ALTER TABLE `ps_lang`
   MODIFY `id_lang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_layered_category`
+-- AUTO_INCREMENT for table `ps_layered_category`
 --
 ALTER TABLE `ps_layered_category`
   MODIFY `id_layered_category` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_layered_filter`
+-- AUTO_INCREMENT for table `ps_layered_filter`
 --
 ALTER TABLE `ps_layered_filter`
   MODIFY `id_layered_filter` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_linksmenutop`
+-- AUTO_INCREMENT for table `ps_linksmenutop`
 --
 ALTER TABLE `ps_linksmenutop`
   MODIFY `id_linksmenutop` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_link_block`
+-- AUTO_INCREMENT for table `ps_link_block`
 --
 ALTER TABLE `ps_link_block`
   MODIFY `id_link_block` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_link_block_shop`
+-- AUTO_INCREMENT for table `ps_link_block_shop`
 --
 ALTER TABLE `ps_link_block_shop`
   MODIFY `id_link_block` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_log`
+-- AUTO_INCREMENT for table `ps_log`
 --
 ALTER TABLE `ps_log`
   MODIFY `id_log` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=291;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_mail`
+-- AUTO_INCREMENT for table `ps_mail`
 --
 ALTER TABLE `ps_mail`
   MODIFY `id_mail` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_manufacturer`
+-- AUTO_INCREMENT for table `ps_manufacturer`
 --
 ALTER TABLE `ps_manufacturer`
   MODIFY `id_manufacturer` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_memcached_servers`
+-- AUTO_INCREMENT for table `ps_memcached_servers`
 --
 ALTER TABLE `ps_memcached_servers`
   MODIFY `id_memcached_server` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_message`
+-- AUTO_INCREMENT for table `ps_message`
 --
 ALTER TABLE `ps_message`
   MODIFY `id_message` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_meta`
+-- AUTO_INCREMENT for table `ps_meta`
 --
 ALTER TABLE `ps_meta`
   MODIFY `id_meta` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_module`
+-- AUTO_INCREMENT for table `ps_module`
 --
 ALTER TABLE `ps_module`
   MODIFY `id_module` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_module_history`
+-- AUTO_INCREMENT for table `ps_module_history`
 --
 ALTER TABLE `ps_module_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_module_preference`
+-- AUTO_INCREMENT for table `ps_module_preference`
 --
 ALTER TABLE `ps_module_preference`
   MODIFY `id_module_preference` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_operating_system`
+-- AUTO_INCREMENT for table `ps_operating_system`
 --
 ALTER TABLE `ps_operating_system`
   MODIFY `id_operating_system` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_orders`
+-- AUTO_INCREMENT for table `ps_orders`
 --
 ALTER TABLE `ps_orders`
   MODIFY `id_order` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_order_carrier`
+-- AUTO_INCREMENT for table `ps_order_carrier`
 --
 ALTER TABLE `ps_order_carrier`
   MODIFY `id_order_carrier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_order_cart_rule`
+-- AUTO_INCREMENT for table `ps_order_cart_rule`
 --
 ALTER TABLE `ps_order_cart_rule`
   MODIFY `id_order_cart_rule` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_order_detail`
+-- AUTO_INCREMENT for table `ps_order_detail`
 --
 ALTER TABLE `ps_order_detail`
   MODIFY `id_order_detail` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_order_history`
+-- AUTO_INCREMENT for table `ps_order_history`
 --
 ALTER TABLE `ps_order_history`
   MODIFY `id_order_history` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_order_invoice`
+-- AUTO_INCREMENT for table `ps_order_invoice`
 --
 ALTER TABLE `ps_order_invoice`
   MODIFY `id_order_invoice` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_order_message`
+-- AUTO_INCREMENT for table `ps_order_message`
 --
 ALTER TABLE `ps_order_message`
   MODIFY `id_order_message` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_order_payment`
+-- AUTO_INCREMENT for table `ps_order_payment`
 --
 ALTER TABLE `ps_order_payment`
   MODIFY `id_order_payment` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_order_return`
+-- AUTO_INCREMENT for table `ps_order_return`
 --
 ALTER TABLE `ps_order_return`
   MODIFY `id_order_return` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_order_return_state`
+-- AUTO_INCREMENT for table `ps_order_return_state`
 --
 ALTER TABLE `ps_order_return_state`
   MODIFY `id_order_return_state` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_order_slip`
+-- AUTO_INCREMENT for table `ps_order_slip`
 --
 ALTER TABLE `ps_order_slip`
   MODIFY `id_order_slip` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_order_state`
+-- AUTO_INCREMENT for table `ps_order_state`
 --
 ALTER TABLE `ps_order_state`
   MODIFY `id_order_state` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_page`
+-- AUTO_INCREMENT for table `ps_page`
 --
 ALTER TABLE `ps_page`
-  MODIFY `id_page` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_page` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_pagenotfound`
+-- AUTO_INCREMENT for table `ps_pagenotfound`
 --
 ALTER TABLE `ps_pagenotfound`
   MODIFY `id_pagenotfound` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_page_type`
+-- AUTO_INCREMENT for table `ps_page_type`
 --
 ALTER TABLE `ps_page_type`
-  MODIFY `id_page_type` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_page_type` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_product`
+-- AUTO_INCREMENT for table `ps_product`
 --
 ALTER TABLE `ps_product`
   MODIFY `id_product` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_product_attribute`
+-- AUTO_INCREMENT for table `ps_product_attribute`
 --
 ALTER TABLE `ps_product_attribute`
   MODIFY `id_product_attribute` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_product_comment`
+-- AUTO_INCREMENT for table `ps_product_comment`
 --
 ALTER TABLE `ps_product_comment`
   MODIFY `id_product_comment` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_product_comment_criterion`
+-- AUTO_INCREMENT for table `ps_product_comment_criterion`
 --
 ALTER TABLE `ps_product_comment_criterion`
   MODIFY `id_product_comment_criterion` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_product_download`
+-- AUTO_INCREMENT for table `ps_product_download`
 --
 ALTER TABLE `ps_product_download`
   MODIFY `id_product_download` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_product_supplier`
+-- AUTO_INCREMENT for table `ps_product_supplier`
 --
 ALTER TABLE `ps_product_supplier`
   MODIFY `id_product_supplier` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_profile`
+-- AUTO_INCREMENT for table `ps_profile`
 --
 ALTER TABLE `ps_profile`
   MODIFY `id_profile` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_pscheckout_cart`
+-- AUTO_INCREMENT for table `ps_pscheckout_cart`
 --
 ALTER TABLE `ps_pscheckout_cart`
   MODIFY `id_pscheckout_cart` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_pscheckout_order_matrice`
+-- AUTO_INCREMENT for table `ps_pscheckout_order_matrice`
 --
 ALTER TABLE `ps_pscheckout_order_matrice`
   MODIFY `id_order_matrice` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_psgdpr_consent`
+-- AUTO_INCREMENT for table `ps_psgdpr_consent`
 --
 ALTER TABLE `ps_psgdpr_consent`
   MODIFY `id_gdpr_consent` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_psgdpr_consent_lang`
+-- AUTO_INCREMENT for table `ps_psgdpr_consent_lang`
 --
 ALTER TABLE `ps_psgdpr_consent_lang`
   MODIFY `id_gdpr_consent` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_psgdpr_log`
+-- AUTO_INCREMENT for table `ps_psgdpr_log`
 --
 ALTER TABLE `ps_psgdpr_log`
   MODIFY `id_gdpr_log` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_psreassurance`
+-- AUTO_INCREMENT for table `ps_psreassurance`
 --
 ALTER TABLE `ps_psreassurance`
   MODIFY `id_psreassurance` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_quick_access`
+-- AUTO_INCREMENT for table `ps_quick_access`
 --
 ALTER TABLE `ps_quick_access`
   MODIFY `id_quick_access` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_range_price`
+-- AUTO_INCREMENT for table `ps_range_price`
 --
 ALTER TABLE `ps_range_price`
   MODIFY `id_range_price` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_range_weight`
+-- AUTO_INCREMENT for table `ps_range_weight`
 --
 ALTER TABLE `ps_range_weight`
   MODIFY `id_range_weight` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_referrer`
+-- AUTO_INCREMENT for table `ps_referrer`
 --
 ALTER TABLE `ps_referrer`
   MODIFY `id_referrer` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_referrer_shop`
+-- AUTO_INCREMENT for table `ps_referrer_shop`
 --
 ALTER TABLE `ps_referrer_shop`
   MODIFY `id_referrer` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_request_sql`
+-- AUTO_INCREMENT for table `ps_request_sql`
 --
 ALTER TABLE `ps_request_sql`
   MODIFY `id_request_sql` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_required_field`
+-- AUTO_INCREMENT for table `ps_required_field`
 --
 ALTER TABLE `ps_required_field`
   MODIFY `id_required_field` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_risk`
+-- AUTO_INCREMENT for table `ps_risk`
 --
 ALTER TABLE `ps_risk`
   MODIFY `id_risk` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_search_engine`
+-- AUTO_INCREMENT for table `ps_search_engine`
 --
 ALTER TABLE `ps_search_engine`
   MODIFY `id_search_engine` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_search_word`
+-- AUTO_INCREMENT for table `ps_search_word`
 --
 ALTER TABLE `ps_search_word`
   MODIFY `id_word` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=657;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_shop`
+-- AUTO_INCREMENT for table `ps_shop`
 --
 ALTER TABLE `ps_shop`
   MODIFY `id_shop` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_shop_group`
+-- AUTO_INCREMENT for table `ps_shop_group`
 --
 ALTER TABLE `ps_shop_group`
   MODIFY `id_shop_group` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_shop_url`
+-- AUTO_INCREMENT for table `ps_shop_url`
 --
 ALTER TABLE `ps_shop_url`
   MODIFY `id_shop_url` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_specific_price`
+-- AUTO_INCREMENT for table `ps_specific_price`
 --
 ALTER TABLE `ps_specific_price`
   MODIFY `id_specific_price` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_specific_price_priority`
+-- AUTO_INCREMENT for table `ps_specific_price_priority`
 --
 ALTER TABLE `ps_specific_price_priority`
   MODIFY `id_specific_price_priority` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_specific_price_rule`
+-- AUTO_INCREMENT for table `ps_specific_price_rule`
 --
 ALTER TABLE `ps_specific_price_rule`
   MODIFY `id_specific_price_rule` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_specific_price_rule_condition`
+-- AUTO_INCREMENT for table `ps_specific_price_rule_condition`
 --
 ALTER TABLE `ps_specific_price_rule_condition`
   MODIFY `id_specific_price_rule_condition` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_specific_price_rule_condition_group`
+-- AUTO_INCREMENT for table `ps_specific_price_rule_condition_group`
 --
 ALTER TABLE `ps_specific_price_rule_condition_group`
   MODIFY `id_specific_price_rule_condition_group` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_state`
+-- AUTO_INCREMENT for table `ps_state`
 --
 ALTER TABLE `ps_state`
   MODIFY `id_state` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=353;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_statssearch`
+-- AUTO_INCREMENT for table `ps_statssearch`
 --
 ALTER TABLE `ps_statssearch`
   MODIFY `id_statssearch` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_stock`
+-- AUTO_INCREMENT for table `ps_stock`
 --
 ALTER TABLE `ps_stock`
   MODIFY `id_stock` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_stock_available`
+-- AUTO_INCREMENT for table `ps_stock_available`
 --
 ALTER TABLE `ps_stock_available`
   MODIFY `id_stock_available` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_stock_mvt`
+-- AUTO_INCREMENT for table `ps_stock_mvt`
 --
 ALTER TABLE `ps_stock_mvt`
   MODIFY `id_stock_mvt` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_stock_mvt_reason`
+-- AUTO_INCREMENT for table `ps_stock_mvt_reason`
 --
 ALTER TABLE `ps_stock_mvt_reason`
   MODIFY `id_stock_mvt_reason` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_store`
+-- AUTO_INCREMENT for table `ps_store`
 --
 ALTER TABLE `ps_store`
   MODIFY `id_store` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_supplier`
+-- AUTO_INCREMENT for table `ps_supplier`
 --
 ALTER TABLE `ps_supplier`
   MODIFY `id_supplier` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_supply_order`
+-- AUTO_INCREMENT for table `ps_supply_order`
 --
 ALTER TABLE `ps_supply_order`
   MODIFY `id_supply_order` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_supply_order_detail`
+-- AUTO_INCREMENT for table `ps_supply_order_detail`
 --
 ALTER TABLE `ps_supply_order_detail`
   MODIFY `id_supply_order_detail` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_supply_order_history`
+-- AUTO_INCREMENT for table `ps_supply_order_history`
 --
 ALTER TABLE `ps_supply_order_history`
   MODIFY `id_supply_order_history` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_supply_order_receipt_history`
+-- AUTO_INCREMENT for table `ps_supply_order_receipt_history`
 --
 ALTER TABLE `ps_supply_order_receipt_history`
   MODIFY `id_supply_order_receipt_history` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_supply_order_state`
+-- AUTO_INCREMENT for table `ps_supply_order_state`
 --
 ALTER TABLE `ps_supply_order_state`
   MODIFY `id_supply_order_state` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_tab`
+-- AUTO_INCREMENT for table `ps_tab`
 --
 ALTER TABLE `ps_tab`
   MODIFY `id_tab` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_tab_module_preference`
+-- AUTO_INCREMENT for table `ps_tab_module_preference`
 --
 ALTER TABLE `ps_tab_module_preference`
   MODIFY `id_tab_module_preference` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_tag`
+-- AUTO_INCREMENT for table `ps_tag`
 --
 ALTER TABLE `ps_tag`
   MODIFY `id_tag` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_tax`
+-- AUTO_INCREMENT for table `ps_tax`
 --
 ALTER TABLE `ps_tax`
   MODIFY `id_tax` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_tax_rule`
+-- AUTO_INCREMENT for table `ps_tax_rule`
 --
 ALTER TABLE `ps_tax_rule`
   MODIFY `id_tax_rule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_tax_rules_group`
+-- AUTO_INCREMENT for table `ps_tax_rules_group`
 --
 ALTER TABLE `ps_tax_rules_group`
   MODIFY `id_tax_rules_group` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_timezone`
+-- AUTO_INCREMENT for table `ps_timezone`
 --
 ALTER TABLE `ps_timezone`
   MODIFY `id_timezone` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=561;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_translation`
+-- AUTO_INCREMENT for table `ps_translation`
 --
 ALTER TABLE `ps_translation`
   MODIFY `id_translation` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_warehouse`
+-- AUTO_INCREMENT for table `ps_warehouse`
 --
 ALTER TABLE `ps_warehouse`
   MODIFY `id_warehouse` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_warehouse_product_location`
+-- AUTO_INCREMENT for table `ps_warehouse_product_location`
 --
 ALTER TABLE `ps_warehouse_product_location`
   MODIFY `id_warehouse_product_location` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_webservice_account`
+-- AUTO_INCREMENT for table `ps_webservice_account`
 --
 ALTER TABLE `ps_webservice_account`
   MODIFY `id_webservice_account` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_webservice_permission`
+-- AUTO_INCREMENT for table `ps_webservice_permission`
 --
 ALTER TABLE `ps_webservice_permission`
   MODIFY `id_webservice_permission` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_web_browser`
+-- AUTO_INCREMENT for table `ps_web_browser`
 --
 ALTER TABLE `ps_web_browser`
   MODIFY `id_web_browser` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_wishlist`
+-- AUTO_INCREMENT for table `ps_wishlist`
 --
 ALTER TABLE `ps_wishlist`
   MODIFY `id_wishlist` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_wishlist_product`
+-- AUTO_INCREMENT for table `ps_wishlist_product`
 --
 ALTER TABLE `ps_wishlist_product`
   MODIFY `id_wishlist_product` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT dla tabeli `ps_zone`
+-- AUTO_INCREMENT for table `ps_zone`
 --
 ALTER TABLE `ps_zone`
   MODIFY `id_zone` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
