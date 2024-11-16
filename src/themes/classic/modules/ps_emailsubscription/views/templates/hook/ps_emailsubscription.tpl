@@ -30,36 +30,41 @@
       <form action="{$urls.current_url}#blockEmailSubscription_{$hookName}" method="post">
         <div class="row">
           <div class="col-xs-12">
-            <input
-              class="btn btn-primary float-xs-right hidden-xs-down"
-              name="submitNewsletter"
-              type="submit"
-              value="{l s='Subscribe' d='Shop.Theme.Actions'}"
-            >
+            <div class="input-wrapper">
+              <input
+                name="email"
+                type="email"
+                value="{$value}"
+                placeholder="Wpisz swój adres e-mail"
+                aria-labelledby="block-newsletter-label"
+                required
+              >
+            </div>
+            <div class="btn-submit-newsletter">
+              <button
+                class="btn btn-primary float-xs-right hidden-xs-down"
+                name="submitNewsletter"
+                type="submit"
+                title="Zapisz się →"
+              >
+                Zapisz się →
+              </button>
+            </div>
+            
             <input
               class="btn btn-primary float-xs-right hidden-sm-up"
               name="submitNewsletter"
               type="submit"
               value="{l s='OK' d='Shop.Theme.Actions'}"
             >
-            <div class="input-wrapper">
-              <input
-                name="email"
-                type="email"
-                value="{$value}"
-                placeholder="{l s='Your email address' d='Shop.Forms.Labels'}"
-                aria-labelledby="block-newsletter-label"
-                required
-              >
-            </div>
+            
+            <input type="checkbox" name="allow-newsletter" required>
+            <p>Wyrażam zgodę na otrzymywanie newslettera oraz kodów rabatowych na podany adres e-mail. Więcej informacji w <a class="janek-link" href="http://localhost:8080/content/3-polityka-prywatnosci">Polityce Prywatności</a>. *</p>
             <input type="hidden" name="blockHookName" value="{$hookName}" />
             <input type="hidden" name="action" value="0">
             <div class="clearfix"></div>
           </div>
           <div class="col-xs-12">
-              {if $conditions}
-                <p>{$conditions}</p>
-              {/if}
               {if $msg}
                 <p class="alert {if $nw_error}alert-danger{else}alert-success{/if}">
                   {$msg}
