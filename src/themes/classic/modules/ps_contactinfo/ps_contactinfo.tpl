@@ -36,18 +36,21 @@
 
   <p class="h4 text-uppercase block-contact-title hidden-sm-down">Dane kontaktowe</p>
   <div id="contact-infos" class="collapse">
-    {$contact_infos.address.formatted nofilter}
+    <b>{$contact_infos.company}</b><br>
+    {$contact_infos.address.address1}, {$contact_infos.address.address2}, {$contact_infos.address.city}
     {if $contact_infos.phone}
       <br>
       {* [1][/1] is for a HTML tag. *}
-      {l s='Call us: [1]%phone%[/1]'
-        sprintf=[
-        '[1]' => '<span>',
-        '[/1]' => '</span>',
-        '%phone%' => $contact_infos.phone
-        ]
-        d='Shop.Theme.Global'
-      }
+      <div id="janek-callus">
+        {l s='Call us: [1]%phone%[/1]'
+          sprintf=[
+          '[1]' => '<div class="phone-number"><i class="fas fa-phone-square-alt"></i> ',
+          '[/1]' => '</div>',
+          '%phone%' => $contact_infos.phone
+          ]
+          d='Shop.Theme.Global'
+        }
+      </div>
     {/if}
     {if $contact_infos.fax}
       <br>
@@ -63,9 +66,12 @@
       }
     {/if}
     {if $contact_infos.email && $display_email}
-      <br>
-        {l s='Email us:' d='Shop.Theme.Global'}
+        Napisz wiadomość:<br>
         {mailto address=$contact_infos.email encode="javascript"}
     {/if}
+    <div class="social-media-footer">
+      <i class="fab fa-facebook-square" id="down-link-fb"></i>
+      <i class="fab fa-instagram-square" id="down-link-ig"></i>
+    </div>
   </div>
 </div>

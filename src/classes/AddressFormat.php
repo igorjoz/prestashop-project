@@ -458,6 +458,7 @@ class AddressFormatCore extends ObjectModel
 
         $addressText = preg_replace('/' . preg_quote($newLine, '/') . '$/i', '', $addressText);
         $addressText = rtrim($addressText, $separator);
+        $addressText = nl2br($addressText); // Add `<br>` for new lines
 
         return $addressText;
     }

@@ -520,7 +520,8 @@ footer#footer li::before{
     background-color: transparent !important;
     width: fit-content !important;
     float: left !important;
-    margin:0;
+    justify-content: center;
+    margin: 0;
     padding: 30px 0 30px 0;
 }
 
@@ -548,7 +549,6 @@ footer#footer li::before{
 
 .block_newsletter div.col-xs-12{
     display: flex;
-    flex: 1;
 }
 
 .block_newsletter div.col-xs-12 > *{
@@ -570,7 +570,7 @@ footer#footer li::before{
 
 
 .block_newsletter div.input-wrapper{
-    width: 100%;
+    min-width: 496px;
 }
 
 .block_newsletter .input-wrapper input{
@@ -665,11 +665,16 @@ footer#footer li::before{
     background-color: #f2dede;
     color:#a94442;
 }
-#footer_sub_menu_1 a, #footer_sub_menu_2 a, #footer_account_list a, #contact-infos{
+#footer_sub_menu_1 a, #footer_sub_menu_2 a, #footer_account_list a{
     color:white;
     opacity: 0.7;
     transition: color 0.5s ease-in, opacity 0.5s ease !important;
 }
+
+#contact-infos{
+    color:#bfb9be;
+}
+
 
 #footer_sub_menu_1 a:hover, #footer_sub_menu_2 a:hover, #footer_account_list a:hover{
     color:#c6d947;
@@ -700,4 +705,74 @@ input[type=email]::placeholder{
 
 p.h3.hidden-sm-down{
     text-transform: none !important;
+}
+
+.footer-container li{
+    padding: 5px 0 5px;
+}
+
+.footer-container .container{
+    width: 1390px;
+}
+
+.footer-container .h3.hidden-sm-down{
+    font-size: 22px;
+}
+
+.footer-container .text-uppercase{
+    text-transform: none !important;
+    font-size: 22px;
+}
+
+.fas.fa-phone-square-alt{
+    color: #c6d947;
+    opacity: 1 !important;
+}
+
+.phone-number{
+    font-size: 21px;
+    padding-top: 8px;
+}
+
+#janek-callus{
+    margin: 22px 0 22px;
+}
+
+.cname-janek{
+    font-weight: bold;
+}
+
+.social-media-footer{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 17px;
+}
+
+#down-link-fb{
+    color: #a7a4a6;
+    transition: color 0.5s ease-in, opacity 0.5s ease;
+}
+
+#down-link-fb:hover{
+    opacity: 1;
+    color:#5674b9;
+}
+
+#down-link-ig{
+    color: #a7a4a6;
+    transition: color 0.5s ease-in, opacity 0.5s ease;
+}
+
+#down-link-ig:hover{
+    opacity: 1;
+    color:#f0496c;
+}
+
+#contact-infos a{
+    opacity: 1 !important;
+}
+
+#contact-infos a:hover{
+    color:white !important;
+    opacity: 1 !important;
 }
