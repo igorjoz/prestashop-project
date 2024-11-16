@@ -475,6 +475,14 @@ section#wrapper{
     padding: 0px;
     margin: 1px;
 }
+#btn-submit-janek.disabled{
+    pointer-events: none;
+    background-color: #c8c4c4;
+}
+
+#btn-submit-janek.disabled *{
+    color:#8c8c8c !important;
+}
 
 .btn-janek-check:hover::before {
     transform: translate(0%, 0%) scale(1); 
@@ -653,7 +661,7 @@ footer#footer li::before{
 }
 
 .btn-submit-newsletter:hover::before {
-    transform: translate(0%,0%) scale(1); 
+    transform: translate(0%,0%) scale(1);
 }
 
 .alert.alert-success{
@@ -663,7 +671,7 @@ footer#footer li::before{
 
 .alert.alert-danger{
     background-color: #f2dede;
-    color:#a94442;
+    color:#a94442 !important;
 }
 #footer_sub_menu_1 a, #footer_sub_menu_2 a, #footer_account_list a{
     color:white;
@@ -700,7 +708,10 @@ footer#footer li::before{
 }
 
 input[type=email]::placeholder{
-    text-align: left;
+    text-align: left !important;
+}
+input[type=email]{
+    text-align: left !important;
 }
 
 p.h3.hidden-sm-down{
@@ -775,4 +786,22 @@ p.h3.hidden-sm-down{
 #contact-infos a:hover{
     color:white !important;
     opacity: 1 !important;
+}
+
+.egzyl-link-janek{
+    color: #707070;
+    text-decoration: none !important;
+    transition: color 0.5s ease-in;
+}
+
+.egzyl-link-janek:hover{
+    color: #c6d947;
+}
+
+footer .text-sm-center{
+    color: #b7b7b7;
+}
+
+.egzyl{
+    color: #707070;
 }

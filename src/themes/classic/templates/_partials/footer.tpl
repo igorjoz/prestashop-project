@@ -57,9 +57,12 @@
           {/block}
         </p>
         <p class="text-sm-center">
-          <a href="https://egzyl.pl">
-          realizacja egzyl.pl
-          </a>
+          <span class="egzyl">
+            realizacja 
+            <a href="https://egzyl.pl" class="egzyl-link-janek">
+              egzyl.pl
+            </a>
+          </span>
         </p>
       </div>
     </div>

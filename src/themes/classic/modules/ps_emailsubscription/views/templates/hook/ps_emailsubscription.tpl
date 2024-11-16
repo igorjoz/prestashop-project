@@ -35,17 +35,21 @@
                 name="email"
                 type="email"
                 value="{$value}"
+                align="left"
                 placeholder="Wpisz swój adres e-mail"
                 aria-labelledby="block-newsletter-label"
                 required
               >
             </div>
-            <div class="btn-submit-newsletter">
+            
+            <div class="btn-submit-newsletter disabled" id="btn-submit-janek">
               <button
                 class="btn btn-primary float-xs-right hidden-xs-down"
                 name="submitNewsletter"
                 type="submit"
                 title="Zapisz się →"
+                id="janek-submit-button"
+                disabled="disabled"
               >
                 Zapisz się →
               </button>
@@ -58,7 +62,7 @@
               value="{l s='OK' d='Shop.Theme.Actions'}"
             >
             
-            <input type="checkbox" name="allow-newsletter" required>
+            <input type="checkbox" name="allow-newsletter" id="allow-newsletter-janek" required>
             <p>Wyrażam zgodę na otrzymywanie newslettera oraz kodów rabatowych na podany adres e-mail. Więcej informacji w <a class="janek-link" href="http://localhost:8080/content/3-polityka-prywatnosci">Polityce Prywatności</a>. *</p>
             <input type="hidden" name="blockHookName" value="{$hookName}" />
             <input type="hidden" name="action" value="0">
@@ -78,5 +82,24 @@
         </div>
       </form>
     </div>
+    <script>
+      // Get the checkbox and button elements
+      const checkbox = document.getElementById('allow-newsletter-janek');
+      const submitButton = document.getElementById('janek-submit-button');
+      const parentDiv = document.getElementById('btn-submit-janek');
+
+      // Add an event listener to the checkbox
+      checkbox.addEventListener('change', () => {
+          if (checkbox.checked) {
+              // Enable the submit button
+              submitButton.removeAttribute('disabled');
+              parentDiv.classList.remove('disabled');
+          } else {
+              // Disable the submit button
+              submitButton.setAttribute('disabled', 'true');
+              parentDiv.classList.add('disabled');
+          }
+      });
+    </script>
   </div>
 </div>

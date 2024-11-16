@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.48, created on 2024-11-16 15:40:19
+/* Smarty version 3.1.48, created on 2024-11-16 18:38:49
   from 'module:psemailsubscriptionviewst' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.48',
-  'unifunc' => 'content_6738aed3410646_39101063',
+  'unifunc' => 'content_6738d8a99961b6_54391559',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '307dc6bd4724d29d1572cc301dd7148e962604ef' => 
     array (
       0 => 'module:psemailsubscriptionviewst',
-      1 => 1731768017,
+      1 => 1731778728,
       2 => 'module',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6738aed3410646_39101063 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6738d8a99961b6_54391559 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- begin /var/www/html/themes/classic/modules/ps_emailsubscription/views/templates/hook/ps_emailsubscription.tpl -->
 <div class="block_newsletter col-lg-8 col-md-12 col-sm-12" id="blockEmailSubscription_<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['hookName']->value, ENT_QUOTES, 'UTF-8');?>
 ">
@@ -38,17 +38,21 @@ function content_6738aed3410646_39101063 (Smarty_Internal_Template $_smarty_tpl)
                 type="email"
                 value="<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['value']->value, ENT_QUOTES, 'UTF-8');?>
 "
+                align="left"
                 placeholder="Wpisz swój adres e-mail"
                 aria-labelledby="block-newsletter-label"
                 required
               >
             </div>
-            <div class="btn-submit-newsletter">
+            
+            <div class="btn-submit-newsletter disabled" id="btn-submit-janek">
               <button
                 class="btn btn-primary float-xs-right hidden-xs-down"
                 name="submitNewsletter"
                 type="submit"
                 title="Zapisz się →"
+                id="janek-submit-button"
+                disabled="disabled"
               >
                 Zapisz się →
               </button>
@@ -62,7 +66,7 @@ function content_6738aed3410646_39101063 (Smarty_Internal_Template $_smarty_tpl)
 "
             >
             
-            <input type="checkbox" name="allow-newsletter" required>
+            <input type="checkbox" name="allow-newsletter" id="allow-newsletter-janek" required>
             <p>Wyrażam zgodę na otrzymywanie newslettera oraz kodów rabatowych na podany adres e-mail. Więcej informacji w <a class="janek-link" href="http://localhost:8080/content/3-polityka-prywatnosci">Polityce Prywatności</a>. *</p>
             <input type="hidden" name="blockHookName" value="<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['hookName']->value, ENT_QUOTES, 'UTF-8');?>
 " />
@@ -86,6 +90,27 @@ function content_6738aed3410646_39101063 (Smarty_Internal_Template $_smarty_tpl)
         </div>
       </form>
     </div>
+    <?php echo '<script'; ?>
+>
+      // Get the checkbox and button elements
+      const checkbox = document.getElementById('allow-newsletter-janek');
+      const submitButton = document.getElementById('janek-submit-button');
+      const parentDiv = document.getElementById('btn-submit-janek');
+
+      // Add an event listener to the checkbox
+      checkbox.addEventListener('change', () => {
+          if (checkbox.checked) {
+              // Enable the submit button
+              submitButton.removeAttribute('disabled');
+              parentDiv.classList.remove('disabled');
+          } else {
+              // Disable the submit button
+              submitButton.setAttribute('disabled', 'true');
+              parentDiv.classList.add('disabled');
+          }
+      });
+    <?php echo '</script'; ?>
+>
   </div>
 </div>
 <!-- end /var/www/html/themes/classic/modules/ps_emailsubscription/views/templates/hook/ps_emailsubscription.tpl --><?php }
