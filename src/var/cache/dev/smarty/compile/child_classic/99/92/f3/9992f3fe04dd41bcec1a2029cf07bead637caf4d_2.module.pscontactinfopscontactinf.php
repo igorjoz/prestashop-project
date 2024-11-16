@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.48, created on 2024-11-14 18:19:47
+/* Smarty version 3.1.48, created on 2024-11-16 17:35:32
   from 'module:pscontactinfopscontactinf' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.48',
-  'unifunc' => 'content_67363133dc6481_13101750',
+  'unifunc' => 'content_6738c9d4806f85_20766534',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9992f3fe04dd41bcec1a2029cf07bead637caf4d' => 
     array (
       0 => 'module:pscontactinfopscontactinf',
-      1 => 1731603444,
+      1 => 1731774763,
       2 => 'module',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67363133dc6481_13101750 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6738c9d4806f85_20766534 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/html/vendor/smarty/smarty/libs/plugins/function.mailto.php','function'=>'smarty_function_mailto',),));
 ?>
 <!-- begin /var/www/html/themes/classic/modules/ps_contactinfo/ps_contactinfo.tpl -->
@@ -36,15 +36,20 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/html/vendor/smarty/
     </span>
   </div>
 
-  <p class="h4 text-uppercase block-contact-title hidden-sm-down"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['l'][0], array( array('s'=>'Store information','d'=>'Shop.Theme.Global'),$_smarty_tpl ) );?>
-</p>
+  <p class="h4 text-uppercase block-contact-title hidden-sm-down">Dane kontaktowe</p>
   <div id="contact-infos" class="collapse">
-    <?php echo $_smarty_tpl->tpl_vars['contact_infos']->value['address']['formatted'];?>
+    <b><?php echo htmlspecialchars($_smarty_tpl->tpl_vars['contact_infos']->value['company'], ENT_QUOTES, 'UTF-8');?>
+</b><br>
+    <?php echo htmlspecialchars($_smarty_tpl->tpl_vars['contact_infos']->value['address']['address1'], ENT_QUOTES, 'UTF-8');?>
+, <?php echo htmlspecialchars($_smarty_tpl->tpl_vars['contact_infos']->value['address']['address2'], ENT_QUOTES, 'UTF-8');?>
+, <?php echo htmlspecialchars($_smarty_tpl->tpl_vars['contact_infos']->value['address']['city'], ENT_QUOTES, 'UTF-8');?>
 
     <?php if ($_smarty_tpl->tpl_vars['contact_infos']->value['phone']) {?>
       <br>
-            <?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['l'][0], array( array('s'=>'Call us: [1]%phone%[/1]','sprintf'=>array('[1]'=>'<span>','[/1]'=>'</span>','%phone%'=>$_smarty_tpl->tpl_vars['contact_infos']->value['phone']),'d'=>'Shop.Theme.Global'),$_smarty_tpl ) );?>
+            <div id="janek-callus">
+        <?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['l'][0], array( array('s'=>'Call us: [1]%phone%[/1]','sprintf'=>array('[1]'=>'<div class="phone-number"><i class="fas fa-phone-square-alt"></i> ','[/1]'=>'</div>','%phone%'=>$_smarty_tpl->tpl_vars['contact_infos']->value['phone']),'d'=>'Shop.Theme.Global'),$_smarty_tpl ) );?>
 
+      </div>
     <?php }?>
     <?php if ($_smarty_tpl->tpl_vars['contact_infos']->value['fax']) {?>
       <br>
@@ -52,12 +57,14 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/html/vendor/smarty/
 
     <?php }?>
     <?php if ($_smarty_tpl->tpl_vars['contact_infos']->value['email'] && $_smarty_tpl->tpl_vars['display_email']->value) {?>
-      <br>
-        <?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['l'][0], array( array('s'=>'Email us:','d'=>'Shop.Theme.Global'),$_smarty_tpl ) );?>
-
+        Napisz wiadomość:<br>
         <?php echo smarty_function_mailto(array('address'=>$_smarty_tpl->tpl_vars['contact_infos']->value['email'],'encode'=>"javascript"),$_smarty_tpl);?>
 
     <?php }?>
+    <div class="social-media-footer">
+      <i class="fab fa-facebook-square" id="down-link-fb"></i>
+      <i class="fab fa-instagram-square" id="down-link-ig"></i>
+    </div>
   </div>
 </div>
 <!-- end /var/www/html/themes/classic/modules/ps_contactinfo/ps_contactinfo.tpl --><?php }

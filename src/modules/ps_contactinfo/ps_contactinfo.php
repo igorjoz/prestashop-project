@@ -95,7 +95,7 @@ class Ps_Contactinfo extends Module implements WidgetInterface
         $contact_infos = [
             'company' => Configuration::get('PS_SHOP_NAME'),
             'address' => [
-                'formatted' => AddressFormat::generateAddress($address, [], '<br />'),
+                'formatted' => AddressFormat::generateAddress($address, [], ', ',),
                 'address1' => $address->address1,
                 'address2' => $address->address2,
                 'postcode' => $address->postcode,
