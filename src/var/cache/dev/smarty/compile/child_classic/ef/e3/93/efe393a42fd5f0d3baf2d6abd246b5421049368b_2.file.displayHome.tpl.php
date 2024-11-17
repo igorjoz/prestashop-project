@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.48, created on 2024-11-14 18:19:47
+/* Smarty version 3.1.48, created on 2024-11-18 00:02:16
   from '/var/www/html/modules/homepagecontent/views/templates/hook/displayHome.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.48',
-  'unifunc' => 'content_67363133cde5d0_35170816',
+  'unifunc' => 'content_673a75f88b35a0_06259670',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'efe393a42fd5f0d3baf2d6abd246b5421049368b' => 
     array (
       0 => '/var/www/html/modules/homepagecontent/views/templates/hook/displayHome.tpl',
-      1 => 1731603444,
+      1 => 1731884534,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67363133cde5d0_35170816 (Smarty_Internal_Template $_smarty_tpl) {
+function content_673a75f88b35a0_06259670 (Smarty_Internal_Template $_smarty_tpl) {
 ?>		<ul id="UL_3">
 			<li id="LI_4">
 				<a href="https://monsteriada.pl/33-puzzle" id="A_5"><img src="https://monsteriada.pl/img/cms/home/puzzle.png" alt="Puzzle" width="433" height="433" id="IMG_6" /></a>
