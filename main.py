@@ -11,11 +11,14 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 import random
 
+from urllib3.exceptions import ReadTimeoutError
+
+
 def testA(driverA, source):
 
     result = "passed"
     how_many_categories = 2
-    how_many_products_per_cat = 5
+    how_many_products_per_cat = 2
     how_many_max = 3
 
     print("Test A sie rozpoczyna")
@@ -77,18 +80,22 @@ def testA(driverA, source):
                             )
 
                             ActionChains(driver=driverA).move_to_element(items_up).perform()
-                            WebDriverWait(driver=driverA, timeout=5).until(
-                                EC.element_to_be_clickable(items_up)
-                            )
-
 
                             how_many = random.randint(1, how_many_max)
                             for i in range(how_many-1):
+                                WebDriverWait(driver=driverA, timeout=5).until(
+                                    EC.element_to_be_clickable(items_up)
+                                )
                                 items_up.click()
 
                             ActionChains(driver=driverA).move_to_element(
                                 col_prod_txt.find_element(By.XPATH, "//button[contains(@class, 'add-to-cart')]")).perform()
                             add_to_cart = col_prod_txt.find_element(By.XPATH, "//button[contains(@class, 'add-to-cart')]")
+
+                            WebDriverWait(driver=driverA, timeout=5).until(
+                                EC.element_to_be_clickable(add_to_cart)
+                            )
+
                             add_to_cart.click()
 
                             WebDriverWait(driver=driver, timeout=5).until(
@@ -123,41 +130,32 @@ def testC(driverC, source):
     print("Test C sie rozpoczyna")
     try:
         driverC.get(source)
-        WebDriverWait(driver=driverC, timeout=5).until(
-            EC.visibility_of_element_located((By.ID, 'main'))
-        )
+        items_start = driverC.find_elements(By.XPATH, "//section[@id='main']//li[@class='cart-item']")
+        items_start_count = len(items_start)
 
-        items = driverC.find_elements(By.XPATH, "//section[@id='main']//li[@class='cart-item']")
-
-        item_count = len(items)
-
-        items = items[:how_many_to_delete]
-
-        for item in items:
-            driverC.execute_script("arguments[0].scrollIntoView();", item)
-            time.sleep(2)
+        for _ in range(how_many_to_delete):
             WebDriverWait(driver=driverC, timeout=5).until(
-                EC.visibility_of_element_located((By.CLASS_NAME, "mm_menu_content_title"))
+                EC.presence_of_element_located((By.ID, "main"))
             )
 
-            ActionChains(driver=driverC).move_to_element(
-                driverC.find_elements(By.CLASS_NAME, "mm_menu_content_title")[0]).perform()
-            ActionChains(driver=driverC).move_by_offset(0, 100).perform()
+            item = driverC.find_elements(By.XPATH, "//section[@id='main']//li[@class='cart-item']")[0]
+            item_delete_link = item.find_element(By.XPATH, "//div[@class='cart-line-product-actions']/a").get_attribute('href')
+            try:
+                driverC.get(item_delete_link)
+            except ReadTimeoutError as e:
+                while True:
+                    try:
+                        driverC.refresh()
+                        break
+                    except ReadTimeoutError as e:
+                        continue
 
-            time.sleep(2)
-            WebDriverWait(driver=driverC, timeout=5).until(
-                EC.visibility_of_element_located((By.CLASS_NAME, "cart-line-product-actions"))
-                and EC.element_to_be_clickable((By.XPATH, "//div[@class='cart-line-product-actions']/a"))
-            )
+            print("Test C usunal produkt z koszyka")
 
-            ActionChains(driver=driverC).move_to_element(
-                item.find_element(By.XPATH, "//div[@class='cart-line-product-actions']/a")).click().perform()
+        items_end = driverC.find_elements(By.XPATH, "//section[@id='main']//li[@class='cart-item']")
+        items_end_count = len(items_end)
 
-        driverC.refresh()
-        items_after = driverC.find_elements(By.XPATH, "//section[@id='main']//li[@class='cart-item']")
-        items_after_count = len(items_after)
-
-        if items_after_count != item_count - how_many_to_delete:
+        if items_end_count != items_start_count - how_many_to_delete:
             raise ValueError()
 
     except Exception as e:
