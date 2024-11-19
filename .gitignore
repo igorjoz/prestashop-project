@@ -27,10 +27,10 @@
 # !/themes/your-custom-theme/
 
 # Ignore cache and logs
-/var/cache/
-/var/logs/
-/cache/
-/log/
+/src/var/cache/
+/src/var/logs/
+/src/cache/
+/src/log/
 
 # Ignore vendor directory
 # /vendor/
@@ -39,13 +39,14 @@
 /mariadb
 
 # Ignore Node.js dependencies
-/node_modules/
+/src/node_modules/
 
 # Ignore Composer lock file
-composer.lock
+/src/composer.lock
 
-# Ignore parameters (sensitive information)
-#/app/config/parameters.php
+# Ignore venv files
+/.venv/
+/web-scraper/.venv/
 
 # Ignore OS-specific files
 .DS_Store
