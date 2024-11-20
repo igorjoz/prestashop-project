@@ -76,14 +76,15 @@
               <h1 class="h1">{block name='page_title'}{$product.name}{/block}</h1>
             {/block}
           {/block}
+          <hr></hr>
+          {block name='product_description_short'}
+            <div id="product-description-short-{$product.id}" class="product-description">{$product.description_short nofilter}</div>
+          {/block}
           {block name='product_prices'}
             {include file='catalog/_partials/product-prices.tpl'}
           {/block}
 
           <div class="product-information">
-            {block name='product_description_short'}
-              <div id="product-description-short-{$product.id}" class="product-description">{$product.description_short nofilter}</div>
-            {/block}
 
             {if $product.is_customizable && count($product.customizations.fields)}
               {block name='product_customization'}
