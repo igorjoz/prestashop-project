@@ -37,8 +37,8 @@
     <meta property="product:price:currency" content="{$currency.iso_code}">
   {/if}
   {if isset($product.weight) && ($product.weight != 0)}
-  <meta property="product:weight:value" content="{$product.weight}">
-  <meta property="product:weight:units" content="{$product.weight_unit}">
+    <meta property="product:weight:value" content="{$product.weight}">
+    <meta property="product:weight:units" content="{$product.weight_unit}">
   {/if}
 {/block}
 
@@ -65,7 +65,6 @@
                 <i class="material-icons left">&#xE314;</i>
                 <i class="material-icons right">&#xE315;</i>
               </div>
-
             {/block}
           </section>
         {/block}
@@ -73,8 +72,37 @@
         <div class="col-md-6">
           {block name='page_header_container'}
             {block name='page_header'}
-              <h1 class="h1">{block name='page_title'}{$product.name}{/block}</h1>
+              <div class="janek-header-product">
+                <div class="janek-header-name-status">
+                  <h1 class="h1">{block name='page_title'}{$product.name}{/block}</h1>
+                  <div class="janek-flexbox-product-container">
+                    <div id='product-availability'>
+                      {if $product.availability == 'available'}
+                        <span>
+                          <i class="fa fa-check rtl-no-flip mr-2" aria-hidden="true"></i>
+                          <span>Dostępny</span>
+                        </span>
+                      {/if}
+                    </div>
+                    {block name='product_additional_info'}
+                      {include file='catalog/_partials/product-additional-info.tpl'}
+                    {/block}
+                  </div>
+                </div>
+                {if isset($manufacturer_image_url)}
+                  <a href="{$product_brand_url}">
+                    <img src="{$manufacturer_image_url}" class="img img-thumbnail manufacturer-logo" />
+                  </a>
+                {else}
+                  <label class="label">{l s='Brand' d='Shop.Theme.Catalog'}</label>
+                  <span>
+                    <a href="{$product_brand_url}">{$product_manufacturer->name}</a>
+                  </span>
+                {/if}
+              </div>
             {/block}
+            
+            
           {/block}
           <hr></hr>
           {block name='product_description_short'}
@@ -122,10 +150,6 @@
 
                   {block name='product_add_to_cart'}
                     {include file='catalog/_partials/product-add-to-cart.tpl'}
-                  {/block}
-
-                  {block name='product_additional_info'}
-                    {include file='catalog/_partials/product-additional-info.tpl'}
                   {/block}
 
                   {* Input to refresh product HTML removed, block kept for compatibility with themes *}
