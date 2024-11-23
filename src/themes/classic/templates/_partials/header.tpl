@@ -117,7 +117,7 @@
   </div>
   
   <div class="main-navigation-janek">
-    <a class="button-item" id="start-page-btn" href="https://localhost/">Start</a>
+    <a class="button-item" id="start-page-btn" href="http://localhost:8080/">Start</a>
     <a class="button-item category-items-button">
       Gadżety wg kategorii
       <i class="icon-arrow-down"></i>

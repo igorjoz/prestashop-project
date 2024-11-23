@@ -89,7 +89,7 @@
               {hook h='displayCartModalContent' product=$product}
               <div class="cart-content-btn">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">{l s='Continue shopping' d='Shop.Theme.Actions'}</button>
-                <a href="{$cart_url}" class="btn btn-primary"><i class="material-icons rtl-no-flip">&#xE876;</i>{l s='Proceed to checkout' d='Shop.Theme.Actions'}</a>
+                <a href="{$cart_url}" class="btn btn-primary"><i class="material-icons rtl-no-flip">&#xE876;</i><span>{l s='Proceed to checkout' d='Shop.Theme.Actions'}</span></a>
               </div>
             </div>
           </div>

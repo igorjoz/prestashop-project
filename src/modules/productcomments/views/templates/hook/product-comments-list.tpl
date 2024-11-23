@@ -29,8 +29,7 @@
 
 <div id="product-comments-list-header">
   <div class="comments-nb">
-    <i class="material-icons chat" data-icon="chat"></i>
-    {l s='Comments' d='Modules.Productcomments.Shop'} ({$nb_comments})
+    <h1>{l s='Comments' d='Modules.Productcomments.Shop'}</h1>
   </div>
   {include file='module:productcomments/views/templates/hook/average-grade-stars.tpl' grade=$average_grade}
 </div>

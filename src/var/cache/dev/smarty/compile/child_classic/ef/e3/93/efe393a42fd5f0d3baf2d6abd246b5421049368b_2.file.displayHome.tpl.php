@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.48, created on 2024-11-18 00:39:42
+/* Smarty version 3.1.48, created on 2024-11-23 13:36:40
   from '/var/www/html/modules/homepagecontent/views/templates/hook/displayHome.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.48',
-  'unifunc' => 'content_673a7ebe6b9663_98321069',
+  'unifunc' => 'content_6741cc58159474_20698583',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'efe393a42fd5f0d3baf2d6abd246b5421049368b' => 
     array (
       0 => '/var/www/html/modules/homepagecontent/views/templates/hook/displayHome.tpl',
-      1 => 1731886781,
+      1 => 1732014328,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_673a7ebe6b9663_98321069 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6741cc58159474_20698583 (Smarty_Internal_Template $_smarty_tpl) {
 ?><section id="mainSECTION_1">
 	<div id="mainDIV_31">
 		<div id="mainDIV_32">

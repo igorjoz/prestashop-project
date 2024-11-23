@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.48, created on 2024-11-16 12:43:30
+/* Smarty version 3.1.48, created on 2024-11-23 14:19:41
   from '/var/www/html/themes/classic/templates/customer/authentication.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.48',
-  'unifunc' => 'content_67388562bdd222_07528000',
+  'unifunc' => 'content_6741d66d9caf27_71561667',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,30 +20,30 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67388562bdd222_07528000 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6741d66d9caf27_71561667 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_37252024067388562bd7df2_14872547', 'page_title');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_18530239526741d66d9c77a8_46282350', 'page_title');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10937276567388562bd99d6_11997629', 'page_content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20607670646741d66d9c8a65_81162426', 'page_content');
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, 'page.tpl');
 }
 /* {block 'page_title'} */
-class Block_37252024067388562bd7df2_14872547 extends Smarty_Internal_Block
+class Block_18530239526741d66d9c77a8_46282350 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'page_title' => 
   array (
-    0 => 'Block_37252024067388562bd7df2_14872547',
+    0 => 'Block_18530239526741d66d9c77a8_46282350',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -56,7 +56,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'page_title'} */
 /* {block 'display_after_login_form'} */
-class Block_46496291567388562bdb120_05200538 extends Smarty_Internal_Block
+class Block_14571691886741d66d9c9614_76232749 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -68,7 +68,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'display_after_login_form'} */
 /* {block 'login_form_container'} */
-class Block_128358665467388562bda081_22710381 extends Smarty_Internal_Block
+class Block_14009341386741d66d9c8ce8_42788257 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -79,7 +79,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
       </section>
       <hr/>
       <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_46496291567388562bdb120_05200538', 'display_after_login_form', $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14571691886741d66d9c9614_76232749', 'display_after_login_form', $this->tplIndex);
 ?>
 
       <div class="no-account">
@@ -94,27 +94,27 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_46496291567388562b
 }
 /* {/block 'login_form_container'} */
 /* {block 'page_content'} */
-class Block_10937276567388562bd99d6_11997629 extends Smarty_Internal_Block
+class Block_20607670646741d66d9c8a65_81162426 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'page_content' => 
   array (
-    0 => 'Block_10937276567388562bd99d6_11997629',
+    0 => 'Block_20607670646741d66d9c8a65_81162426',
   ),
   'login_form_container' => 
   array (
-    0 => 'Block_128358665467388562bda081_22710381',
+    0 => 'Block_14009341386741d66d9c8ce8_42788257',
   ),
   'display_after_login_form' => 
   array (
-    0 => 'Block_46496291567388562bdb120_05200538',
+    0 => 'Block_14571691886741d66d9c9614_76232749',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_128358665467388562bda081_22710381', 'login_form_container', $this->tplIndex);
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14009341386741d66d9c8ce8_42788257', 'login_form_container', $this->tplIndex);
 ?>
 
 <?php

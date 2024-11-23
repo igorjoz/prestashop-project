@@ -26,6 +26,28 @@
 
 {block name='head' append}
   <meta property="og:type" content="product">
+
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          }
+        });
+      }
+    });
+    
+  </script>
+  
   {if $product.cover}
     <meta property="og:image" content="{$product.cover.large.url}">
   {/if}
@@ -45,6 +67,7 @@
 {block name='head_microdata_special'}
   {include file='_partials/microdata/product-jsonld.tpl'}
 {/block}
+
 
 {block name='content'}
 
@@ -157,95 +180,51 @@
                 </form>
               {/block}
 
-            </div>
+              
 
-            {block name='hook_display_reassurance'}
-              {hook h='displayReassurance'}
-            {/block}
-
-            {block name='product_tabs'}
-              <div class="tabs">
-                <ul class="nav nav-tabs" role="tablist">
-                  {if $product.description}
-                    <li class="nav-item">
-                       <a
-                         class="nav-link{if $product.description} active js-product-nav-active{/if}"
-                         data-toggle="tab"
-                         href="#description"
-                         role="tab"
-                         aria-controls="description"
-                         {if $product.description} aria-selected="true"{/if}>{l s='Description' d='Shop.Theme.Catalog'}</a>
-                    </li>
-                  {/if}
-                  <li class="nav-item">
-                    <a
-                      class="nav-link{if !$product.description} active js-product-nav-active{/if}"
-                      data-toggle="tab"
-                      href="#product-details"
-                      role="tab"
-                      aria-controls="product-details"
-                      {if !$product.description} aria-selected="true"{/if}>{l s='Product Details' d='Shop.Theme.Catalog'}</a>
-                  </li>
-                  {if $product.attachments}
-                    <li class="nav-item">
-                      <a
-                        class="nav-link"
-                        data-toggle="tab"
-                        href="#attachments"
-                        role="tab"
-                        aria-controls="attachments">{l s='Attachments' d='Shop.Theme.Catalog'}</a>
-                    </li>
-                  {/if}
-                  {foreach from=$product.extraContent item=extra key=extraKey}
-                    <li class="nav-item">
-                      <a
-                        class="nav-link"
-                        data-toggle="tab"
-                        href="#extra-{$extraKey}"
-                        role="tab"
-                        aria-controls="extra-{$extraKey}">{$extra.title}</a>
-                    </li>
-                  {/foreach}
-                </ul>
-
-                <div class="tab-content" id="tab-content">
-                 <div class="tab-pane fade in{if $product.description} active js-product-tab-active{/if}" id="description" role="tabpanel">
-                   {block name='product_description'}
-                     <div class="product-description">{$product.description nofilter}</div>
-                   {/block}
-                 </div>
-
-                 {block name='product_details'}
-                   {include file='catalog/_partials/product-details.tpl'}
-                 {/block}
-
-                 {block name='product_attachments'}
-                   {if $product.attachments}
-                    <div class="tab-pane fade in" id="attachments" role="tabpanel">
-                       <section class="product-attachments">
-                         <p class="h5 text-uppercase">{l s='Download' d='Shop.Theme.Actions'}</p>
-                         {foreach from=$product.attachments item=attachment}
-                           <div class="attachment">
-                             <h4><a href="{url entity='attachment' params=['id_attachment' => $attachment.id_attachment]}">{$attachment.name}</a></h4>
-                             <p>{$attachment.description}</p>
-                             <a href="{url entity='attachment' params=['id_attachment' => $attachment.id_attachment]}">
-                               {l s='Download' d='Shop.Theme.Actions'} ({$attachment.file_size_formatted})
-                             </a>
-                           </div>
-                         {/foreach}
-                       </section>
-                     </div>
-                   {/if}
-                 {/block}
-
-                 {foreach from=$product.extraContent item=extra key=extraKey}
-                 <div class="tab-pane fade in {$extra.attr.class}" id="extra-{$extraKey}" role="tabpanel" {foreach $extra.attr as $key => $val} {$key}="{$val}"{/foreach}>
-                   {$extra.content nofilter}
-                 </div>
-                 {/foreach}
+              <button class="accordion">Tylko oryginalne produkty w atrakcyjnej cenie</button>
+              <div class="panel">
+                <span>
+                  <br>
+                  <p>
+                  W naszym sklepie internetowym otrzymają Państwo tylko oryginalne produkty na oficjalnej licencji. Nie jesteśmy producentem gadżetów. Wszystkie produkty pochodzą z oficjalnej dystrybucji światowej/europejskiej/polskiej. Nie sprzedajemy podróbek. Jesteśmy świadomi, że za oficjalnym kanałem dystrybucji, przede wszystkim stoi jakość wykonania i trwałość produktu. Wszystkie materiały użyte przez producenta posiadającego licencję są zdecydowanie lepszej jakości aniżeli tańsze imitacje. Dbamy o to aby w naszym sklepie nie było produktów niewiadomego źródła, a wszystkie licencjonowane gadżety, które oferujemy są zatwierdzone przez właściciela marki. 
+                  </p>
+                  <p>
+                  Ponadto, dzięki naszej wieloletniej współpracy z wieloma cenionymi markami, producentami i dystrybutorami, jesteśmy w stanie zaoferować niezwykle atrakcyjne ceny na nasze produkty. Zapraszamy do zapoznania się z naszą ofertą, którą nieustannie staramy się poszerzać o nowe produkty, o nowych dystrybutorów, producentów a także i o nowe tematyki/uniwersa :).
+                  </p>
+                </span>
               </div>
+
+              <button class="accordion">Statusy produktów</button>
+              <div class="panel">
+                <span>
+                  <br>
+                  <p class="black-statuses">Statusy produktów jakie możesz spotkać w naszym sklepie:</p>
+                  <p><span class="janek-accessible">Dostępny</span> - produkt dostępny od ręki na naszym magazynie. Czas wysyłki 24-48 godzin.</p>
+                  <p><span class="janek-presale">Przedsprzedaż</span> - produkt dostępny w przyszłości (data wskazana powyżej), czekamy na jego dostawę, można składać zamówienia. Więcej informacji.</p>
+                  <p><span class="janek-special">Przedsprzedaż na specjalne zamówienie</span> - produkt dostępny w przyszłości (data wskazana powyżej), sprowadzamy go jedynie na specjalne zamówienie Klienta. Więcej informacji.</p>
+                  <p><span class="janek-special-cute-purple">Specjalne zamówienie</span> - produkt dostępny u producenta/dystrybutora, sprowadzamy go jedynie na specjalne zamówienie Klienta. Więcej informacji.</p>
+                  <p><span class="janek-unavailable">Niedostępny</span> - produkt wyprzedany bądź niedostępny już w sprzedaży. Możesz otrzymać powiadomienie o ponownej dostępności.</p>
+                </span>
+                
+              </div>
+
+              <button class="accordion">Zamówienie telefoniczne</button>
+              <div class="panel">
+                <br>
+                <p>
+                  Chcesz zaoszczędzić czas, bądź po prostu nie masz technicznej możliwości w danej chwili złożyć zamówienia na sklepie internetowym? Zapraszamy do kontaktu telefonicznego! Zamówienie możesz złożyć także telefonicznie.
+                </p>
+                <p>
+                  Kontakt: +48 503 028 506.
+                </p>
+                <p>
+                  Czekamy na Twój telefon codziennie, od poniedziałku do piątku w godzinach 8:00-21:00 oraz w sobotę i niedzielę w godzinach 10:00-20:00
+                </p>
+              </div>
+
             </div>
-          {/block}
+            
         </div>
       </div>
     </div>
@@ -265,9 +244,111 @@
       {/if}
     {/block}
 
+    {block name='product_tabs'}
+      <div class="tabs">
+        <ul class="nav nav-tabs" role="tablist">
+          {if $product.description}
+            <li class="nav-item">
+                <a
+                  class="nav-link{if $product.description} active js-product-nav-active{/if}"
+                  data-toggle="tab"
+                  href="#description"
+                  role="tab"
+                  aria-controls="description"
+                  {if $product.description} aria-selected="true"{/if}>Opis produktu</a>
+            </li>
+          {/if}
+          <li class="nav-item">
+            <a
+              class="nav-link{if !$product.description} active js-product-nav-active{/if}"
+              data-toggle="tab"
+              href="#product-details"
+              role="tab"
+              aria-controls="product-details"
+              {if !$product.description} aria-selected="true"{/if}>{l s='Product Details' d='Shop.Theme.Catalog'}</a>
+          </li>
+          {if $product.attachments}
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-toggle="tab"
+                href="#attachments"
+                role="tab"
+                aria-controls="attachments">{l s='Attachments' d='Shop.Theme.Catalog'}</a>
+            </li>
+          {/if}
+          <li class="nav-item">
+              <a
+                class="nav-link"
+                data-toggle="tab"
+                href="#extra-content"
+                role="tab"
+                aria-controls="extra-content"
+                {if !$product.description} aria-selected="true" {/if}>
+                Wysyłka
+              </a>
+          </li>
+          {foreach from=$product.extraContent item=extra key=extraKey}
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-toggle="tab"
+                href="#extra-{$extraKey}"
+                role="tab"
+                aria-controls="extra-{$extraKey}">{$extra.title}</a>
+            </li>
+          {/foreach}
+        </ul>
+
+        <div class="tab-content" id="tab-content">
+          <div class="tab-pane fade in{if $product.description} active js-product-tab-active{/if}" id="description" role="tabpanel">
+            {block name='product_description'}
+              <div class="product-description">{$product.description nofilter}</div>
+            {/block}
+          </div>
+
+          <div class="tab-pane fade" id="extra-content" role="tabpanel" aria-labelledby="extra-content-tab">
+              <p>Brak dostępnych dostawców</p>
+              <p><strong>Przy każdym zakupie powyżej 250,00 zł darmowa wysyłka!</strong></p>
+          </div>
+
+          {block name='product_details'}
+            {include file='catalog/_partials/product-details.tpl'}
+          {/block}
+
+          {block name='product_attachments'}
+            {if $product.attachments}
+            <div class="tab-pane fade in" id="attachments" role="tabpanel">
+                <section class="product-attachments">
+                  <p class="h5 text-uppercase">{l s='Download' d='Shop.Theme.Actions'}</p>
+                  {foreach from=$product.attachments item=attachment}
+                    <div class="attachment">
+                      <h4><a href="{url entity='attachment' params=['id_attachment' => $attachment.id_attachment]}">{$attachment.name}</a></h4>
+                      <p>{$attachment.description}</p>
+                      <a href="{url entity='attachment' params=['id_attachment' => $attachment.id_attachment]}">
+                        {l s='Download' d='Shop.Theme.Actions'} ({$attachment.file_size_formatted})
+                      </a>
+                    </div>
+                  {/foreach}
+                </section>
+              </div>
+            {/if}
+          {/block}
+
+          {foreach from=$product.extraContent item=extra key=extraKey}
+          <div class="tab-pane fade in {$extra.attr.class}" id="extra-{$extraKey}" role="tabpanel" {foreach $extra.attr as $key => $val} {$key}="{$val}"{/foreach}>
+            {$extra.content nofilter}
+          </div>
+          {/foreach}
+        </div>
+      </div>
+    {/block}
+
     {block name='product_footer'}
       {hook h='displayFooterProduct' product=$product category=$category}
     {/block}
+
+    
 
     {block name='product_images_modal'}
       {include file='catalog/_partials/product-images-modal.tpl'}
