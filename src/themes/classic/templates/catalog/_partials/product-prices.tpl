@@ -89,7 +89,6 @@
     {/block}
 
     {hook h='displayProductPriceBlock' product=$product type="weight" hook_origin='product_sheet'}
-
     <div class="tax-shipping-delivery-label">
       {if !$configuration.taxes_enabled}
         {l s='No tax' d='Shop.Theme.Catalog'}
