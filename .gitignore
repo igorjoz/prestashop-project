@@ -27,10 +27,10 @@
 # !/themes/your-custom-theme/
 
 # Ignore cache and logs
-/var/cache/
-/var/logs/
-/cache/
-/log/
+src/var/cache/
+src/var/logs/
+src/cache/
+src/log/
 
 # Ignore vendor directory
 # /vendor/
