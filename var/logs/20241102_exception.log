@@ -1,0 +1,6 @@
+*ERROR* 	v1.7.8.11	2024/11/02 - 16:34:34: Link to database cannot be established: SQLSTATE[HY000] [2002] Nie można nawiązać połączenia, ponieważ komputer docelowy aktywnie go odmawia.
+ at line 137 in file classes/db/DbPDO.php
+*ERROR* 	v1.7.8.11	2024/11/02 - 16:34:36: Link to database cannot be established: SQLSTATE[HY000] [2002] Nie można nawiązać połączenia, ponieważ komputer docelowy aktywnie go odmawia.
+ at line 137 in file classes/db/DbPDO.php
+*ERROR* 	v1.7.8.11	2024/11/02 - 16:34:48: Link to database cannot be established: SQLSTATE[HY000] [2002] Nie można nawiązać połączenia, ponieważ komputer docelowy aktywnie go odmawia.
+ at line 137 in file classes/db/DbPDO.php
