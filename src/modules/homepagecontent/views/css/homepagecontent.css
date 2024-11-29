@@ -15,7 +15,14 @@
     margin-right: auto !important;
 }
 
+#center-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #mainSECTION_1 {
+    background-color: #f6f6f6 !important;
     /* block-size: 8712.32px; */
     border-block-end-color: rgb(102, 102, 102);
     border-block-start-color: rgb(102, 102, 102);
