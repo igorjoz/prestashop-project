@@ -129,7 +129,7 @@
     <a class="button-item" href="bestsellery">Bestsellery</a>
     <a class="button-item" href="promocje">Promocje</a>
     <a class="button-item" href="nowosci">Nowości</a>
-    <a class="button-item" href="blog">Blog</a>
+    <a class="button-item" href="content/11-blog">Blog</a>
   </div>
   <script>
     window.onload = function() {
