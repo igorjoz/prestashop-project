@@ -142,7 +142,7 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
 
         $my_account_urls[8] = [
             'title' => $this->trans('Moje powiadomienia', [], 'Modules.Customeraccountlinks.Admin'),
-            'url' => 'http://localhost/monsteriada-prestashop-clone/module/ps_emailalerts/account', 
+            'url' => 'http://localhost:8080/module/ps_emailalerts/account', 
         ];
 
         // Sort Account links base in his index
