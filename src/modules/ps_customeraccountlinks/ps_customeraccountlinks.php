@@ -137,12 +137,12 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
         // Dodajemy nowe elementy
         $my_account_urls[7] = [
             'title' => $this->trans('Moje przesyłki', [], 'Modules.Customeraccountlinks.Admin'),
-            'url' => 'http://localhost/monsteriada-prestashop-clone/module/inpostship/myPackage', 
+            'url' => 'http://localhost:8080/content/12-moje-paczki', 
         ];
 
         $my_account_urls[8] = [
             'title' => $this->trans('Moje powiadomienia', [], 'Modules.Customeraccountlinks.Admin'),
-            'url' => 'http://localhost/monsteriada-prestashop-clone/module/ps_emailalerts/account', 
+            'url' => 'http://localhost:8080/module/ps_emailalerts/account', 
         ];
 
         // Sort Account links base in his index
