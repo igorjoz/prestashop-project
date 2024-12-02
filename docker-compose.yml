@@ -6,6 +6,7 @@ services:
     depends_on:
       - mariadb
     ports:
+      - "443:443"
       - "8080:80"
     environment:
       DB_SERVER: mariadb
@@ -16,6 +17,15 @@ services:
       PS_DEV_MODE: 1
     volumes:
       - ./src:/var/www/html
+      - ./data/cert.pem:/etc/ssl/certs/cert.pem
+      - ./data/key.pem:/etc/ssl/private/key.pem
+      - ./data/presta.conf:/etc/apache2/sites-available/presta.conf
+    command: >
+      bash -c "
+      a2enmod ssl &&
+      a2ensite presta &&
+      apache2-foreground
+      "
 
   mariadb:
     container_name: mariadb
