@@ -1,3 +1,41 @@
+<div id="carousel" data-ride="carousel" class="carousel slide" data-interval="5000" data-wrap="true" data-pause="hover" data-touch="true">
+    <ol class="carousel-indicators">
+        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+    </ol>
+    <ul class="carousel-inner" role="listbox" aria-label="Carousel container">
+        <li class="carousel-item active" role="option" aria-hidden="false">
+            <figure>
+                <img src="http://localhost:8080/modules/ps_imageslider/images/0210587fcd06d4f2d0fb7dab22702c75b1b5e572_banner.jpg" alt="Magiczne różdżki z Harrego Pottera" loading="lazy" width="1110" height="340">
+                <figcaption class="caption">
+                    <img class="harry-potter-logo" src="http://localhost:8080/img/harry-potter-logo.png">
+                    <h2 class="display-1 text-uppercase">Magiczne różdżki z Harrego Pottera</h2>
+                    <div class="caption-description">
+                        <p>Sprawdź, która różdżka cię wybrała!</p>
+                    </div>
+                    <a class="btn-janek-check" href="http://localhost:8080/monsteriada-prestashop-clone/63-harry-potter-rozdzki">
+                        sprawdź
+                    </a>
+                </figcaption>
+            </figure>
+        </li>
+    </ul>
+    <div class="direction" aria-label="Carousel buttons">
+        <a class="left carousel-control" href="#carousel" role="button" data-slide="prev" aria-label="Previous">
+            <span class="icon-prev hidden-xs" aria-hidden="true">
+                <i class="material-icons">&#xE5CB;</i>
+            </span>
+        </a>
+        <a class="right carousel-control" href="#carousel" role="button" data-slide="next" aria-label="Next">
+            <span class="icon-next" aria-hidden="true">
+                <i class="material-icons">&#xE5CC;</i>
+            </span>
+        </a>
+    </div>
+</div>
+
+
+
+
 <div id="center-wrapper">
     <section id="mainSECTION_1">
         <div id="mainDIV_31">
