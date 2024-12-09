@@ -10,8 +10,6 @@ from selenium.webdriver.common.keys import Keys
 import time
 import random
 
-from urllib3.exceptions import ReadTimeoutError
-
 
 def testA(driverA, source):
     result = "passed"
@@ -48,7 +46,7 @@ def testA(driverA, source):
         for category in categories:
             cat_addresses.append(category.get_attribute('href'))
 
-        #NA RAZIE TRZEBA DODAWAĆ SZTUCZNIE PRZEDROSTKI, JAK ZOSTANIE TO POPRAWIONE PONIZSZE 2 LINIE SA DO USUNIECIA
+        #NA RAZIE TRZEBA DODAWAĆ SZTUCZNIE PRZEDROSTKI, JAK ZOSTANIE TO POPRAWIONE PONIZSZA LINIA JEST DO USUNIECIA
         cat_addresses[0] = "https://localhost/96-bestsellery"
 
         for cat_address in cat_addresses:
@@ -130,11 +128,11 @@ def testA(driverA, source):
         result = "failed"
         print("Test A nieudany")
 
-    '''
+
     except Exception as e:
         result = "failed"
         print("W tescie A wystapil wyjatek " + str(type(e)))
-        '''
+
 
     return result
 
@@ -224,12 +222,11 @@ def testB(driverB, source):
     except ValueError as e:
         result = "failed"
         print("Test B nieudany")
-    '''
+
     except Exception as e:
         result = "failed"
         print("W tescie B wystapil wyjatek " + str(type(e)))
 
-    '''
     return result
 
 
@@ -249,27 +246,29 @@ def testC(driverC, source):
         for _ in range(how_many_to_delete):
             item_tbd = driverC.find_elements(By.XPATH, "//section[@id='main']//li[@class='cart-item']")[0]
             driverC.execute_script("arguments[0].scrollIntoView();",
-                                   item_tbd.find_element(By.XPATH, ".//div[@class='cart-line-product-actions']/a"))
+                                   item_tbd.find_element(By.XPATH, ".//button[@class='btn btn-touchspin js-touchspin "
+                                                                   "js-decrease-product-quantity "
+                                                                   "bootstrap-touchspin-down']"))
             driverC.execute_script("window.scrollBy(0, -100);")
-            WebDriverWait(driver=driverC, timeout=5).until(
-                EC.element_to_be_clickable(
-                    item_tbd.find_element(By.XPATH, ".//div[@class='cart-line-product-actions']/a"))
-                and EC.visibility_of(
-                    item_tbd.find_element(By.XPATH, ".//div[@class='cart-line-product-actions']/a"))
-            )
-            item_tbd.find_element(By.XPATH, ".//div[@class='cart-line-product-actions']/a").click()
-            while True:
-                try:
-                    driverC.refresh()
-                    break
-                except (ReadTimeoutError, TimeoutException) as e:
-                    continue
+            item_tbd_how_many = int(item_tbd.find_element(By.XPATH, ".//input[@class='js-cart-line-product-quantity "
+                                                                    "form-control']").get_attribute('value'))
+
+            arrow_down_tbd = item_tbd.find_element(By.XPATH, ".//button[@class='btn btn-touchspin "
+                                                             "js-touchspin js-decrease-product-quantity "
+                                                             "bootstrap-touchspin-down']")
+
+            for _ in range(item_tbd_how_many):
+                    WebDriverWait(driver=driverC, timeout=5).until(
+                        EC.element_to_be_clickable(arrow_down_tbd)
+                        and EC.visibility_of(arrow_down_tbd)
+                    )
+                    arrow_down_tbd.click()
 
             print("Test C usunal produkt z koszyka")
 
-        WebDriverWait(driver=driverC, timeout=5).until(
-            EC.presence_of_element_located((By.ID, "main"))
-        )
+            WebDriverWait(driver=driverC, timeout=5).until(
+                EC.invisibility_of_element(item_tbd)
+            )
 
         items_end = driverC.find_elements(By.XPATH, "//section[@id='main']//li[@class='cart-item']")
         items_end_count = len(items_end)
@@ -280,11 +279,11 @@ def testC(driverC, source):
     except ValueError as e:
         result = "failed"
         print("Test C nieudany")
-    '''
+
     except Exception as e:
         result = "failed"
         print("W tescie C wystapil wyjatek " + str(type(e)))
-    '''
+
     print("Test C sie zakonczyl")
     return result
 
@@ -488,7 +487,7 @@ def testEFGH(driverE, source):
         )
 
         di_fourth_stage = driverE.find_element(By.ID, "checkout-payment-step")
-        fourth_stage_payment = di_fourth_stage.find_element(By.ID, "payment-option-3").find_element(By.XPATH, "./..")
+        fourth_stage_payment = di_fourth_stage.find_element(By.ID, "payment-option-2").find_element(By.XPATH, "./..")
 
         driverE.execute_script("arguments[0].scrollIntoView();", fourth_stage_payment)
         driverE.execute_script("window.scrollBy(0, -100);")
@@ -514,16 +513,12 @@ def testEFGH(driverE, source):
 
         print("Test H sie rozpoczyna")
 
-        fourth_stage_conds = di_fourth_stage.find_element(By.XPATH,
-                                                          ".//label[@for='conditions_to_approve[terms-and-conditions]']")
+        fourth_stage_conds = di_fourth_stage.find_element(By.XPATH, ".//input[@id='conditions_to_approve[terms-and-conditions]']")
 
         driverE.execute_script("arguments[0].scrollIntoView();", fourth_stage_conds)
         driverE.execute_script("window.scrollBy(0, -100);")
-        WebDriverWait(driver=driverE, timeout=5).until(
-            EC.element_to_be_clickable(
-                fourth_stage_conds)
-        )
-        fourth_stage_conds.click()
+
+        driverE.execute_script("arguments[0].click();", fourth_stage_conds)
 
         fourth_stage_button = di_fourth_stage.find_element(By.XPATH, ".//button[contains(text(), 'Złóż zamówienie')]")
 
@@ -564,17 +559,18 @@ if __name__ == '__main__':
     options = Options()
     # commenting the line below show the browser window
     #options.add_argument("-headless")
-    options.add_argument("-width=1020")
-    options.add_argument("-height=680")
+
+    #screen dimensions
+    options.add_argument("-width=1420")
+    options.add_argument("-height=780")
+
     driver = webdriver.Firefox(options=options)
-    # ustaw baseAddress i koszykAddress na swój
+
     baseAddress = "https://localhost"
     koszykAddress = "https://localhost/koszyk?action=show"
+
     driver.get(baseAddress)
     driver.set_page_load_timeout(5)
-
-    # uncomment if cookies implemented
-    #driver.find_element(By.XPATH, "//button[contains(@class, 'x13eucookies__btn--deny')]").click()
 
     test_results = []
 
@@ -582,13 +578,12 @@ if __name__ == '__main__':
 
     test_results.append(["A", testA(driver, baseAddress)])
     test_results.append(["B", testB(driver, baseAddress)])
-    #test_results.append(["C", testC(driver, koszykAddress)])
+    test_results.append(["C", testC(driver, koszykAddress)])
     results_efgh = testEFGH(driver, koszykAddress)
     test_results.append(["E", results_efgh[0]])
     test_results.append(["F", results_efgh[1]])
     test_results.append(["G", results_efgh[2]])
     test_results.append(["H", results_efgh[3]])
-
 
     time_after = time.perf_counter()
     time_of_testing = time_after - time_before
