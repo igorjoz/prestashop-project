@@ -458,12 +458,6 @@ div.btns121 {
 
 section#wrapper {
     padding: 0;
-    /* padding-top: 10px; */
-}
-
-body.index section#wrapper {
-    /* padding-top: 0 !important; */
-    /* Adjust this value as needed */
 }
 
 .breadcrumb {
