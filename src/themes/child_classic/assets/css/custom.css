@@ -11,6 +11,14 @@ body {
     font-style: normal;
 }
 
+.product-line-grid-right {
+    z-index: 5 !important;
+}
+
+.footer-container {
+    margin: 0 13% !important;
+}
+
 #header {
     background: #108c34 !important;
     display: flex;
@@ -450,12 +458,16 @@ div.btns121 {
 
 section#wrapper {
     padding: 0;
-    padding-top: 10px;
+    /* padding-top: 10px; */
 }
 
 body.index section#wrapper {
-    padding-top: 0 !important;
+    /* padding-top: 0 !important; */
     /* Adjust this value as needed */
+}
+
+.breadcrumb {
+    margin-top: 15px !important;
 }
 
 .btn-janek-check {

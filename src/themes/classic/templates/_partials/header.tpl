@@ -76,16 +76,16 @@
             </div>
             <div class="links-janek">
               <div class="head-element-janek">
-                <a href="content/4-monsteriadapl-kim-jestesmy">O nas</a>
+                <a href="/content/14-bylem-tu">O nas</a>
               </div>
               <div class="head-element-janek">
-                <a href="content/3-regulamin">Regulamin</a>
+                <a href="/content/14-bylem-tu">Regulamin</a>
               </div>
               <div class="head-element-janek">
-                <a href="content/1-dostawa">Dostawa</a>
+                <a href="/content/14-bylem-tu">Dostawa</a>
               </div>
               <div class="head-element-janek">
-                <a href="kontakt">Kontakt</a>
+                <a href="/kontakt">Kontakt</a>
               </div>
               <div class="head-element-janek">
                 <a href="https://www.facebook.com/monsteriadapl">
@@ -126,10 +126,10 @@
       Gadżety wg tematyki
       <i class="icon-arrow-down"></i>
     </a>
-    <a class="button-item" href="bestsellery">Bestsellery</a>
-    <a class="button-item" href="promocje">Promocje</a>
-    <a class="button-item" href="nowosci">Nowości</a>
-    <a class="button-item" href="content/11-blog">Blog</a>
+    <a class="button-item" href="/96-bestsellery">Bestsellery</a>
+    <a class="button-item" href="/95-promocje">Promocje</a>
+    <a class="button-item" href="/94-nowosci">Nowości</a>
+    <a class="button-item" href="https://localhost/content/14-bylem-tu">Blog</a>
   </div>
   <script>
     window.onload = function() {

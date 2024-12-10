@@ -12,7 +12,7 @@
                     <div class="caption-description">
                         <p>Sprawdź, która różdżka cię wybrała!</p>
                     </div>
-                    <a class="btn-janek-check" href="http://localhost:8080/monsteriada-prestashop-clone/63-harry-potter-rozdzki">
+                    <a class="btn-janek-check" href="/169-harry-potter-rozdzki">
                         sprawdź
                     </a>
                 </figcaption>
@@ -223,11 +223,11 @@
                                                                                                                                 <div id="mainDIV_3010">
                                                                                                                                     <div id="mainDIV_3011">
                                                                                                                                         <div id="mainDIV_3012">
-                                                                                                                                            <a href="https://monsteriada.pl/blog/artykuly-i-ciekawostki/dragon-ball-wszystkie-metamorfozy-son-goku" title="Dragon Ball - Wszystkie metamorfozy Son Goku" tabindex="-1" id="mainA_3013"><img src="https://monsteriada.pl/modules/ph_simpleblog/covers/94-thumb.jpg" alt="Dragon Ball - Wszystkie metamorfozy Son Goku" width="434" height="268" id="mainIMG_3014" /></a>
+                                                                                                                                            <a href="https://localhost/content/14-bylem-tu" title="Dragon Ball - Wszystkie metamorfozy Son Goku" tabindex="-1" id="mainA_3013"><img src="https://monsteriada.pl/modules/ph_simpleblog/covers/94-thumb.jpg" alt="Dragon Ball - Wszystkie metamorfozy Son Goku" width="434" height="268" id="mainIMG_3014" /></a>
                                                                                                                                         </div>
                                                                                                                                         <div id="mainDIV_3015">
                                                                                                                                             <h2 id="mainH2_3016">
-                                                                                                                                                <a href="https://monsteriada.pl/blog/artykuly-i-ciekawostki/dragon-ball-wszystkie-metamorfozy-son-goku" title="Dragon Ball - Wszystkie metamorfozy Son Goku" tabindex="-1" id="mainA_3017">Dragon Ball - Wszystkie metamorfozy Son Goku</a>
+                                                                                                                                                <a href="https://localhost/content/14-bylem-tu" title="Dragon Ball - Wszystkie metamorfozy Son Goku" tabindex="-1" id="mainA_3017">Dragon Ball - Wszystkie metamorfozy Son Goku</a>
                                                                                                                                             </h2>
                                                                                                                                         </div>
                                                                                                                                         <div id="mainDIV_3018">
@@ -235,7 +235,7 @@
                                                                                                                                                 Dragon Ball to manga, która cieszy się w Polsce ogromną popularnością. Co roku na całym świecie 9 maja obchodzony jest Dzień Goku, czyli głównego bohatera Dragon Ball.
                                                                                                                                             </p>
                                                                                                                                             <p id="mainP_3020">
-                                                                                                                                                <a href="https://monsteriada.pl/blog/artykuly-i-ciekawostki/dragon-ball-wszystkie-metamorfozy-son-goku" title="Czytaj więcej" tabindex="-1" id="mainA_3021">Czytaj więcej...</a>
+                                                                                                                                                <a href="https://localhost/content/14-bylem-tu" title="Czytaj więcej" tabindex="-1" id="mainA_3021">Czytaj więcej...</a>
                                                                                                                                             </p>
                                                                                                                                         </div>
                                                                                                                                     </div>
@@ -243,7 +243,7 @@
                                                                                                                                 <div id="mainDIV_3022">
                                                                                                                                     <div id="mainDIV_3023">
                                                                                                                                         <div id="mainDIV_3024">
-                                                                                                                                            <a href="https://monsteriada.pl/blog/artykuly-i-ciekawostki/transformers-top-10-najciekawszych-autobotow-subiektywna-top-lista" title="Transformers - TOP 10 najciekawszych Autobotów (subiektywna TOP lista)" tabindex="-1" id="mainA_3025"><img src="https://monsteriada.pl/modules/ph_simpleblog/covers/93-thumb.jpeg" alt="Transformers - TOP 10 najciekawszych Autobotów (subiektywna TOP lista)" width="434" height="268" id="mainIMG_3026" /></a>
+                                                                                                                                            <a href="https://localhost/content/14-bylem-tu" title="Transformers - TOP 10 najciekawszych Autobotów (subiektywna TOP lista)" tabindex="-1" id="mainA_3025"><img src="https://monsteriada.pl/modules/ph_simpleblog/covers/93-thumb.jpeg" alt="Transformers - TOP 10 najciekawszych Autobotów (subiektywna TOP lista)" width="434" height="268" id="mainIMG_3026" /></a>
                                                                                                                                         </div>
                                                                                                                                         <div id="mainDIV_3027">
                                                                                                                                             <h2 id="mainH2_3028">

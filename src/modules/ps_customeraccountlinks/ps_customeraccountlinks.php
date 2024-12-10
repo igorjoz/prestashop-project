@@ -137,12 +137,12 @@ class Ps_Customeraccountlinks extends Module implements WidgetInterface
         // Dodajemy nowe elementy
         $my_account_urls[7] = [
             'title' => $this->trans('Moje przesyłki', [], 'Modules.Customeraccountlinks.Admin'),
-            'url' => 'http://localhost:8080/content/12-moje-paczki', 
+            'url' => 'https://localhost/content/14-bylem-tu', 
         ];
 
         $my_account_urls[8] = [
             'title' => $this->trans('Moje powiadomienia', [], 'Modules.Customeraccountlinks.Admin'),
-            'url' => 'http://localhost:8080/module/ps_emailalerts/account', 
+            'url' => 'https://localhost/content/14-bylem-tu', 
         ];
 
         // Sort Account links base in his index
