@@ -73,4 +73,3 @@ This project aims to recreate the core features and design of [monsteriada.pl](h
 `docker exec mariadb mysqldump --user=root -proot monsteriada > ./data/db.sql`
 
 ---
-
