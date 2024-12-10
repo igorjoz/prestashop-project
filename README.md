@@ -53,17 +53,23 @@ This project aims to recreate the core features and design of [monsteriada.pl](h
   - 🚀 Startup/installation instructions
   - 👥 Team composition
 
----
-
 ## 🛠️ Project Installation Guidelines
 
-- **Project directory:** `/monsteriada-prestashop-clone`
+- **Project directory:** `/src/monsteriada-prestashop-clone`
 - **Database name:** `monsteriada`
 - **Database dev user:** `root`
-- **Database dev password:** *(no password)*
-- **Admin panel directory:** `admin-dev`
+- **Database dev password:** `root`
+- **Admin panel directory:** `/admin-dev`
 
-### ⚠️ Important Note about Continuing Work & Editing Content on Site
-Many things are saved into the database, which is not uploaded to the repository. If you want to edit site content, first request a **database export**. Then, import it in `http://localhost/phpmyadmin/` under the Import section & choose file. 
+**Fixing permissions after cloning the project:**\
+`sudo chmod -R 777 ./src`
+
+**The database is automatically initialized from the `/data/db.sql`**
+
+**To manually import database:**\
+`docker exec -i mariadb mysql -u root -proot monsteriada < ./data/db.sql`
+
+**To manually export database:**\
+`docker exec mariadb mysqldump --user=root -proot monsteriada > ./data/db.sql`
 
 ---
