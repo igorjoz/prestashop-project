@@ -29,7 +29,7 @@ def add_images(path, product_id):
  
 def modify_stock(product_id, availability):
     if availability == "Dostępny":
-        quantity = random.randint(1, 30)
+        quantity = 10
     else: quantity = 0
     
     stock = ps.get('stock_availables', options={'filter[id_product]': product_id, 'display': 'full'})
@@ -314,27 +314,78 @@ def remove_existing_categories():
         except prestapyt.prestapyt.PrestaShopWebServiceError as e:
             print(f"Failed to delete category with id: {category_id}. Error: {e}")
     print("All categories removed")
- 
+    
+    
+def update_tax_and_stock(): # changing tax to 23% (theres no tax information in scraped data) and setting stock to 10 if product is available (task requirements)
+    products = ps.get('products')
+    if not products['products']:
+        print("No products to update")
+        return
+    else:
+        for p in products['products']['product']:
+            # tax
+            product_id = p['attrs']['id']
+            product = ps.get('products', options={'filter[id]': product_id, 'display': 'full'})
+            product = product['products']['product']
+            price = float(product['price']) / 1.23
+            product['id_tax_rules_group'] = '1'
+            
+            # need to update the price after changing the tax group
+            product['price'] = f"{price:.2f}"
+            
+            # remove these fields from product to avoid errors, but keep the stock info
+            if 'manufacturer_name' in product:
+                del product['manufacturer_name']
+            
+            if 'quantity' in product:
+                del product['quantity']
+                
+            ps.edit(f'products/{product_id}', {'product': product})
+            print(f"Product {product['name']['language']['value']} tax updated")
+            
+            # stock
+            try:
+                response = ps.get('stock_availables', options={'filter[id_product]': product_id, 'display': 'full'})
+                quantity = response['stock_availables']['stock_available']['quantity']
+                if not quantity == '0':
+                    modify_stock(product_id, "Dostępny")
+                    print(f"Product {product['name']['language']['value']} stock updated")
+            except prestapyt.prestapyt.PrestaShopWebServiceError as e:
+                print(f"Failed to update stock for product: {product['name']['language']['value']}. Error: {e}")
+                continue
+            except KeyError as e:
+                print(f"KeyError: {e} in response for product {product_id}: {response}")
+                continue
+            except TypeError as e:
+                print(f"TypeError: {e} in response for product {product_id}: {response}")
+                continue
+            
+        print("All products updated")
+        
 if __name__ == "__main__":
     ps = prestapyt.PrestaShopWebServiceDict(URL, API_KEY)
     
     # remove all the feautures
-    remove_all_features()
+    # remove_all_features()
     
     # remove all products
-    remove_all_products()
+    # remove_all_products()
     # get_all_products()
     
     # remove all categories
-    remove_existing_categories()
+    # remove_existing_categories()
     # get_all_categories()
     
-    add_single_category("Nowości", 2)
-    add_single_category("Promocje", 2)
-    add_single_category("Bestsellery", 2)
+    # add_single_category("Nowości", 2)
+    # add_single_category("Promocje", 2)
+    # add_single_category("Bestsellery", 2)
     
     # add scrapped products and categories to db
-    print("Gadzety wg kategorii")
-    add_scraped_data("./web-scraper/scraped-data/gadzetyWgKategorii.json")
-    print("Gadzety wg tematyki")
-    add_scraped_data("./web-scraper/scraped-data/gadzetyWgTematyki.json")
+    # print("Gadzety wg kategorii")
+    # add_scraped_data("./web-scraper/scraped-data/gadzetyWgKategorii.json")
+    # print("Gadzety wg tematyki")
+    # add_scraped_data("./web-scraper/scraped-data/gadzetyWgTematyki.json")
+    
+    # update tax and stock
+    update_tax_and_stock()
+    

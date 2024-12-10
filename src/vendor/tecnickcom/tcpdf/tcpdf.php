@@ -120,6 +120,13 @@ require_once(dirname(__FILE__).'/include/tcpdf_images.php');
 // TCPDF static methods and data
 require_once(dirname(__FILE__).'/include/tcpdf_static.php');
 
+stream_context_set_default([
+    'ssl' => [
+        'verify_peer' => false,
+        'verify_peer_name' => false
+    ]
+]);
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 /**
