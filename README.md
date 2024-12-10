@@ -1,6 +1,3 @@
-# prestashop-project
-PrestaShop website clone for Electronic Business class at Gdańsk University of Technology
-
 # 🧙 Monsteriada PrestaShop Clone Project
 
 **PrestaShop website clone for the Electronic Business course**  
