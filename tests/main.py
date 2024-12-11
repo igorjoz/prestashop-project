@@ -13,6 +13,7 @@ import random
 
 from urllib3.exceptions import ReadTimeoutError
 
+
 def testA(driverA, source):
     result = "passed"
     how_many_products_per_cat = 5
@@ -27,7 +28,7 @@ def testA(driverA, source):
         )
 
         categories = driverA.find_elements(By.XPATH,
-                                         "//header[@id='header']//div[@class='main-navigation-janek']/a[@class='button-item']")
+                                           "//header[@id='header']//div[@class='main-navigation-janek']/a[@class='button-item']")
         categories_temp = []
         categories_temp.append(categories[3])
 
@@ -41,14 +42,13 @@ def testA(driverA, source):
         ActionChains(driver=driverA).move_to_element(ddmenu).perform()
         categories_temp.append(driverA.find_element(By.XPATH, ".//li[@id='category-148']/a"))
 
-
         categories = categories_temp
         cat_addresses = []
 
         for category in categories:
             cat_addresses.append(category.get_attribute('href'))
 
-        #NA RAZIE TRZEBA DODAWAĆ SZTUCZNIE PRZEDROSTKI, JAK ZOSTANIE TO POPRAWIONE PONIZSZA LINIA JEST DO USUNIECIA
+        # NA RAZIE TRZEBA DODAWAĆ SZTUCZNIE PRZEDROSTKI, JAK ZOSTANIE TO POPRAWIONE PONIZSZA LINIA JEST DO USUNIECIA
         cat_addresses[0] = "https://localhost/96-bestsellery"
 
         for cat_address in cat_addresses:
@@ -75,7 +75,8 @@ def testA(driverA, source):
                     try:
                         driverA.get(product_address)
                         WebDriverWait(driver=driverA, timeout=5).until(
-                            EC.presence_of_element_located((By.CLASS_NAME, 'product-add-to-cart.js-product-add-to-cart'))
+                            EC.presence_of_element_located(
+                                (By.CLASS_NAME, 'product-add-to-cart.js-product-add-to-cart'))
                         )
 
                         col_prod_txt = driverA.find_element(By.XPATH,
@@ -98,7 +99,8 @@ def testA(driverA, source):
                             )
                             items_up.click()
 
-                        add_to_cart = col_prod_txt.find_element(By.XPATH, ".//button[@class='btn btn-primary add-to-cart']")
+                        add_to_cart = col_prod_txt.find_element(By.XPATH,
+                                                                ".//button[@class='btn btn-primary add-to-cart']")
                         WebDriverWait(driver=driverA, timeout=5).until(
                             EC.element_to_be_clickable(add_to_cart)
                         )
@@ -110,7 +112,8 @@ def testA(driverA, source):
 
                         blockcart = driverA.find_element(By.ID, 'blockcart-modal')
 
-                        how_many_added = int(blockcart.find_element(By.XPATH, ".//div[@class='modal-body']/div/div[1]/div/div[2]/span/strong").text)
+                        how_many_added = int(blockcart.find_element(By.XPATH,
+                                                                    ".//div[@class='modal-body']/div/div[1]/div/div[2]/span/strong").text)
 
                         adding_result_text = blockcart.find_element(By.XPATH, "//h4[@id='myModalLabel']").text[1:]
 
@@ -134,7 +137,6 @@ def testA(driverA, source):
     except Exception as e:
         result = "failed"
         print("W tescie A wystapil wyjatek " + str(type(e)))
-
 
     return result
 
@@ -262,11 +264,11 @@ def testC(driverC, source):
                                                              "bootstrap-touchspin-down']")
 
             for _ in range(item_tbd_how_many):
-                    WebDriverWait(driver=driverC, timeout=5).until(
-                        EC.element_to_be_clickable(arrow_down_tbd)
-                        and EC.visibility_of(arrow_down_tbd)
-                    )
-                    arrow_down_tbd.click()
+                WebDriverWait(driver=driverC, timeout=5).until(
+                    EC.element_to_be_clickable(arrow_down_tbd)
+                    and EC.visibility_of(arrow_down_tbd)
+                )
+                arrow_down_tbd.click()
 
             print("Test C usunal produkt z koszyka")
 
@@ -328,8 +330,10 @@ def testEFGH(driverE, source):
 
             necessary_customer_form_rows = di_first_stage.find_elements(By.XPATH,
                                                                         ".//form[@id='customer-form']/div/div")
-            tos_check = necessary_customer_form_rows[-1].find_element(By.CLASS_NAME, "material-icons.rtl-no-flip.checkbox-checked")
-            rodo_check = necessary_customer_form_rows[7].find_element(By.CLASS_NAME, "material-icons.rtl-no-flip.checkbox-checked")
+            tos_check = necessary_customer_form_rows[-1].find_element(By.CLASS_NAME,
+                                                                      "material-icons.rtl-no-flip.checkbox-checked")
+            rodo_check = necessary_customer_form_rows[7].find_element(By.CLASS_NAME,
+                                                                      "material-icons.rtl-no-flip.checkbox-checked")
             first_stage_gender = necessary_customer_form_rows[0].find_element(By.ID, "field-id_gender-1")
             first_stage_name = necessary_customer_form_rows[1].find_element(By.ID, "field-firstname")
             first_stage_surname = necessary_customer_form_rows[2].find_element(By.ID, "field-lastname")
@@ -407,7 +411,7 @@ def testEFGH(driverE, source):
                                                                                 ".//input[@class='form-control']")
             second_stage_city = necessary_second_stage_rows[8].find_element(By.XPATH, ".//input[@class='form-control']")
             second_stage_phone = necessary_second_stage_rows[10].find_element(By.XPATH,
-                                                                             ".//input[@class='form-control']")
+                                                                              ".//input[@class='form-control']")
 
             driverE.execute_script("arguments[0].scrollIntoView();", second_stage_address)
             driverE.execute_script("window.scrollBy(0, -100);")
@@ -446,7 +450,7 @@ def testEFGH(driverE, source):
         )
         second_stage_button.click()
 
-        #TEST G-------------------------------------------------------------------------------
+        # TEST G-------------------------------------------------------------------------------
 
         print("Test G sie rozpoczyna")
 
@@ -485,8 +489,7 @@ def testEFGH(driverE, source):
         except TimeoutException:
             raise ValueError("G")
 
-
-        #TEST F---------------------------------------------------------------------------------------------------
+        # TEST F---------------------------------------------------------------------------------------------------
 
         print("Test F sie rozpoczyna")
 
@@ -518,11 +521,12 @@ def testEFGH(driverE, source):
         except NoSuchElementException:
             raise ValueError("F")
 
-        #TEST H------------------------------------------------------------------------------------------------------
+        # TEST H------------------------------------------------------------------------------------------------------
 
         print("Test H sie rozpoczyna")
 
-        fourth_stage_conds = di_fourth_stage.find_element(By.XPATH, ".//input[@id='conditions_to_approve[terms-and-conditions]']")
+        fourth_stage_conds = di_fourth_stage.find_element(By.XPATH,
+                                                          ".//input[@id='conditions_to_approve[terms-and-conditions]']")
 
         driverE.execute_script("arguments[0].scrollIntoView();", fourth_stage_conds)
         driverE.execute_script("window.scrollBy(0, -100);")
@@ -541,7 +545,7 @@ def testEFGH(driverE, source):
 
         WebDriverWait(driver=driverE, timeout=5).until(
             EC.presence_of_element_located((By.ID,
-                "content-hook_order_confirmation"))
+                                            "content-hook_order_confirmation"))
         )
 
         if "Twoje zamówienie zostało potwierdzone" in driverE.page_source:
@@ -559,7 +563,6 @@ def testEFGH(driverE, source):
 
     except Exception as e:
         print("Podczas testow E-H wystapil wyjatek " + str(type(e)))
-
 
     return result
 
@@ -600,8 +603,10 @@ def testEFGH(driverE, source):
 
             necessary_customer_form_rows = di_first_stage.find_elements(By.XPATH,
                                                                         ".//form[@id='customer-form']/div/div")
-            tos_check = necessary_customer_form_rows[-1].find_element(By.CLASS_NAME, "material-icons.rtl-no-flip.checkbox-checked")
-            rodo_check = necessary_customer_form_rows[7].find_element(By.CLASS_NAME, "material-icons.rtl-no-flip.checkbox-checked")
+            tos_check = necessary_customer_form_rows[-1].find_element(By.CLASS_NAME,
+                                                                      "material-icons.rtl-no-flip.checkbox-checked")
+            rodo_check = necessary_customer_form_rows[7].find_element(By.CLASS_NAME,
+                                                                      "material-icons.rtl-no-flip.checkbox-checked")
             first_stage_gender = necessary_customer_form_rows[0].find_element(By.ID, "field-id_gender-1")
             first_stage_name = necessary_customer_form_rows[1].find_element(By.ID, "field-firstname")
             first_stage_surname = necessary_customer_form_rows[2].find_element(By.ID, "field-lastname")
@@ -679,7 +684,7 @@ def testEFGH(driverE, source):
                                                                                 ".//input[@class='form-control']")
             second_stage_city = necessary_second_stage_rows[8].find_element(By.XPATH, ".//input[@class='form-control']")
             second_stage_phone = necessary_second_stage_rows[10].find_element(By.XPATH,
-                                                                             ".//input[@class='form-control']")
+                                                                              ".//input[@class='form-control']")
 
             driverE.execute_script("arguments[0].scrollIntoView();", second_stage_address)
             driverE.execute_script("window.scrollBy(0, -100);")
@@ -718,7 +723,7 @@ def testEFGH(driverE, source):
         )
         second_stage_button.click()
 
-        #TEST G-------------------------------------------------------------------------------
+        # TEST G-------------------------------------------------------------------------------
 
         print("Test G sie rozpoczyna")
 
@@ -757,8 +762,7 @@ def testEFGH(driverE, source):
         except TimeoutException:
             raise ValueError("G")
 
-
-        #TEST F---------------------------------------------------------------------------------------------------
+        # TEST F---------------------------------------------------------------------------------------------------
 
         print("Test F sie rozpoczyna")
 
@@ -790,11 +794,12 @@ def testEFGH(driverE, source):
         except NoSuchElementException:
             raise ValueError("F")
 
-        #TEST H------------------------------------------------------------------------------------------------------
+        # TEST H------------------------------------------------------------------------------------------------------
 
         print("Test H sie rozpoczyna")
 
-        fourth_stage_conds = di_fourth_stage.find_element(By.XPATH, ".//input[@id='conditions_to_approve[terms-and-conditions]']")
+        fourth_stage_conds = di_fourth_stage.find_element(By.XPATH,
+                                                          ".//input[@id='conditions_to_approve[terms-and-conditions]']")
 
         driverE.execute_script("arguments[0].scrollIntoView();", fourth_stage_conds)
         driverE.execute_script("window.scrollBy(0, -100);")
@@ -813,7 +818,7 @@ def testEFGH(driverE, source):
 
         WebDriverWait(driver=driverE, timeout=5).until(
             EC.presence_of_element_located((By.ID,
-                "content-hook_order_confirmation"))
+                                            "content-hook_order_confirmation"))
         )
 
         if "Twoje zamówienie zostało potwierdzone" in driverE.page_source:
@@ -832,7 +837,8 @@ def testEFGH(driverE, source):
 
     return result
 
-def testD(driver, source): # create new account
+
+def testD(driver, source):  # create new account
     print("Test D sie rozpoczyna")
 
     try:
@@ -847,11 +853,11 @@ def testD(driver, source): # create new account
         )
         driver.execute_script("window.scrollBy(0, 600);")
         driver.find_element(By.XPATH, "//a[@data-link-action='display-register-form']").click()
-        driver.execute_script("window.scrollBy(0, 600);") 
+        driver.execute_script("window.scrollBy(0, 600);")
         WebDriverWait(driver, 5).until(
             EC.presence_of_element_located((By.CLASS_NAME, 'register-form'))
         )
-       
+
         driver.find_element(By.XPATH, "//input[@name='id_gender' and @value='1']").click()
         driver.find_element(By.NAME, 'firstname').send_keys("Robert")
         driver.find_element(By.NAME, 'lastname').send_keys("Kowalski")
@@ -862,40 +868,41 @@ def testD(driver, source): # create new account
         if not consent_checkbox.is_selected():
             consent_checkbox.click()
         consent_checkbox2 = driver.find_element(By.NAME, 'psgdpr')
-        driver.execute_script("window.scrollBy(0, 400);") 
+        driver.execute_script("window.scrollBy(0, 400);")
         if not consent_checkbox2.is_selected():
             consent_checkbox2.click()
 
         driver.find_element(By.XPATH, "//button[@type='submit']").click()
         if driver.current_url == source + "/":
             result = "passed"
-        else: 
+        else:
             print("Test D - user already exists")
             result = "failed"
             return result
-        
+
         result = "passed"
-        
+
     except TimeoutException:
         result = "failed"
         print("Test D timed out")
-    
+
     except Exception as e:
         result = "failed"
         print("Test D failed")
-    
+
     print("Test D sie zakonczyl")
     return result
+
 
 def testIJ(driver, source):
     print("Test I sie rozpoczyna")
     results = ["failed", "failed"]
-    
+
     try:
         driver.get(source)
-    
+
         WebDriverWait(driver=driver, timeout=5).until(
-        EC.presence_of_element_located((By.XPATH, "//a[@class='account']"))
+            EC.presence_of_element_located((By.XPATH, "//a[@class='account']"))
         )
 
         account_element = driver.find_element(By.XPATH, "//a[@class='account']")
@@ -905,14 +912,14 @@ def testIJ(driver, source):
             EC.element_to_be_clickable(account_element)
         )
         account_element.click()
-        
+
         # order history
         driver.execute_script("window.scrollBy(0, 300);")
         WebDriverWait(driver=driver, timeout=5).until(
             EC.presence_of_element_located((By.XPATH, "//a[@id='history-link']"))
         )
         driver.find_element(By.ID, 'history-link').click()
-        
+
         # order details
         WebDriverWait(driver=driver, timeout=5).until(
             EC.presence_of_element_located((By.XPATH, "//tbody"))
@@ -920,42 +927,42 @@ def testIJ(driver, source):
         driver.execute_script("window.scrollBy(0, 600);")
         order = driver.find_element(By.XPATH, "//tbody/tr[1]")
         order.find_element(By.XPATH, ".//a[contains(@data-link-action, 'view-order-details')]").click()
-      
+
         # confirm that order details are displayed -> I passed
         WebDriverWait(driver=driver, timeout=5).until(
             EC.presence_of_element_located((By.ID, 'invoice-address'))
         )
         driver.execute_script("window.scrollBy(0, 600);")
-        
+
         results = ["passed", "failed"]
-        
+
         driver.find_element(By.XPATH, "//a[contains(text(), 'Pobierz fakturę proforma w pliku PDF')]").click()
-        
+
         results = ["passed", "passed"]
-        
+
     except TimeoutException:
         print("Test I failed - timed out")
-    
+
     except Exception as e:
         print("Test I failed")
-    
+
     print("Test I sie zakonczyl")
     return results
-    
+
+
 if __name__ == '__main__':
     options = Options()
-    
+
     # commenting the line below show the browser window
-    #options.add_argument("--headless")
-    
-    options.add_argument("-width=1420")
-    options.add_argument("-height=780")
+    # options.add_argument("--headless")
+
+    options.add_argument("--window-size=1420,780")
 
     driver = webdriver.Chrome(options=options)
-    
+
     baseAddress = "https://localhost"
     koszykAddress = "https://localhost/koszyk?action=show"
-    
+
     driver.get(baseAddress)
     driver.set_page_load_timeout(20)
 
