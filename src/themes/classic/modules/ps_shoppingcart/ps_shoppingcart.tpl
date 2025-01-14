@@ -29,7 +29,7 @@
         <a rel="nofollow" aria-label="{l s='Shopping cart link containing %nbProducts% product(s)' sprintf=['%nbProducts%' => $cart.products_count] d='Shop.Theme.Checkout'}" href="{$cart_url}">
       {/if}
         <div class="cart-holder-janek">
-          <img src='http://localhost:8080/img/basket.png'>
+          <img src='/img/basket.png'>
           <div id="cart-descriptor-janek">
             <span class="hidden-sm-down">{l s='Cart' d='Shop.Theme.Checkout'}</span>
             <span class="cart-products-value"><b>{$cart.totals.total.value}</b></span>

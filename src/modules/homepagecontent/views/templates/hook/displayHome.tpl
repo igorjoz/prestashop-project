@@ -5,9 +5,9 @@
     <ul class="carousel-inner" role="listbox" aria-label="Carousel container">
         <li class="carousel-item active" role="option" aria-hidden="false">
             <figure>
-                <img src="http://localhost:8080/modules/ps_imageslider/images/0210587fcd06d4f2d0fb7dab22702c75b1b5e572_banner.jpg" alt="Magiczne różdżki z Harrego Pottera" loading="lazy" width="1110" height="340">
+                <img src="/modules/ps_imageslider/images/0210587fcd06d4f2d0fb7dab22702c75b1b5e572_banner.jpg" alt="Magiczne różdżki z Harrego Pottera" loading="lazy" width="1110" height="340">
                 <figcaption class="caption">
-                    <img class="harry-potter-logo" src="http://localhost:8080/img/harry-potter-logo.png">
+                    <img class="harry-potter-logo" src="/img/harry-potter-logo.png">
                     <h2 class="display-1 text-uppercase">Magiczne różdżki z Harrego Pottera</h2>
                     <div class="caption-description">
                         <p>Sprawdź, która różdżka cię wybrała!</p>

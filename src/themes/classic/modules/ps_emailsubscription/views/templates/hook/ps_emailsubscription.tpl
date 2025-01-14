@@ -63,7 +63,7 @@
             >
             
             <input type="checkbox" name="allow-newsletter" id="allow-newsletter-janek" required>
-            <p>Wyrażam zgodę na otrzymywanie newslettera oraz kodów rabatowych na podany adres e-mail. Więcej informacji w <a class="janek-link" href="http://localhost:8080/content/3-polityka-prywatnosci">Polityce Prywatności</a>. *</p>
+            <p>Wyrażam zgodę na otrzymywanie newslettera oraz kodów rabatowych na podany adres e-mail. Więcej informacji w <a class="janek-link" href="/content/3-polityka-prywatnosci">Polityce Prywatności</a>. *</p>
             <input type="hidden" name="blockHookName" value="{$hookName}" />
             <input type="hidden" name="action" value="0">
             <div class="clearfix"></div>

@@ -1,50 +1,52 @@
 services:
-  prestashop:
+  BE_191711_prestashop:
     container_name: prestashop
-    image: prestashop/prestashop:1.7.8
+    image: patrykso/be-presta:latest
     restart: unless-stopped
-    depends_on:
-      - mariadb
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
     ports:
-      - "443:443"
-      - "8080:80"
+      - "19171:443"
     environment:
-      DB_SERVER: mariadb
-      DB_NAME: monsteriada
-      DB_USER: root
+      DB_SERVER: db
+      DB_NAME: BE_191711
+      DB_USER: student
       DB_PASSWD: root
-      PS_INSTALL_AUTO: 0
+      PS_INSTALL_AUTO: 1
       PS_DEV_MODE: 1
-    volumes:
-      - ./src:/var/www/html
-      - ./data/cert.pem:/etc/ssl/certs/cert.pem
-      - ./data/key.pem:/etc/ssl/private/key.pem
-      - ./data/presta.conf:/etc/apache2/sites-available/presta.conf
-    command: >
-      bash -c "
-      a2enmod ssl &&
-      a2ensite presta &&
-      apache2-foreground
-      "
+    networks:
+      - BE_191711_network
+      - admin-mysql_default
+    # command: >
+    #   /bin/bash -c "
+    #   mysql -u -p -h db_name < /db_dump/db.sql
+    #   "
 
-  mariadb:
-    container_name: mariadb
-    image: mariadb:10.3
-    restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: monsteriada
-    volumes:
-      - ./mariadb:/var/lib/mysql
-      - ./data/:/docker-entrypoint-initdb.d/
+  BE_191711_memcached:
+    container_name: presta_cache
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
+    image: memcached:alpine3.21
+    networks:
+      - BE_191711_network
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    links:
-      - mariadb
-    ports: 
-      - 81:80 
-    environment:
-      - PMA_HOST=mariadb
-      - PMA_USER=root
-      - PMA_PASSWORD=root
+networks:
+  BE_191711_network:
+  admin-mysql_default:
+    external: true

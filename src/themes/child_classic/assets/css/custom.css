@@ -518,7 +518,7 @@ section#wrapper {
 }
 
 footer#footer {
-    background: url(http://localhost:8080/img/footer.jpg) no-repeat scroll center top #261321;
+    background: url(/img/footer.jpg) no-repeat scroll center top #261321;
 }
 
 footer#footer .hidden-sm-down,
@@ -535,7 +535,7 @@ footer#footer li::before {
     display: flex;
     height: fit-content;
     width: 100% !important;
-    background: url(http://localhost:8080/img/footerbefore.jpg) no-repeat scroll center top #0c8c37;
+    background: url(/img/footerbefore.jpg) no-repeat scroll center top #0c8c37;
     max-width: 5000px !important;
     margin: 0 !important;
     justify-content: center;
