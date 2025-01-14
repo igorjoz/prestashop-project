@@ -43,11 +43,11 @@
     </div>
     <div class="row">
       <div class="transport-providers-flex">
-        <p><img src="http://localhost:8080/img/inpost.png"></p>
-        <p><img src="http://localhost:8080/img/dpd.png"></p>
-        <p><img src="http://localhost:8080/img/payu.png"></p>
-        <p><img src="http://localhost:8080/img/visa.png"></p>
-        <p><img src="http://localhost:8080/img/mastercard.png"></p>
+        <p><img src="/img/inpost.png"></p>
+        <p><img src="/img/dpd.png"></p>
+        <p><img src="/img/payu.png"></p>
+        <p><img src="/img/visa.png"></p>
+        <p><img src="/img/mastercard.png"></p>
       </div>
       <div class="col-md-12">
         <p class="text-sm-center">

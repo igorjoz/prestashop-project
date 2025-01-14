@@ -1,40 +1,52 @@
 services:
   BE_191711_prestashop:
     container_name: prestashop
-    image: prestashop/prestashop:1.7.8
+    image: patrykso/be-presta:latest
     restart: unless-stopped
-    depends_on:
-      - mariadb
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
     ports:
-      - "443:443"
-      - "8080:80"
+      - "19171:443"
     environment:
       DB_SERVER: db
       DB_NAME: BE_191711
-      DB_USER: root
-      DB_PASSWD: student
-      PS_INSTALL_AUTO: 0
+      DB_USER: student
+      DB_PASSWD: root
+      PS_INSTALL_AUTO: 1
       PS_DEV_MODE: 1
-    # volumes:
-    #   - ./src:/var/www/html
-    #   - ./data/cert.pem:/etc/ssl/certs/cert.pem
-    #   - ./data/key.pem:/etc/ssl/private/key.pem
-    #   - ./data/presta.conf:/etc/apache2/sites-available/presta.conf
-    build:
-      context: .
-      dockerfile: Dockerfile
+    networks:
+      - BE_191711_network
+      - admin-mysql_default
+    # command: >
+    #   /bin/bash -c "
+    #   mysql -u -p -h db_name < /db_dump/db.sql
+    #   "
 
   BE_191711_memcached:
     container_name: presta_cache
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
     image: memcached:alpine3.21
+    networks:
+      - BE_191711_network
 
-  mariadb:
-    container_name: mariadb
-    image: mariadb:10.3
-    restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: monsteriada
-    volumes:
-      - ./mariadb:/var/lib/mysql
-      - ./data/:/docker-entrypoint-initdb.d/
+networks:
+  BE_191711_network:
+  admin-mysql_default:
+    external: true
