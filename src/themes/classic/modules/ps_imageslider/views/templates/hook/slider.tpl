@@ -37,7 +37,7 @@
             <img src="{$slide.image_url}" alt="{$slide.legend|escape}" loading="lazy" width="1110" height="340">
             {if $slide.title || $slide.description}
               <figcaption class="caption">
-                <img class="harry-potter-logo" src="http://localhost:8080/img/harry-potter-logo.png">
+                <img class="harry-potter-logo" src="/img/harry-potter-logo.png">
                 <h2 class="display-1 text-uppercase">{$slide.title}</h2>
                 <div class="caption-description">{$slide.description nofilter}</div>
                 <a class="btn-janek-check" href="{$slide.url}">

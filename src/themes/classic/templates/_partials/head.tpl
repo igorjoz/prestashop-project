@@ -22,7 +22,9 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
+ 
 {block name='head_charset'}
+
   <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZN2347CBN9"></script>
     <script>
@@ -33,6 +35,7 @@
       gtag('config', 'G-ZN2347CBN9');
     </script>
   <meta charset="utf-8">
+
 {/block}
 {block name='head_ie_compatibility'}
   <meta http-equiv="x-ua-compatible" content="ie=edge">
