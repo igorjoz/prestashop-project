@@ -33,6 +33,15 @@
         gtag('js', new Date());
 
         gtag('config', 'G-ZN2347CBN9');
+
+        document.getElementById('promo-banner').addEventListener('click', function() {
+          console.log('click_banner')
+          gtag('event', 'click_banner', {
+            'category': 'Banner',
+            'action': 'Click',
+            'label': 'Promotional Banner'
+          });
+        });
       </script>
     <meta charset="utf-8">
   {/literal}
